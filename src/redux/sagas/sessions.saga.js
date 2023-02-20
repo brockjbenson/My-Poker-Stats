@@ -27,8 +27,7 @@ function* fetchSpecificSessions(action) {
       withCredentials: true,
     };
     const response = yield axios.get(
-      "/api/sessions/specific/",
-      { id: action.payload },
+      `/api/sessions/specific/${Number(action.payload)}`,
       config
     );
 

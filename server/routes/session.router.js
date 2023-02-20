@@ -56,7 +56,7 @@ ORDER BY
   }
 });
 
-router.get("/specific", (req, res) => {
+router.get("/specific/:id", (req, res) => {
   // GET route code here
   // const { userID } = req.user;
   const text = `
@@ -80,7 +80,7 @@ WHERE "session"."id" = $1 AND "session"."user_id" = $2;
 `;
   if (req.isAuthenticated()) {
     pool
-      .query(text, [req.body.id, req.user.id])
+      .query(text, [req.params.id, req.user.id])
       .then((results) => res.send(results.rows))
       .catch((error) => {
         console.log("Error making SELECT for items:", error);
