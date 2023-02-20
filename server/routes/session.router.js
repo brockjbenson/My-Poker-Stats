@@ -35,7 +35,8 @@ round(("cash_out" - "buy_in"),2) AS "net_profit",
 "session_date",
 "hours_played",
 round((("cash_out" - "buy_in") / "hours_played"), 1) AS "hourly",
-"stakes"
+"stakes",
+"notes"
 FROM
 "session"
 JOIN "venue" ON "session"."venue_id" = "venue"."id"
@@ -45,6 +46,41 @@ ORDER BY
   if (req.isAuthenticated()) {
     pool
       .query(text, [req.user.id])
+      .then((results) => res.send(results.rows))
+      .catch((error) => {
+        console.log("Error making SELECT for items:", error);
+        res.sendStatus(500);
+      });
+  } else {
+    res.sendStatus(403);
+  }
+});
+
+router.get("/specific", (req, res) => {
+  // GET route code here
+  // const { userID } = req.user;
+  const text = `
+  SELECT
+	"session"."id",
+	"venue"."name" AS "venue",
+	"venue"."user_id",
+	"buy_in",
+	"cash_out",
+	round(("cash_out" - "buy_in"),2) AS "net_profit",
+	"session_date",
+	"hours_played",
+	round((("cash_out" - "buy_in") / "hours_played"), 1) AS "hourly",
+	"stakes",
+	"notes"
+FROM
+	"session"
+	JOIN "venue" ON "session"."venue_id" = "venue"."id"
+	JOIN "user" ON "session"."user_id" = "user"."id"
+WHERE "session"."id" = $1 AND "session"."user_id" = $2;
+`;
+  if (req.isAuthenticated()) {
+    pool
+      .query(text, [req.body.id, req.user.id])
       .then((results) => res.send(results.rows))
       .catch((error) => {
         console.log("Error making SELECT for items:", error);
@@ -70,7 +106,7 @@ router.post("/", (req, res) => {
     venue_id,
   } = req.body;
   const text = `INSERT INTO "session" ("buy_in", "cash_out", "hours_played", "session_date", "stakes", "notes", "venue_id", "user_id")
-	VALUES (1000, 1375, 4.2, '12/21/2023', '2/5', 'notes', 4, 1);`;
+	VALUES ($1, $2, $3, $4, $5, $6, $7, $8);`;
 
   if (req.isAuthenticated()) {
     pool
