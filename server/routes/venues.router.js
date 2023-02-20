@@ -27,7 +27,7 @@ router.get("/", (req, res) => {
   }
 });
 
-router.get("/specific", (req, res) => {
+router.get("/specific/:id", (req, res) => {
   // GET route code here
   // const { userID } = req.user;
   const text = `
@@ -50,7 +50,7 @@ GROUP BY
 	"user"."id", "venue"."id";`;
   if (req.isAuthenticated()) {
     pool
-      .query(text, [req.body.id, req.user.id])
+      .query(text, [req.params.id, req.user.id])
       .then((results) => res.send(results.rows))
       .catch((error) => {
         console.log("Error making SELECT for items:", error);

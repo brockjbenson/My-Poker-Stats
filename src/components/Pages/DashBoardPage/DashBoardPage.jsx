@@ -6,12 +6,16 @@ import { useState } from "react";
 function UserPage() {
   // this component doesn't do much to start, just renders some user reducer info to the DOM
   const [sessionID, setSessionId] = useState("");
+  const [venueID, setVenueID] = useState("");
   const dispatch = useDispatch();
   const user = useSelector((store) => store.user);
   const allStats = useSelector((store) => store.allStatsReducer);
-  console.log(allStats);
   function getSpecific() {
     dispatch({ type: "FETCH_SPECIFIC_SESSION", payload: Number(sessionID) });
+  }
+
+  function getSpecificVenue() {
+    dispatch({ type: "FETCH_SPECIFIC_VENUE", payload: Number(venueID) });
   }
   return (
     <div className="container">
@@ -24,6 +28,12 @@ function UserPage() {
         onChange={(e) => setSessionId(e.target.value)}
       />
       <button onClick={getSpecific}>Get Session</button>
+      <input
+        type="number"
+        value={venueID}
+        onChange={(e) => setVenueID(e.target.value)}
+      />
+      <button onClick={getSpecificVenue}>Get Venue</button>
     </div>
   );
 }

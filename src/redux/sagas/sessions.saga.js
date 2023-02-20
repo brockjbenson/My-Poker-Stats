@@ -14,7 +14,7 @@ function* fetchSessions() {
     // with an id and username set the client-side user object to let
     // the client-side code know the user is logged in
     yield put({ type: "SET_SESSIONS", payload: response.data });
-    console.log(response.data);
+    console.log("all sessions:", response.data);
   } catch (error) {
     console.log("all sessions get request failed", error);
   }
@@ -35,7 +35,7 @@ function* fetchSpecificSessions(action) {
     // with an id and username set the client-side user object to let
     // the client-side code know the user is logged in
     yield put({ type: "SET_SPECIFIC_SESSION", payload: response.data });
-    console.log(response.data);
+    console.log("specific session is:", response.data);
   } catch (error) {
     console.log("all sessions get request failed", error);
   }
