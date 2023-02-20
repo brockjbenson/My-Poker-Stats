@@ -1,34 +1,40 @@
-import React, { useEffect } from 'react';
+import React, { useEffect } from "react";
 import {
   HashRouter as Router,
   Redirect,
   Route,
   Switch,
-} from 'react-router-dom';
+} from "react-router-dom";
 
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from "react-redux";
 
-import Nav from './Shared/Nav/Nav';
-import Footer from './Shared/Footer/Footer';
+import Nav from "./Shared/Nav/Nav";
+import Footer from "./Shared/Footer/Footer";
 
-import ProtectedRoute from './Shared/ProtectedRoute/ProtectedRoute';
+import ProtectedRoute from "./Shared/ProtectedRoute/ProtectedRoute";
 
-import AboutPage from './Pages/AboutPage/AboutPage';
-import UserPage from './Pages/UserPage/UserPage';
-import InfoPage from './Pages/InfoPage/InfoPage';
-import LandingPage from './Pages/LandingPage/LandingPage';
-import LoginPage from './Pages/LoginPage/LoginPage';
-import RegisterPage from './Pages/RegisterPage/RegisterPage';
+import AboutPage from "./Pages/AboutPage/AboutPage";
+import UserPage from "./Pages/DashBoardPage/DashBoardPage";
+import InfoPage from "./Pages/InfoPage/InfoPage";
+import LandingPage from "./Pages/LandingPage/LandingPage";
+import LoginPage from "./Pages/LoginPage/LoginPage";
+import RegisterPage from "./Pages/RegisterPage/RegisterPage";
 
-import './App.css';
+import "./App.css";
 
 function App() {
   const dispatch = useDispatch();
 
-  const user = useSelector(store => store.user);
+  const user = useSelector((store) => store.user);
+  const allStats = useSelector((store) => store.allStatsReducer);
+  const sessions = useSelector((store) => store.sessionReducer);
+  console.log(sessions);
 
   useEffect(() => {
-    dispatch({ type: 'FETCH_USER' });
+    dispatch({ type: "FETCH_USER" });
+    dispatch({ type: "FETCH_ALL_STATS" });
+    dispatch({ type: "FETCH_SESSIONS" });
+    dispatch({ type: "FETCH_SPECIFIC_SESSION" });
   }, [dispatch]);
 
   return (
@@ -55,7 +61,7 @@ function App() {
           <ProtectedRoute
             // logged in shows UserPage else shows LoginPage
             exact
-            path="/user"
+            path="/dashboard"
           >
             <UserPage />
           </ProtectedRoute>
@@ -68,46 +74,37 @@ function App() {
             <InfoPage />
           </ProtectedRoute>
 
-          <Route
-            exact
-            path="/login"
-          >
-            {user.id ?
-              // If the user is already logged in, 
+          <Route exact path="/login">
+            {user.id ? (
+              // If the user is already logged in,
               // redirect to the /user page
-              <Redirect to="/user" />
-              :
+              <Redirect to="/dashboard" />
+            ) : (
               // Otherwise, show the login page
               <LoginPage />
-            }
+            )}
           </Route>
 
-          <Route
-            exact
-            path="/registration"
-          >
-            {user.id ?
-              // If the user is already logged in, 
+          <Route exact path="/registration">
+            {user.id ? (
+              // If the user is already logged in,
               // redirect them to the /user page
-              <Redirect to="/user" />
-              :
+              <Redirect to="/dashboard" />
+            ) : (
               // Otherwise, show the registration page
               <RegisterPage />
-            }
+            )}
           </Route>
 
-          <Route
-            exact
-            path="/home"
-          >
-            {user.id ?
-              // If the user is already logged in, 
+          <Route exact path="/dashboard">
+            {user.id ? (
+              // If the user is already logged in,
               // redirect them to the /user page
-              <Redirect to="/user" />
-              :
+              <Redirect to="/dashboard" />
+            ) : (
               // Otherwise, show the Landing page
               <LandingPage />
-            }
+            )}
           </Route>
 
           {/* If none of the other routes matched, we will show a 404. */}
