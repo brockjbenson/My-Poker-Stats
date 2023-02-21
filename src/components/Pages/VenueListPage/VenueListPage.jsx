@@ -31,8 +31,7 @@ export default function VenueListPage() {
     setEditMode(false);
   }
   function sendToVenue(id) {
-    dispatch({ type: "FETCH_SPECIFIC_VENUE", payload: id });
-    history.push("/venue-view");
+    history.push(`/venue-view/${id}`);
   }
 
   const addVenue = () => {

@@ -45,7 +45,7 @@ function DashBoardPage() {
   }, []);
 
   const sendToVenues = () => {
-    history.push("/venue-list");
+    history.push(`/venue-list`);
   };
 
   const sendToSessions = () => {

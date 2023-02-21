@@ -18,6 +18,15 @@ const getSpecificVenueReducer = (state = {}, action) => {
   }
 };
 
+const getVenuesSessionsReducer = (state = [], action) => {
+  switch (action.type) {
+    case "SET_SPECIFIC_VENUE_SESSIONS":
+      return action.payload;
+    default:
+      return state;
+  }
+};
+
 const getVenuesStatsReducer = (state = [], action) => {
   switch (action.type) {
     case "SET_VENUES_STATS":
@@ -32,4 +41,5 @@ export default combineReducers({
   allVenuesReducer,
   getSpecificVenueReducer,
   getVenuesStatsReducer,
+  getVenuesSessionsReducer,
 });

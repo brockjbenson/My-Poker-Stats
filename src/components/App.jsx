@@ -65,7 +65,7 @@ function App() {
             <VenueFormPage />
           </ProtectedRoute>
 
-          <ProtectedRoute exact path="/venue-view">
+          <ProtectedRoute exact path="/venue-view/:id">
             <SpecificVenueViewPage />
           </ProtectedRoute>
 
