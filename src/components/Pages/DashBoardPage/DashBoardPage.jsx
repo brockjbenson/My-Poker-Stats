@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import { number } from "prop-types";
 import { useEffect } from "react";
+import { format } from "date-fns";
 
 function DashBoardPage() {
   // this component doesn't do much to start, just renders some user reducer info to the DOM
@@ -14,12 +15,14 @@ function DashBoardPage() {
   const dispatch = useDispatch();
   const allStats = useSelector((store) => store.allStatsReducer);
   const sessions = useSelector((store) => store.sessionsReducer);
+  const sessionCard = useSelector(
+    (store) => store.sessionsReducer.allSessionsReducer
+  );
   const venueStats = useSelector(
     (store) => store.venuesReducer.getVenuesStatsReducer
   );
-  const [firstVenue, setFirstVenue] = useState({});
   console.log("venues:", venueStats);
-  console.log(firstVenue.total_hours);
+  console.log(sessionCard[3]);
   // function getSpecific() {
   //   dispatch({ type: "FETCH_SPECIFIC_SESSION", payload: Number(sessionID) });
   //   setSessionId("");
@@ -53,9 +56,6 @@ function DashBoardPage() {
     setWinPercentage(isNaN(workingWinPercent) ? 0 : workingWinPercent);
   }, [sessions.allSessionsReducer]);
 
-  useEffect(() => {
-    venueStats[0] !== undefined && setFirstVenue(venueStats[0]);
-  });
   // console.log("win %:", wins.length / sessions.allSessionsReducer.length);
   // console.log(wins);
 
@@ -98,36 +98,63 @@ function DashBoardPage() {
         );
       })}
       <div className="card-container">
-        {venueStats[0] !== undefined && (
-          <div key={venueStats[0].venue_id} className="venue-card">
+        {venueStats[2] !== undefined && (
+          <div key={venueStats[2].venue_id} className="venue-card">
             <div className="venue-header">
-              <h2>{venueStats[0].venue_name}</h2>
+              <h2>{venueStats[2].venue_name}</h2>
             </div>
             <div className="venue-stats">
               <div className="venue-stat">
                 {" "}
                 <p>Net Profit</p>
-                <h2>${venueStats[0].venue_net}</h2>
+                <h2>${venueStats[2].venue_net}</h2>
               </div>
               <div className="venue-stat">
                 <p>Hourly Net</p>
-                <h2>${venueStats[0].venue_hourly}</h2>
+                <h2>${venueStats[2].venue_hourly}</h2>
               </div>
               <div className="venue-stat">
                 <p>Total Hours</p>
-                <h2>{venueStats[0].total_hours}</h2>
+                <h2>{venueStats[2].total_hours}</h2>
               </div>
               <div className="venue-stat">
                 <p>Sessions</p>
-                <h2>{venueStats[0].sessions_played}</h2>
+                <h2>{venueStats[2].sessions_played}</h2>
               </div>
             </div>
           </div>
         )}
-        <div className="session-card"></div>
+        {sessionCard[3] !== undefined && (
+          <div className="session-card">
+            <div className="session-header">
+              <div className="session-date">
+                <h2>
+                  {format(new Date(sessionCard[3].session_date), "dd/MM/yy")}
+                </h2>
+              </div>
+              <div className="venue-name">
+                <h2>{sessionCard[3].venue}</h2>
+              </div>
+            </div>
+            <div className="session-stats">
+              <div className="session-stat">
+                <p>Net Profit:</p>
+                <h2>{sessionCard[3].net_profit}</h2>
+              </div>
+              <div className="session-stat">
+                <p>Stakes:</p>
+                <h2>{sessionCard[3].stakes}</h2>
+              </div>
+              <div className="session-stat">
+                <p>Hourly Net:</p>
+                <h2>{sessionCard[3].hourly}</h2>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
 
-      <LogOutButton className="btn" />
+      {/* <LogOutButton className="btn" /> */}
     </div>
   );
 }
