@@ -167,6 +167,14 @@ p {
   align-items: center;
 }
 
+.recent-venue, .recent-session {
+  width: 85vw;
+  margin-inline: auto;
+  display: flex;
+  padding: 1rem;
+  justify-content: space-between;
+}
+
 .card-container {
   display: flex;
   flex-direction: column;

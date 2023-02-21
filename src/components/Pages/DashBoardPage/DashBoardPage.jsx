@@ -5,9 +5,11 @@ import { useState } from "react";
 import { number } from "prop-types";
 import { useEffect } from "react";
 import { format } from "date-fns";
+import { useHistory } from "react-router-dom";
 
 function DashBoardPage() {
   // this component doesn't do much to start, just renders some user reducer info to the DOM
+  const history = useHistory();
   const [sessionID, setSessionId] = useState("");
   const [venueID, setVenueID] = useState("");
   const [wins, setWins] = useState([]);
@@ -41,6 +43,14 @@ function DashBoardPage() {
     dispatch({ type: "FETCH_SPECIFIC_VENUE" });
     dispatch({ type: "FETCH_VENUES_STATS" });
   }, []);
+
+  const sendToVenues = () => {
+    history.push("");
+  };
+
+  const sendToSessions = () => {
+    history.push("");
+  };
 
   useEffect(() => {
     sessions.allSessionsReducer.map((session, index) => {
@@ -98,6 +108,14 @@ function DashBoardPage() {
         );
       })}
       <div className="card-container">
+        <div className="recent-venue">
+          <div className="recent">
+            <p>Recent</p>
+          </div>
+          <div className="recent">
+            <p onClick={sendToVenues}>See All</p>
+          </div>
+        </div>
         {venueStats[2] !== undefined && (
           <div key={venueStats[2].venue_id} className="venue-card">
             <div className="venue-header">
@@ -124,6 +142,14 @@ function DashBoardPage() {
             </div>
           </div>
         )}
+        <div className="recent-session">
+          <div className="recent">
+            <p>Recent</p>
+          </div>
+          <div className="recent">
+            <p onClick={sendToSessions}>See All</p>
+          </div>
+        </div>
         {sessionCard[3] !== undefined && (
           <div className="session-card">
             <div className="session-header">
