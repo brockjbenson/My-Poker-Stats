@@ -61,6 +61,40 @@ GROUP BY
   }
 });
 
+router.get("/venue-sessions/:id", (req, res) => {
+  // GET route code here
+  // const { userID } = req.user;
+  const text = `
+	SELECT
+	"session"."id",
+	"venue"."name" AS "venue",
+	"venue"."user_id",
+	"buy_in",
+	"cash_out",
+	round(("cash_out" - "buy_in"),2) AS "net_profit",
+	"session_date",
+	"hours_played",
+	round((("cash_out" - "buy_in") / "hours_played"), 1) AS "hourly",
+	"stakes"
+FROM
+	"session"
+	JOIN "venue" ON "session"."venue_id" = "venue"."id"
+WHERE "session"."venue_id" = $1 AND "venue"."user_id" = $2
+ORDER BY
+	"session_date" ASC;`;
+  if (req.isAuthenticated()) {
+    pool
+      .query(text, [req.params.id, req.user.id])
+      .then((results) => res.send(results.rows))
+      .catch((error) => {
+        console.log("Error making SELECT for items:", error);
+        res.sendStatus(500);
+      });
+  } else {
+    res.sendStatus(403);
+  }
+});
+
 router.get("/stats", (req, res) => {
   // GET route code here
   // const { userID } = req.user;
