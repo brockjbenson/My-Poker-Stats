@@ -8,26 +8,24 @@ import {
 
 import { useDispatch, useSelector } from "react-redux";
 
-import Nav from "./Shared/Nav/Nav";
-import Footer from "./Shared/Footer/Footer";
-
 import ProtectedRoute from "./Shared/ProtectedRoute/ProtectedRoute";
 
 import AboutPage from "./Pages/AboutPage/AboutPage";
-import UserPage from "./Pages/DashBoardPage/DashBoardPage";
+import DashBoardPage from "./Pages/DashBoardPage/DashBoardPage";
 import InfoPage from "./Pages/InfoPage/InfoPage";
 import LandingPage from "./Pages/LandingPage/LandingPage";
 import LoginPage from "./Pages/LoginPage/LoginPage";
 import RegisterPage from "./Pages/RegisterPage/RegisterPage";
 
 import "./App.css";
+import VenueFormPage from "./Pages/VenueFormPage/VenueFormPage";
+import AddSessionForm from "./Pages/SessionFormPage/SessionFormPage";
+import SessionFormPage from "./Pages/SessionFormPage/SessionFormPage";
 
 function App() {
   const dispatch = useDispatch();
 
   const user = useSelector((store) => store.user);
-  const allStats = useSelector((store) => store.allStatsReducer);
-  const sessions = useSelector((store) => store.sessionReducer);
 
   useEffect(() => {
     dispatch({ type: "FETCH_USER" });
@@ -42,7 +40,6 @@ function App() {
   return (
     <Router>
       <div>
-        <Nav />
         <Switch>
           {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
           <Redirect exact from="/" to="/home" />
@@ -65,7 +62,15 @@ function App() {
             exact
             path="/dashboard"
           >
-            <UserPage />
+            <DashBoardPage />
+          </ProtectedRoute>
+
+          <ProtectedRoute exact path="/add-venue">
+            <VenueFormPage />
+          </ProtectedRoute>
+
+          <ProtectedRoute exact path="/add-session">
+            <SessionFormPage />
           </ProtectedRoute>
 
           <ProtectedRoute
@@ -98,7 +103,7 @@ function App() {
             )}
           </Route>
 
-          <Route exact path="/dashboard">
+          <Route exact path="/home">
             {user.id ? (
               // If the user is already logged in,
               // redirect them to the /user page
@@ -114,7 +119,6 @@ function App() {
             <h1>404</h1>
           </Route>
         </Switch>
-        <Footer />
       </div>
     </Router>
   );

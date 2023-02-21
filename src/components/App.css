@@ -1,112 +1,144 @@
-html,
+:root {
+  /* Colors */
+  --clr-primary: #5937a4;
+  --clr-dark: #000;
+  --clr-light: #fff;
+  --clr-neutral: #959595;
+  /* Font-Sizes */
+  --ft-size-lg: 5rem;
+  --ft-size-md: 3.2rem;
+  --ft-size-sm: 2rem;
+  /* Font Weights */
+  --ft-weight-light: 200;
+  --ft-weight-regular: 300;
+  --ft-weight-bold: 500;
+}
+
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+  font-family: "Kanit", sans-serif;
+  height: 100vh;
+}
+
 body,
-#react-root {
-  height: 100%;
-}
-
-body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  margin: 0px;
-}
-
-img {
-  display: inline-block;
-  max-width: 100%;
-}
-
-/* --------------------------------------------------------------------------------
-Container
--------------------------------------------------------------------------------- */
-
-.container {
-  padding: 20px;
-}
-
-/* --------------------------------------------------------------------------------
-Button
--------------------------------------------------------------------------------- */
-
-.btn {
-  display: inline-block;
-  padding: 10px 20px;
-  border-color: #014041;
-  border-width: 1px 1px 3px;
-  border-radius: 4px;
-  background-color: #00acb0;
-  color: #f8f8f8;
-  font-size: 1.1rem;
-  outline: 0;
-  cursor: pointer;
-}
-
-.btn_sizeMin {
-  min-height: 50px;
-  min-width: 100px;
-}
-
-.btn_sizeSm {
-  padding: 10px 15px;
-  font-size: 0.8rem;
-}
-
-.btn_sizeFull {
-  display: block;
-  width: 100%;
-}
-
-.btn:hover {
-  background-color: #008183;
-  text-decoration: none;
-}
-
-/* This line makes the "Register" and "Login" buttons look like links */
-.btn_asLink {
+h1,
+h2,
+h3,
+p {
   padding: 0;
-  border-width: 0;
-  border-bottom: 1px solid #444;
-  border-radius: 0;
-  background: none;
-  font: inherit;
-  color: #444;
+  margin: 0;
 }
 
-.btn_asLink:hover {
-  background-color: transparent;
-  border-color: #008183;
-  color: #008183;
+/* ---- Utility Classes ---- */
+
+.btn-sm-primary {
+  background-color: var(--clr-primary);
+  color: var(--clr-light);
+  font-family: "Kanit", sans-serif;
+  font-size: var(--ft-size-md); /* replace with desired value */
+  border: none;
+  border-radius: 1.5rem;
+  font-weight: var(--ft-weight-bold); /* replace with desired font-weight */
+  width: 21rem; /* replace with desired value */
+  height: 7.5rem; /* replace with desired value */
+  margin-block: 1rem;
+  margin-inline: 1rem;
 }
 
-/* --------------------------------------------------------------------------------
-Alert
--------------------------------------------------------------------------------- */
-
-.alert {
-  box-sizing: border-box;
-  padding: 15px 10px;
-  margin: 15px 0;
-  border: 2px solid #e01616;
-  background-color: #efefef;
-  border-radius: 3px;
-  color: #e01616;
-  font-size: 0.8rem;
+.btn-lg-primary {
+  background-color: var(--clr-primary);
+  color: var(--clr-light);
+  font-family: "Kanit", sans-serif;
+  font-size: var(--ft-size-md); /* replace with desired value */
+  border: none;
+  border-radius: 1.5rem;
+  font-weight: var(--ft-weight-bold); /* replace with desired font-weight */
+  width: 45rem; /* replace with desired value */
+  height: 7.5rem; /* replace with desired value */
+  margin-block: 1rem;
+  margin-inline: 1rem;
 }
 
-/* --------------------------------------------------------------------------------
-Form Treatment
--------------------------------------------------------------------------------- */
-
-.formPanel {
-  box-sizing: border-box;
-  width: 400px;
-  max-width: 100%;
-  padding: 25px;
-  margin: 0 auto 20px;
-  background-color: #efefef;
-  border-radius: 3px;
-  box-shadow: 0 1px 2px rgb(0, 0, 0, 0.4);
+.btn-sm-light {
+  background-color: var(--clr-light);
+  font-family: "Kanit", sans-serif;
+  color: var(--clr-primary);
+  font-size: var(--ft-size-md); /* replace with desired value */
+  border: none;
+  border-radius: 1.5rem;
+  font-weight: var(--ft-weight-bold); /* replace with desired font-weight */
+  width: 21rem; /* replace with desired value */
+  height: 7.5rem; /* replace with desired value */
+  margin-block: 1rem;
+  margin-inline: 1rem;
 }
 
-input {
-  margin: 5px;
-  margin-bottom: 10px;
+.btn-lg-light {
+  background-color: var(--clr-light);
+  font-family: "Kanit", sans-serif;
+  color: var(--clr-primary);
+  font-size: var(--ft-size-md); /* replace with desired value */
+  border: none;
+  border-radius: 1.5rem;
+  font-weight: var(--ft-weight-bold); /* replace with desired font-weight */
+  width: 45rem; /* replace with desired value */
+  height: 7.5rem; /* replace with desired value */
+  margin-block: 1rem;
+  margin-inline: 1rem;
 }
+
+.clr-primary {
+  color: var(--clr-primary);
+}
+
+.clr-dark {
+  color: var(--clr-dark);
+}
+
+.clr-light {
+  color: var(--clr-light);
+}
+
+.clr-neutral {
+  color: var(--clr-neutral);
+}
+
+.font-lg {
+  font-size: var(--ft-size-lg);
+}
+
+.font-wt-bold {
+  font-weight: var(--ft-weight-bold);
+}
+
+.font-wt-regular {
+  font-weight: var(--ft-weight-regular);
+}
+
+.font-wt-light {
+  font-weight: var(--ft-weight-light);
+}
+
+.font-md {
+  font-size: var(--ft-size-md);
+}
+
+.font-sm {
+  font-size: var(--ft-size-sm);
+}
+
+h1 {
+  font-size: var(--ft-size-lg);
+  font-weight: var(--ft-weight-bold);
+}
+
+h2 {
+  font-size: var(--ft-size-md);
+}
+
+p {
+  font-size: var(--ft-size-sm);
+}
+
+/* ---- End Utility Classes ---- */
