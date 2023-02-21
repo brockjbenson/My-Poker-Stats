@@ -41,9 +41,28 @@ function* fetchSpecificSessions(action) {
   }
 }
 
+function* addSession(action) {
+  try {
+    const config = {
+      headers: { "Content-Type": "application/json" },
+      withCredentials: true,
+    };
+    yield axios.post(`/api/sessions/`, action.payload, config);
+
+    // now that the session has given us a user object
+    // with an id and username set the client-side user object to let
+    // the client-side code know the user is logged in
+    yield put({ type: "FETCH_SESSIONS" });
+    console.log("adding session");
+  } catch (error) {
+    console.log("adding session post request failed", error);
+  }
+}
+
 function* sessionsSaga() {
   yield takeLatest("FETCH_SESSIONS", fetchSessions);
   yield takeLatest("FETCH_SPECIFIC_SESSION", fetchSpecificSessions);
+  yield takeLatest("ADD_SESSION", addSession);
 }
 
 export default sessionsSaga;
