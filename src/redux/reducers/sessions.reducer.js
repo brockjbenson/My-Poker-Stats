@@ -4,6 +4,8 @@ const allSessionsReducer = (state = [], action) => {
   switch (action.type) {
     case "SET_SESSIONS":
       return action.payload;
+    case "RESET_SESSIONS":
+      return [];
     default:
       return state;
   }

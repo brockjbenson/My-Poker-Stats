@@ -29,13 +29,7 @@ function App() {
 
   useEffect(() => {
     dispatch({ type: "FETCH_USER" });
-    dispatch({ type: "FETCH_ALL_STATS" });
-    dispatch({ type: "FETCH_SESSIONS" });
-    dispatch({ type: "FETCH_VENUES" });
-    dispatch({ type: "FETCH_SPECIFIC_SESSION" });
-    dispatch({ type: "FETCH_SPECIFIC_VENUE" });
-    dispatch({ type: "FETCH_VENUES_STATS" });
-  }, [dispatch]);
+  }, []);
 
   return (
     <Router>

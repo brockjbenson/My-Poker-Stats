@@ -14,7 +14,7 @@ function* fetchAllStats() {
     // with an id and username set the client-side user object to let
     // the client-side code know the user is logged in
     yield put({ type: "SET_ALL_STATS", payload: response.data });
-    console.log("total user stats:", response.data);
+    // console.log("total user stats:", response.data);
   } catch (error) {
     console.log("all stats get request failed", error);
   }

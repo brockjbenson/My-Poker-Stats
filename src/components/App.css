@@ -142,8 +142,14 @@ p {
 }
 
 /* ---- End Utility Classes ---- */
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+}
 .heading {
   text-align: center;
+  margin-top: 5rem;
+  margin-bottom: 2rem;
 }
 .stats-container {
   display: flex;
@@ -159,4 +165,31 @@ p {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.card-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.venue-card {
+  display: flex;
+  flex-direction: column;
+  width: 90vw;
+  background-color: gray;
+  margin-inline: auto;
+}
+
+.venue-stats {
+  display: flex;
+  flex-wrap: wrap;
+  border: 1px solid black;
+}
+
+.venue-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-block: 1rem;
+  width: 50%;
 }

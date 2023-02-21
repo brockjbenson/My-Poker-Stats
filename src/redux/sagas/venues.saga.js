@@ -14,7 +14,7 @@ function* fetchVenue() {
     // with an id and username set the client-side user object to let
     // the client-side code know the user is logged in
     yield put({ type: "SET_VENUES", payload: response.data });
-    console.log("all venues:", response.data);
+    // console.log("all venues:", response.data);
   } catch (error) {
     console.log("all sessions get request failed", error);
   }
@@ -32,7 +32,7 @@ function* fetchVenueStats() {
     // with an id and username set the client-side user object to let
     // the client-side code know the user is logged in
     yield put({ type: "SET_VENUES_STATS", payload: response.data });
-    console.log("all venues stats:", response.data);
+    // console.log("all venues stats:", response.data);
   } catch (error) {
     console.log("all sessions get request failed", error);
   }
@@ -53,7 +53,7 @@ function* fetchSpecificVenue(action) {
     // with an id and username set the client-side user object to let
     // the client-side code know the user is logged in
     yield put({ type: "SET_SPECIFIC_VENUE", payload: response.data });
-    console.log("specific venue is:", response.data);
+    // console.log("specific venue is:", response.data);
   } catch (error) {
     console.log("all sessions get request failed", error);
   }
