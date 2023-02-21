@@ -119,4 +119,48 @@ VALUES ( $1, $2 );
   }
 });
 
+router.delete("/:id", (req, res) => {
+  // POST route code here
+  const { id } = req.params;
+  const text = `
+  DELETE FROM "venue" WHERE "id" = $1 AND "user_id" = $2;
+  `;
+  if (req.isAuthenticated()) {
+    pool
+      .query(text, [id, req.user.id])
+      .then((results) => res.sendStatus(204))
+      .catch((error) => {
+        console.log("Error making INSERT for items:", error);
+        res.sendStatus(500);
+      });
+  } else {
+    res.sendStatus(403);
+  }
+});
+
+router.put("/:id", (req, res) => {
+  // POST route code here
+  const { id } = req.params;
+  const { name } = req.body;
+  const text = `
+  UPDATE
+	"venue"
+  SET
+    "name" = $1
+  WHERE
+    "id" = $2 AND "user_id" = $3;
+  `;
+  if (req.isAuthenticated()) {
+    pool
+      .query(text, [name, id, req.user.id])
+      .then((results) => res.sendStatus(201))
+      .catch((error) => {
+        console.log("Error making INSERT for items:", error);
+        res.sendStatus(500);
+      });
+  } else {
+    res.sendStatus(403);
+  }
+});
+
 module.exports = router;

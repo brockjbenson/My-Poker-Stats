@@ -45,7 +45,7 @@ function DashBoardPage() {
   }, []);
 
   const sendToVenues = () => {
-    history.push("");
+    history.push("/venue-list");
   };
 
   const sendToSessions = () => {
@@ -116,28 +116,28 @@ function DashBoardPage() {
             <p onClick={sendToVenues}>See All</p>
           </div>
         </div>
-        {venueStats[2] !== undefined && (
-          <div key={venueStats[2].venue_id} className="venue-card">
+        {venueStats[0] !== undefined && (
+          <div key={venueStats[0].venue_id} className="venue-card">
             <div className="venue-header">
-              <h2>{venueStats[2].venue_name}</h2>
+              <h2>{venueStats[0].venue_name}</h2>
             </div>
             <div className="venue-stats">
               <div className="venue-stat">
                 {" "}
                 <p>Net Profit</p>
-                <h2>${venueStats[2].venue_net}</h2>
+                <h2>${venueStats[0].venue_net}</h2>
               </div>
               <div className="venue-stat">
                 <p>Hourly Net</p>
-                <h2>${venueStats[2].venue_hourly}</h2>
+                <h2>${venueStats[0].venue_hourly}</h2>
               </div>
               <div className="venue-stat">
                 <p>Total Hours</p>
-                <h2>{venueStats[2].total_hours}</h2>
+                <h2>{venueStats[0].total_hours}</h2>
               </div>
               <div className="venue-stat">
                 <p>Sessions</p>
-                <h2>{venueStats[2].sessions_played}</h2>
+                <h2>{venueStats[0].sessions_played}</h2>
               </div>
             </div>
           </div>

@@ -38,6 +38,47 @@ function* fetchVenueStats() {
   }
 }
 
+function* deleteVenue(action) {
+  try {
+    const config = {
+      headers: { "Content-Type": "application/json" },
+      withCredentials: true,
+    };
+    yield axios.delete(`/api/venues/${action.payload}`, config);
+
+    // now that the session has given us a user object
+    // with an id and username set the client-side user object to let
+    // the client-side code know the user is logged in
+    yield put({ type: "FETCH_VENUES" });
+    // console.log("all venues stats:", response.data);
+  } catch (error) {
+    console.log("deleting venue request failed", error);
+  }
+}
+
+function* editVenue(action) {
+  try {
+    const config = {
+      headers: { "Content-Type": "application/json" },
+      withCredentials: true,
+    };
+    console.log(action.payload.id, action.payload.name);
+    yield axios.put(
+      `/api/venues/${action.payload.id}`,
+      { name: action.payload.name },
+      config
+    );
+
+    // now that the session has given us a user object
+    // with an id and username set the client-side user object to let
+    // the client-side code know the user is logged in
+    yield put({ type: "FETCH_VENUES" });
+    // console.log("all venues stats:", response.data);
+  } catch (error) {
+    console.log("editing venue request failed", error);
+  }
+}
+
 function* fetchSpecificVenue(action) {
   try {
     const config = {
@@ -82,6 +123,8 @@ function* venuesSaga() {
   yield takeLatest("FETCH_VENUES_STATS", fetchVenueStats);
   yield takeLatest("FETCH_SPECIFIC_VENUE", fetchSpecificVenue);
   yield takeLatest("ADD_VENUE", addVenue);
+  yield takeLatest("DELETE_VENUE", deleteVenue);
+  yield takeLatest("EDIT_VENUE", editVenue);
 }
 
 export default venuesSaga;

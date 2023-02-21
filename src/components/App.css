@@ -167,12 +167,44 @@ p {
   align-items: center;
 }
 
-.recent-venue, .recent-session {
+.recent-venue,
+.recent-session {
   width: 85vw;
   margin-inline: auto;
   display: flex;
   padding: 1rem;
   justify-content: space-between;
+}
+
+.venue-view-heading {
+  text-align: center;
+}
+
+.venue-addnew-btn {
+  display: flex;
+  justify-content: center;
+}
+
+.venue-item {
+  border: 1px solid black;
+  margin-block: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 90vw;
+  margin-inline: auto;
+  padding: 1rem;
+}
+
+.venue-item-name {
+  width: 75%;
+}
+
+.venue-btns {
+  display: flex;
+  width: 25%;
+  justify-content: space-between;
+  padding-right: 1rem;
 }
 
 .card-container {

@@ -21,6 +21,7 @@ import "./App.css";
 import VenueFormPage from "./Pages/VenueFormPage/VenueFormPage";
 import AddSessionForm from "./Pages/SessionFormPage/SessionFormPage";
 import SessionFormPage from "./Pages/SessionFormPage/SessionFormPage";
+import VenueListPage from "./Pages/VenueListPage/VenueListPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -61,6 +62,10 @@ function App() {
 
           <ProtectedRoute exact path="/add-venue">
             <VenueFormPage />
+          </ProtectedRoute>
+
+          <ProtectedRoute exact path="/venue-list">
+            <VenueListPage />
           </ProtectedRoute>
 
           <ProtectedRoute exact path="/add-session">
