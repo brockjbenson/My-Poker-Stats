@@ -7,10 +7,11 @@ import { useState, useEffect } from "react";
 import Nav from "../../Shared/Nav/Nav";
 export default function SessionViewPage() {
   useEffect(() => {
-    dispatch({ type: "FETCH_SPECIFIC_SESSION", payload: id });
-    dispatch({ type: "FETCH_SPECIFIC_VENUE", payload: venid });
+    dispatch({ type: "FETCH_SPECIFIC_SESSION", payload: Number(id) });
+    dispatch({ type: "FETCH_SPECIFIC_VENUE", payload: Number(venid) });
   }, []);
   const { id, venid } = useParams();
+  console.log(Number(venid), Number(id));
   //const [wins, setWins] = useState([]);
   const dispatch = useDispatch();
   const history = useHistory();
@@ -22,11 +23,24 @@ export default function SessionViewPage() {
     (store) => store.venuesReducer.getSpecificVenueStatsReducer
   );
 
-  function goBackToVenue() {
-    history.push(`/venue-view/${venid}`);
+  function confirmFunction(id) {
+    let r = confirm("Are You Sure?");
+    if (r == true) {
+      deleteSessionBtn(id);
+    } else {
+    }
+    console.log(id);
   }
 
-  function deleteSessionBtn(id) {}
+  function goBackToVenue() {
+    history.push(`/venue-view/${venid}`);
+    console.log(venid);
+  }
+
+  function deleteSessionBtn(id) {
+    dispatch({ type: "DELETE_SESSION", payload: id });
+    history.push(`/venue-view/${venid}`);
+  }
 
   console.log("session venue", venue);
 
@@ -42,7 +56,9 @@ export default function SessionViewPage() {
                 <h1>Session {session[0].id}</h1>
                 <div className="session-buttons">
                   <button onClick={goBackToVenue}>Back to Venue</button>
-                  <button onClick={deleteSessionBtn}>Delete</button>
+                  <button onClick={() => confirmFunction(session[0].id)}>
+                    Delete
+                  </button>
                 </div>
               </div>
               <div className="stats-container">

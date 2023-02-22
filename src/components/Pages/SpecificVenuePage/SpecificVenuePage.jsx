@@ -9,13 +9,11 @@ export default function SpecificVenueViewPage() {
   const [venName, setVenName] = useState("");
   const [venId, setVenID] = useState(0);
   useEffect(() => {
-    dispatch({ type: "FETCH_SPECIFIC_VENUE_STATS", payload: id });
     dispatch({ type: "FETCH_SPECIFIC_VENUE", payload: id });
+    dispatch({ type: "FETCH_SPECIFIC_VENUE_STATS", payload: id });
     dispatch({ type: "FETCH_VENUES_SESSIONS", payload: id });
-    dispatch({ type: "FETCH_VENUES", payload: id });
   }, [venue]);
   const { id } = useParams();
-  //const [wins, setWins] = useState([]);
   const wins = [];
   const [winPercentage, setWinPercentage] = useState(0);
   const dispatch = useDispatch();
@@ -40,8 +38,10 @@ export default function SpecificVenueViewPage() {
   console.log("ven id", venId);
 
   function getSession(id) {
-    dispatch({ type: "FETCH_SPECIFIC_SESSION", payload: id });
+    // dispatch({ type: "FETCH_SPECIFIC_SESSION", payload: id });
+    // dispatch({ type: "FETCH_SPECIFIC_VENUE_STATS", payload: venId });
     history.push(`/session-view/${id}/${venId}`);
+    console.log(id, venId);
   }
   useEffect(() => {
     sessions.map((session, index) => {

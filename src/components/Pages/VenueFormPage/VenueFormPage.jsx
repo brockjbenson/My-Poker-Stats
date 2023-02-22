@@ -3,6 +3,7 @@ import LogOutButton from "../../Shared/LogOutButton/LogOutButton";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
+import Nav from "../../Shared/Nav/Nav";
 
 export default function VenueFormPage() {
   const dispatch = useDispatch();
@@ -28,6 +29,9 @@ export default function VenueFormPage() {
           placeholder="Venue Name"
         />
         <button onClick={addVenue}>Add Venue</button>
+      </div>
+      <div className="nav-container">
+        <Nav />
       </div>
     </>
   );

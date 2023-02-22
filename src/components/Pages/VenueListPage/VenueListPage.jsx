@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
+import Nav from "../../Shared/Nav/Nav";
 
 export default function VenueListPage() {
   const dispatch = useDispatch();
@@ -32,6 +33,7 @@ export default function VenueListPage() {
   }
   function sendToVenue(id) {
     history.push(`/venue-view/${id}`);
+    console.log(id);
   }
 
   const addVenue = () => {
@@ -80,6 +82,9 @@ export default function VenueListPage() {
             );
           })}
         </div>
+      </div>
+      <div className="nav-container">
+        <Nav />
       </div>
     </div>
   );

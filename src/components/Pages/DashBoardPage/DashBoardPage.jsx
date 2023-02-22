@@ -21,6 +21,7 @@ function DashBoardPage() {
   const sessionCard = useSelector(
     (store) => store.sessionsReducer.allSessionsReducer
   );
+  console.log();
   const venueStats = useSelector(
     (store) => store.venuesReducer.getVenuesStatsReducer
   );
@@ -70,49 +71,71 @@ function DashBoardPage() {
           <div className="heading">
             <h1>Dashboard</h1>
           </div>
-          {allStats.map((stat, index) => {
-            // console.log(Number(stat.total_sessions));
-            return (
-              <div key={index} className="stats-container">
-                <div className="stat">
-                  <p>Total Net Profit</p>
-                  <h2>${stat.total_net}</h2>
-                </div>
-                <div className="stat">
-                  <p>Total Sessions</p>
-                  <h2>{stat.total_sessions}</h2>
-                </div>
-                <div className="stat">
-                  <p>Total Hours</p>
-                  <h2>{stat.total_hours}</h2>
-                </div>
-                <div className="stat">
-                  <p>Win Rate</p>
-                  <h2>{winPercentage}%</h2>
-                </div>
-                <div className="stat">
-                  {" "}
-                  <p>Session Avg</p>
-                  <h2>${stat.avg_session_net}</h2>
-                </div>
-                <div className="stat">
-                  {" "}
-                  <p>Avg Hourly</p>
-                  <h2>{stat.hourly_total}</h2>
-                </div>
-              </div>
-            );
-          })}
-          <div className="card-container">
-            <div className="recent-venue">
-              <div className="recent">
-                <p>Recent</p>
-              </div>
-              <div className="recent">
-                <p onClick={sendToVenues}>See All</p>
-              </div>
+          <div className="stats-container">
+            <div className="stat">
+              <p>Total Net Profit</p>
+              {allStats[0] !== undefined ? (
+                <h2>${allStats[0].total_net}</h2>
+              ) : (
+                <h2>N/A</h2>
+              )}
             </div>
-            {venueStats[0] !== undefined && (
+            <div className="stat">
+              <p>Total Sessions</p>
+              {allStats[0] !== undefined ? (
+                <h2>{allStats[0].total_sessions}</h2>
+              ) : (
+                <h2>N/A</h2>
+              )}
+            </div>
+            <div className="stat">
+              <p>Total Hours</p>
+              {allStats[0] !== undefined ? (
+                <h2>{allStats[0].total_hours}</h2>
+              ) : (
+                <h2>N/A</h2>
+              )}
+            </div>
+            <div className="stat">
+              <p>Win Rate</p>
+              {allStats[0] !== undefined ? (
+                <h2>{winPercentage}%</h2>
+              ) : (
+                <h2>N/A</h2>
+              )}
+            </div>
+            <div className="stat">
+              <p>Session Avg</p>
+              {allStats[0] !== undefined ? (
+                <h2>${allStats[0].avg_session_net}</h2>
+              ) : (
+                <h2>N/A</h2>
+              )}
+            </div>
+            <div className="stat">
+              <p>Avg Hourly</p>
+              {allStats[0] !== undefined ? (
+                <h2>${allStats[0].hourly_total}</h2>
+              ) : (
+                <h2>N/A</h2>
+              )}
+            </div>
+          </div>
+
+          <div className="card-container">
+            {allStats[0] !== undefined ? (
+              <div className="recent-venue">
+                <div className="recent">
+                  <p>Recent</p>
+                </div>
+                <div className="recent">
+                  <p onClick={sendToVenues}>See All</p>
+                </div>
+              </div>
+            ) : (
+              <div className="recent-venue"></div>
+            )}
+            {venueStats[0] !== undefined ? (
               <div
                 key={venueStats[0].venue_id}
                 onClick={() => sendToVenue(venueStats[0].venue_id)}
@@ -139,6 +162,17 @@ function DashBoardPage() {
                     <p>Sessions</p>
                     <h2>{venueStats[0].sessions_played}</h2>
                   </div>
+                </div>
+              </div>
+            ) : (
+              <div className="venue-card">
+                <div className="venue-header">
+                  <h2>No Stats to show</h2>
+                  <p>
+                    Click the add venue the "Add Venue" button below to get
+                    started with MyPokerStats!
+                  </p>
+                  <button onClick={sendToVenues}>Add Venue</button>
                 </div>
               </div>
             )}
