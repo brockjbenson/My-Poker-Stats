@@ -8,14 +8,27 @@ import Nav from "../../Shared/Nav/Nav";
 export default function SessionViewPage() {
   useEffect(() => {
     dispatch({ type: "FETCH_SPECIFIC_SESSION", payload: id });
+    dispatch({ type: "FETCH_SPECIFIC_VENUE", payload: venid });
   }, []);
-  const { id } = useParams();
+  const { id, venid } = useParams();
   //const [wins, setWins] = useState([]);
   const dispatch = useDispatch();
   const history = useHistory();
   const session = useSelector(
     (store) => store.sessionsReducer.getSpecificSessionReducer
   );
+
+  const venue = useSelector(
+    (store) => store.venuesReducer.getSpecificVenueStatsReducer
+  );
+
+  function goBackToVenue() {
+    history.push(`/venue-view/${venid}`);
+  }
+
+  function deleteSessionBtn(id) {}
+
+  console.log("session venue", venue);
 
   console.log("specific session:", session);
 
@@ -27,6 +40,10 @@ export default function SessionViewPage() {
             <>
               <div className="heading">
                 <h1>Session {session[0].id}</h1>
+                <div className="session-buttons">
+                  <button onClick={goBackToVenue}>Back to Venue</button>
+                  <button onClick={deleteSessionBtn}>Delete</button>
+                </div>
               </div>
               <div className="stats-container">
                 <div className="stat">

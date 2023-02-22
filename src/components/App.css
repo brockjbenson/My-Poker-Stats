@@ -237,6 +237,10 @@ p {
   min-height: 70%;
 }
 
+.sessions-list {
+  overflow-y: auto;
+}
+
 .venue-card,
 .session-card {
   display: flex;

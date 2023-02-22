@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import LogOutButton from "../../Shared/LogOutButton/LogOutButton";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
+import { useHistory, useParams } from "react-router-dom";
 
 export default function SessionFormPage() {
+  const history = useHistory();
   const [venueID, setVenueID] = useState("");
   const [buyIn, setBuyIn] = useState("");
   const [cashOut, setCashOut] = useState("");
@@ -12,6 +14,20 @@ export default function SessionFormPage() {
   const [stakes, setStakes] = useState("");
   const [notes, setNotes] = useState("");
   const dispatch = useDispatch();
+  const { id } = useParams();
+  const venue = useSelector(
+    (store) => store.venuesReducer.getSpecificVenueReducer
+  );
+
+  useEffect(() => {
+    venue[0] !== undefined && setVenueID(venue[0].ven_id);
+  }, [venue]);
+
+  console.log(venueID);
+
+  useEffect(() => {
+    dispatch({ type: "FETCH_SPECIFIC_VENUE", payload: id });
+  }, []);
 
   function addSession() {
     const sessionObj = {
@@ -31,6 +47,7 @@ export default function SessionFormPage() {
     setDate("");
     setNotes("");
     setVenueID("");
+    history.push(`/venue-view/${venueID}`);
   }
   return (
     <>
@@ -73,12 +90,6 @@ export default function SessionFormPage() {
           value={notes}
           onChange={(e) => setNotes(e.target.value)}
           placeholder="Session Notes"
-        />
-        <input
-          type="number"
-          value={venueID}
-          onChange={(e) => setVenueID(e.target.value)}
-          placeholder="Venue ID"
         />
         <button onClick={addSession}>Add Session</button>
       </div>

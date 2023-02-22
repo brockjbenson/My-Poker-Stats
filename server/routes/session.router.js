@@ -29,6 +29,7 @@ router.get("/stats", (req, res) => {
 "session"."id",
 "venue"."name" AS "venue",
 "venue"."user_id",
+"venue"."id" AS "venue_id",
 "buy_in",
 "cash_out",
 round(("cash_out" - "buy_in"),2) AS "net_profit",
@@ -121,6 +122,25 @@ router.post("/", (req, res) => {
         req.user.id,
       ])
       .then((results) => res.sendStatus(201))
+      .catch((error) => {
+        console.log("Error making INSERT for items:", error);
+        res.sendStatus(500);
+      });
+  } else {
+    res.sendStatus(403);
+  }
+});
+
+router.delete("/:id", (req, res) => {
+  // POST route code here
+  const { id } = req.params;
+  const text = `
+  DELETE FROM "session" WHERE "id" = $1 AND "user_id" = $2;
+  `;
+  if (req.isAuthenticated()) {
+    pool
+      .query(text, [id, req.user.id])
+      .then((results) => res.sendStatus(204))
       .catch((error) => {
         console.log("Error making INSERT for items:", error);
         res.sendStatus(500);

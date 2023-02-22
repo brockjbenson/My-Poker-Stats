@@ -59,10 +59,29 @@ function* addSession(action) {
   }
 }
 
+function* deleteSession(action) {
+  try {
+    const config = {
+      headers: { "Content-Type": "application/json" },
+      withCredentials: true,
+    };
+    yield axios.delete(`/api/sessions/${action.payload}`, config);
+
+    // now that the session has given us a user object
+    // with an id and username set the client-side user object to let
+    // the client-side code know the user is logged in
+    yield put({ type: "FETCH_SESSIONS" });
+    // console.log("all venues stats:", response.data);
+  } catch (error) {
+    console.log("deleting venue request failed", error);
+  }
+}
+
 function* sessionsSaga() {
   yield takeLatest("FETCH_SESSIONS", fetchSessions);
   yield takeLatest("FETCH_SPECIFIC_SESSION", fetchSpecificSessions);
   yield takeLatest("ADD_SESSION", addSession);
+  yield takeLatest("DELETE_SESSION", deleteSession);
 }
 
 export default sessionsSaga;

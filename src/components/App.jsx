@@ -70,7 +70,7 @@ function App() {
             <SpecificVenueViewPage />
           </ProtectedRoute>
 
-          <ProtectedRoute exact path="/session-view/:id">
+          <ProtectedRoute exact path="/session-view/:id/:venid">
             <SessionViewPage />
           </ProtectedRoute>
 
@@ -78,7 +78,7 @@ function App() {
             <VenueListPage />
           </ProtectedRoute>
 
-          <ProtectedRoute exact path="/add-session">
+          <ProtectedRoute exact path="/add-session/:id">
             <SessionFormPage />
           </ProtectedRoute>
 

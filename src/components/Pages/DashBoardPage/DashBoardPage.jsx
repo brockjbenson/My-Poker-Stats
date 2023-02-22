@@ -26,15 +26,6 @@ function DashBoardPage() {
   );
   console.log("venues:", venueStats);
   console.log(sessionCard[3]);
-  // function getSpecific() {
-  //   dispatch({ type: "FETCH_SPECIFIC_SESSION", payload: Number(sessionID) });
-  //   setSessionId("");
-  // }
-
-  // function getSpecificVenue() {
-  //   dispatch({ type: "FETCH_SPECIFIC_VENUE", payload: Number(venueID) });
-  //   setVenueID("");
-  // }
 
   useEffect(() => {
     dispatch({ type: "FETCH_ALL_STATS" });
@@ -47,8 +38,12 @@ function DashBoardPage() {
     history.push(`/venue-list`);
   };
 
-  const sendToSessions = () => {
-    history.push("");
+  const sendToVenue = (venid) => {
+    history.push(`/venue-view/${venid}`);
+  };
+
+  const sendToSession = (seshid, venid) => {
+    history.push(`/session-view/${seshid}/${venid}`);
   };
 
   useEffect(() => {
@@ -118,7 +113,11 @@ function DashBoardPage() {
               </div>
             </div>
             {venueStats[0] !== undefined && (
-              <div key={venueStats[0].venue_id} className="venue-card">
+              <div
+                key={venueStats[0].venue_id}
+                onClick={() => sendToVenue(venueStats[0].venue_id)}
+                className="venue-card"
+              >
                 <div className="venue-header">
                   <h2>{venueStats[0].venue_name}</h2>
                 </div>
@@ -143,16 +142,13 @@ function DashBoardPage() {
                 </div>
               </div>
             )}
-            <div className="recent-session">
-              <div className="recent">
-                <p>Recent</p>
-              </div>
-              <div className="recent">
-                <p onClick={sendToSessions}>See All</p>
-              </div>
-            </div>
             {sessionCard[3] !== undefined && (
-              <div className="session-card">
+              <div
+                onClick={() =>
+                  sendToSession(sessionCard[3].id, sessionCard[3].venue_id)
+                }
+                className="session-card"
+              >
                 <div className="session-header">
                   <div className="session-date">
                     <h2>

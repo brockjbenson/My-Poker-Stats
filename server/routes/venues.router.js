@@ -95,6 +95,26 @@ ORDER BY
   }
 });
 
+router.get("/specific-venue/:id", (req, res) => {
+  // GET route code here
+  // const { userID } = req.user;
+  const text = `
+  SELECT "venue"."id" AS "ven_id", "user_id", "name" FROM "venue"
+WHERE "venue"."id" = $1 AND "user_id" = $2;
+  `;
+  if (req.isAuthenticated()) {
+    pool
+      .query(text, [req.params.id, req.user.id])
+      .then((results) => res.send(results.rows))
+      .catch((error) => {
+        console.log("Error making SELECT for items:", error);
+        res.sendStatus(500);
+      });
+  } else {
+    res.sendStatus(403);
+  }
+});
+
 router.get("/stats", (req, res) => {
   // GET route code here
   // const { userID } = req.user;
