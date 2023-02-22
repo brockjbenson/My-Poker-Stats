@@ -59,6 +59,10 @@ export default function SpecificVenueViewPage() {
     history.push(`/add-session/${venId}`);
   }
 
+  function backToList() {
+    history.push("/venue-list");
+  }
+
   console.log("sessions: ", sessions);
   console.log("venue: ", venue);
 
@@ -69,6 +73,7 @@ export default function SpecificVenueViewPage() {
           <>
             <div className="heading">
               <h1>{venName}</h1>
+              <button onClick={backToList}>Back</button>
             </div>
             <div className="stats-container">
               <div className="stat">

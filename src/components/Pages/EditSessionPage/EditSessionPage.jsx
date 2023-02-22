@@ -2,12 +2,14 @@ import React, { useEffect } from "react";
 import LogOutButton from "../../Shared/LogOutButton/LogOutButton";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
-import { useHistory, useParams } from "react-router-dom";
+import { useHistory } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Nav from "../../Shared/Nav/Nav";
 
-export default function SessionFormPage() {
+export default function EditSessionPage() {
   const history = useHistory();
-  const [venueID, setVenueID] = useState("");
+  const [sessionID, setSessionId] = useState("");
+  const [venId, setVenID] = useState("");
   const [buyIn, setBuyIn] = useState("");
   const [cashOut, setCashOut] = useState("");
   const [hours, setHours] = useState("");
@@ -15,46 +17,47 @@ export default function SessionFormPage() {
   const [stakes, setStakes] = useState("");
   const [notes, setNotes] = useState("");
   const dispatch = useDispatch();
-  const { id } = useParams();
-  const venue = useSelector(
-    (store) => store.venuesReducer.getSpecificVenueReducer
+  const { id, venid } = useParams();
+  const session = useSelector(
+    (store) => store.venuesReducer.getSpecificSessionReducer
   );
 
   useEffect(() => {
-    venue[0] !== undefined && setVenueID(venue[0].ven_id);
-  }, [venue]);
+    session[0] !== undefined && setSessionId(session[0].id);
+  }, [session]);
 
-  console.log(venueID);
+  console.log("session id", sessionID);
 
   useEffect(() => {
-    dispatch({ type: "FETCH_SPECIFIC_VENUE", payload: id });
+    dispatch({ type: "FETCH_SPECIFIC_SESSION", payload: id });
+    dispatch({ type: "FETCH_SPECIFIC_VENUE", payload: venid });
   }, []);
 
-  function addSession() {
+  function editSession() {
     const sessionObj = {
+      id: sessionID,
       buy_in: Number(buyIn),
       cash_out: Number(cashOut),
       hours_played: Number(hours),
       session_date: date,
       stakes: stakes,
       notes: notes,
-      venue_id: Number(venueID),
     };
-    dispatch({ type: "ADD_SESSION", payload: sessionObj });
+    dispatch({ type: "EDIT_SESSION", payload: sessionObj });
+    history.push(`/session-view/${sessionID}/${venid}`);
     setBuyIn("");
     setCashOut("");
     setStakes("");
     setHours("");
     setDate("");
     setNotes("");
-    setVenueID("");
-    history.push(`/venue-view/${venueID}`);
+    setSessionId("");
   }
   return (
     <div className="body-container">
       <div className="main-container">
         <div className="heading">
-          <h1>Add Session</h1>
+          <h1>Edit Session</h1>
         </div>
         <div className="session-form">
           <input
@@ -93,7 +96,7 @@ export default function SessionFormPage() {
             onChange={(e) => setNotes(e.target.value)}
             placeholder="Session Notes"
           />
-          <button onClick={addSession}>Add Session</button>
+          <button onClick={editSession}>Save</button>
         </div>
       </div>
       <div className="nav-container">

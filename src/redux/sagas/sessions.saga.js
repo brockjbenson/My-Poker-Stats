@@ -77,10 +77,37 @@ function* deleteSession(action) {
   }
 }
 
+function* editSession(action) {
+  try {
+    const config = {
+      headers: { "Content-Type": "application/json" },
+      withCredentials: true,
+    };
+    let editObj = {
+      buy_in: action.payload.buy_in,
+      cash_out: action.payload.cash_out,
+      hours_played: action.payload.hours_played,
+      session_date: action.payload.session_date,
+      stakes: action.payload.stakes,
+      notes: action.payload.notes,
+    };
+    yield axios.put(`/api/sessions/${action.payload.id}`, editObj, config);
+
+    // now that the session has given us a user object
+    // with an id and username set the client-side user object to let
+    // the client-side code know the user is logged in
+    yield put({ type: "FETCH_SPECIFIC_SESSION" });
+    // console.log("all venues stats:", response.data);
+  } catch (error) {
+    console.log("deleting venue request failed", error);
+  }
+}
+
 function* sessionsSaga() {
   yield takeLatest("FETCH_SESSIONS", fetchSessions);
   yield takeLatest("FETCH_SPECIFIC_SESSION", fetchSpecificSessions);
   yield takeLatest("ADD_SESSION", addSession);
+  yield takeLatest("EDIT_SESSION", editSession);
   yield takeLatest("DELETE_SESSION", deleteSession);
 }
 

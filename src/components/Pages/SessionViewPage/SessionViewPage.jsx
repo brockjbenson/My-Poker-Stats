@@ -42,6 +42,10 @@ export default function SessionViewPage() {
     history.push(`/venue-view/${venid}`);
   }
 
+  function editSession(id) {
+    history.push(`/edit-session/${id}/${venid}`);
+  }
+
   console.log("session venue", venue);
 
   console.log("specific session:", session);
@@ -53,9 +57,12 @@ export default function SessionViewPage() {
           {session[0] !== undefined && (
             <>
               <div className="heading">
-                <h1>Session {session[0].id}</h1>
+                <h1>Session</h1>
                 <div className="session-buttons">
                   <button onClick={goBackToVenue}>Back to Venue</button>
+                  <button onClick={() => editSession(session[0].id)}>
+                    Edit
+                  </button>
                   <button onClick={() => confirmFunction(session[0].id)}>
                     Delete
                   </button>

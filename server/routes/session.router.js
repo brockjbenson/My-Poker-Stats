@@ -150,4 +150,44 @@ router.delete("/:id", (req, res) => {
   }
 });
 
+router.put("/:id", (req, res) => {
+  // POST route code here
+  const { buy_in, cash_out, hours_played, session_date, stakes, notes } =
+    req.body;
+  const { id } = req.params;
+  const text = `
+  UPDATE
+	"session"
+SET
+	"buy_in" = $1,
+	"cash_out" = $2,
+	"hours_played" = $3,
+	"session_date" = $4,
+	"stakes" = $5,
+	"notes" = $6
+WHERE
+	"id" = $7 AND "user_id" = $8;
+  `;
+  if (req.isAuthenticated()) {
+    pool
+      .query(text, [
+        buy_in,
+        cash_out,
+        hours_played,
+        session_date,
+        stakes,
+        notes,
+        id,
+        req.user.id,
+      ])
+      .then((results) => res.sendStatus(204))
+      .catch((error) => {
+        console.log("Error making INSERT for items:", error);
+        res.sendStatus(500);
+      });
+  } else {
+    res.sendStatus(403);
+  }
+});
+
 module.exports = router;
