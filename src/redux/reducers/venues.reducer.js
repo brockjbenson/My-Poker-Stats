@@ -36,10 +36,20 @@ const getVenuesStatsReducer = (state = [], action) => {
   }
 };
 
+const getSpecificSessionReducer = (state = [], action) => {
+  switch (action.type) {
+    case "SET_SPECIFIC_SESSION":
+      return action.payload;
+    default:
+      return state;
+  }
+};
+
 // user will be on the redux state at:
 export default combineReducers({
   allVenuesReducer,
   getSpecificVenueReducer,
   getVenuesStatsReducer,
   getVenuesSessionsReducer,
+  getSpecificSessionReducer,
 });

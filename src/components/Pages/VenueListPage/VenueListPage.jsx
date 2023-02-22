@@ -43,7 +43,7 @@ export default function VenueListPage() {
         <h1>Venues</h1>
       </div>
       <div className="venue-list-container">
-        <div className="venue-addnew-btn">
+        <div className="addnew-btn">
           <button onClick={addVenue}>Add New</button>
         </div>
         <div className="venue-list">

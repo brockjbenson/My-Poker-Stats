@@ -23,6 +23,7 @@ import AddSessionForm from "./Pages/SessionFormPage/SessionFormPage";
 import SessionFormPage from "./Pages/SessionFormPage/SessionFormPage";
 import VenueListPage from "./Pages/VenueListPage/VenueListPage";
 import SpecificVenueViewPage from "./Pages/SpecificVenuePage/SpecificVenuePage";
+import SessionViewPage from "./Pages/SessionViewPage/SessionViewPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -67,6 +68,10 @@ function App() {
 
           <ProtectedRoute exact path="/venue-view/:id">
             <SpecificVenueViewPage />
+          </ProtectedRoute>
+
+          <ProtectedRoute exact path="/session-view/:id">
+            <SessionViewPage />
           </ProtectedRoute>
 
           <ProtectedRoute exact path="/venue-list">
