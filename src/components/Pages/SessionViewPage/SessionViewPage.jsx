@@ -1,20 +1,29 @@
+// ------- Imports ------- //
+
 import React from "react";
-import LogOutButton from "../../Shared/LogOutButton/LogOutButton";
 import { useDispatch, useSelector } from "react-redux";
 import { format } from "date-fns";
 import { useHistory, useParams } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import Nav from "../../Shared/Nav/Nav";
+
+// ------- Component ------- //
 export default function SessionViewPage() {
+  // ------- UseEffect ------- //
+
   useEffect(() => {
     dispatch({ type: "FETCH_SPECIFIC_SESSION", payload: Number(id) });
     dispatch({ type: "FETCH_SPECIFIC_VENUE", payload: Number(venid) });
   }, []);
+
+  // ------- Import Vars ------- //
+
   const { id, venid } = useParams();
-  console.log(Number(venid), Number(id));
-  //const [wins, setWins] = useState([]);
   const dispatch = useDispatch();
   const history = useHistory();
+
+  // ------- Stores ------- //
+
   const session = useSelector(
     (store) => store.sessionsReducer.getSpecificSessionReducer
   );
@@ -23,32 +32,35 @@ export default function SessionViewPage() {
     (store) => store.venuesReducer.getSpecificVenueStatsReducer
   );
 
+  // ------- Confirm Delete onClick fn------- //
+
   function confirmFunction(id) {
     let r = confirm("Are You Sure?");
     if (r == true) {
       deleteSessionBtn(id);
     } else {
     }
-    console.log(id);
   }
+
+  // ------- Back button fn ------- //
 
   function goBackToVenue() {
     history.push(`/venue-view/${venid}`);
     console.log(venid);
   }
 
+  // ------- Delete Session fn ------- //
+
   function deleteSessionBtn(id) {
     dispatch({ type: "DELETE_SESSION", payload: id });
     history.push(`/venue-view/${venid}`);
   }
 
+  // ------- Edit Session fn ------- //
+
   function editSession(id) {
     history.push(`/edit-session/${id}/${venid}`);
   }
-
-  console.log("session venue", venue);
-
-  console.log("specific session:", session);
 
   return (
     <div className="body-container">
