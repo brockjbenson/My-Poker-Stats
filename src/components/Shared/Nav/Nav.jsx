@@ -8,19 +8,24 @@ function Nav() {
 
   return (
     <div className="nav">
-      <Link to="/home">
-        <p className="nav-title font-wt-bold">Dashboard</p>
-      </Link>
-      <Link to="/venue-list">
-        <p className="font-wt-bold">Venues</p>
-      </Link>
-
-      <p
-        className="log-out font-wt-bold"
-        onClick={() => dispatch({ type: "LOGOUT" })}
-      >
-        Log Out
-      </p>
+      <div className="nav-item">
+        <Link to="/home">
+          <p className="nav-title  font-wt-bold">Dashboard</p>
+        </Link>
+      </div>
+      <div className="nav-item">
+        <Link to="/venue-list">
+          <p className="font-wt-bold">Venues</p>
+        </Link>
+      </div>
+      <div className="nav-item">
+        <p
+          className="log-out font-wt-bold"
+          onClick={() => dispatch({ type: "LOGOUT" })}
+        >
+          Log Out
+        </p>
+      </div>
     </div>
   );
 }

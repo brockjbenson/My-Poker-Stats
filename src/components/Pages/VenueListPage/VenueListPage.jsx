@@ -42,48 +42,64 @@ export default function VenueListPage() {
   return (
     <div className="body-container">
       <div className="main-container">
-        <div className="heading">
+        <div className="heading clr-light">
           <h1>Venues</h1>
         </div>
-        <div className="venue-view-container">
-          <div className="venue-list-container">
-            <div className="addnew-btn">
-              <button onClick={addVenue}>Add New</button>
-            </div>
-            <div className="venue-list">
-              {venueList.map((venue, index) => {
-                return (
-                  <div key={index} className="venue-item">
-                    <div className="venue-item-name">
-                      {editMode && Number(editID) === venue.id ? (
-                        <input
-                          type="text"
-                          value={newName}
-                          onChange={(e) => setNewName(e.target.value)}
-                        />
-                      ) : (
-                        <h2>{venue.name}</h2>
-                      )}
-                    </div>
-                    <div className="venue-btns">
-                      {editMode && Number(editID) === venue.id ? (
-                        <>
-                          <p onClick={saveEdit}>Save</p>
-                          <p onClick={() => setEditMode(false)}>Cancel</p>
-                        </>
-                      ) : (
-                        <>
-                          <p onClick={() => editVenue(venue.id, venue.name)}>
-                            Edit
-                          </p>
-                          <p onClick={() => sendToVenue(venue.id)}>View</p>
-                        </>
-                      )}
-                    </div>
+        <div className="venue-list-container bg">
+          <div className="addnew-btn">
+            <button className="accent-btn" onClick={addVenue}>
+              Add New
+            </button>
+          </div>
+          <div className="venue-list">
+            {venueList.map((venue, index) => {
+              return (
+                <div key={index} className="venue-item">
+                  <div className="venue-item-name">
+                    {editMode && Number(editID) === venue.id ? (
+                      <input
+                        className="edit-ven-input"
+                        type="text"
+                        value={newName}
+                        onChange={(e) => setNewName(e.target.value)}
+                      />
+                    ) : (
+                      <h2>{venue.name}</h2>
+                    )}
                   </div>
-                );
-              })}
-            </div>
+                  <div className="venue-btns">
+                    {editMode && Number(editID) === venue.id ? (
+                      <>
+                        <p className="font-wt-bold" onClick={saveEdit}>
+                          Save
+                        </p>
+                        <p
+                          className="font-wt-bold"
+                          onClick={() => setEditMode(false)}
+                        >
+                          Cancel
+                        </p>
+                      </>
+                    ) : (
+                      <>
+                        <p
+                          className="font-wt-bold"
+                          onClick={() => editVenue(venue.id, venue.name)}
+                        >
+                          Edit
+                        </p>
+                        <p
+                          className="font-wt-bold"
+                          onClick={() => sendToVenue(venue.id)}
+                        >
+                          View
+                        </p>
+                      </>
+                    )}
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>

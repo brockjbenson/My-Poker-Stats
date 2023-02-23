@@ -128,11 +128,13 @@ export default function SpecificVenueViewPage() {
                 )}
               </div>
             </div>
-            <div className="card-container">
+            <div className="venue-view-card-container bg">
               <div className="addnew-btn">
-                <button onClick={addNewSession}>Add New</button>
+                <button className="accent-btn" onClick={addNewSession}>
+                  Add New
+                </button>
               </div>
-              <div className="sessions-list">
+              <div className="sessions-list clr-primary">
                 {venue[0] !== undefined ? (
                   <>
                     {sessions.map((sesh, index) => {

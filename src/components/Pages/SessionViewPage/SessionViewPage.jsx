@@ -82,20 +82,6 @@ export default function SessionViewPage() {
                 </div>
                 <div className="session-heading-cont-3"></div>
               </div>
-              <div className="btn-container">
-                <button
-                  className="accent-btn"
-                  onClick={() => confirmFunction(session[0].id)}
-                >
-                  Delete
-                </button>
-                <button
-                  className="accent-btn"
-                  onClick={() => editSession(session[0].id)}
-                >
-                  Edit
-                </button>
-              </div>
               <div className="stats-container clr-light">
                 <div className="stat">
                   <p>Total Net Profit</p>
@@ -104,7 +90,6 @@ export default function SessionViewPage() {
                 <div className="stat">
                   <p>Date</p>
                   <h2>
-                    {" "}
                     {format(new Date(session[0].session_date), "dd/MM/yy")}
                   </h2>
                 </div>
@@ -128,6 +113,20 @@ export default function SessionViewPage() {
             </>
           )}
           <div className="card-container">
+            <div className="btn-container">
+              <button
+                className="accent-btn"
+                onClick={() => confirmFunction(session[0].id)}
+              >
+                Delete
+              </button>
+              <button
+                className="accent-btn"
+                onClick={() => editSession(session[0].id)}
+              >
+                Edit
+              </button>
+            </div>
             <div className="notes-container clr-light">
               <h2>Session Notes</h2>
               {session[0] !== undefined && (

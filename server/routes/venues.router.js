@@ -13,7 +13,7 @@ router.get("/", (req, res) => {
   // GET route code here
   // const { userID } = req.user;
   const text = `
-  SELECT * FROM "venue" WHERE "user_id" = $1;`;
+  SELECT * FROM "venue" WHERE "user_id" = $1 ORDER BY "id" ASC;`;
   if (req.isAuthenticated()) {
     pool
       .query(text, [req.user.id])

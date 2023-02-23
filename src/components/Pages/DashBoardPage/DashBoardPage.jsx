@@ -144,7 +144,7 @@ function DashBoardPage() {
             </div>
           </div>
 
-          <div className="card-container">
+          <div className="card-container bg">
             {allStats[0] !== undefined ? (
               <div className="recent-venue">
                 <div className="recent">
