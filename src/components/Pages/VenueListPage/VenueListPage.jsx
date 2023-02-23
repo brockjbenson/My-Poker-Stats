@@ -70,11 +70,14 @@ export default function VenueListPage() {
                   <div className="venue-btns">
                     {editMode && Number(editID) === venue.id ? (
                       <>
-                        <p className="font-wt-bold" onClick={saveEdit}>
+                        <p
+                          className="font-wt-bold clr-primary"
+                          onClick={saveEdit}
+                        >
                           Save
                         </p>
                         <p
-                          className="font-wt-bold"
+                          className="font-wt-bold clr-primary"
                           onClick={() => setEditMode(false)}
                         >
                           Cancel
@@ -83,13 +86,13 @@ export default function VenueListPage() {
                     ) : (
                       <>
                         <p
-                          className="font-wt-bold"
+                          className="font-wt-bold clr-primary"
                           onClick={() => editVenue(venue.id, venue.name)}
                         >
                           Edit
                         </p>
                         <p
-                          className="font-wt-bold"
+                          className="font-wt-bold clr-primary"
                           onClick={() => sendToVenue(venue.id)}
                         >
                           View

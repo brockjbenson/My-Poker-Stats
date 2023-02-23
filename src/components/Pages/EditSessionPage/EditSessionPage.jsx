@@ -41,6 +41,10 @@ export default function EditSessionPage() {
     dispatch({ type: "FETCH_SPECIFIC_VENUE", payload: venid });
   }, []);
 
+  function cancelEdit() {
+    history.push(`/session-view/${id}/${venid}`);
+  }
+
   function editSession(e) {
     e.preventDefault();
     const sessionObj = {
@@ -71,7 +75,7 @@ export default function EditSessionPage() {
         <form className="session-form" onSubmit={editSession}>
           <div className="inputs">
             <div className="input-container r1">
-              <p>Venue</p>
+              <p className="clr-light">Venue</p>
               <input
                 type="text"
                 value={venName}
@@ -81,7 +85,7 @@ export default function EditSessionPage() {
               />
             </div>
             <div className="input-container r2">
-              <p>Buy In</p>
+              <p className="clr-light">Buy In</p>
               <input
                 type="number"
                 value={buyIn}
@@ -90,7 +94,7 @@ export default function EditSessionPage() {
               />
             </div>
             <div className="input-container r2">
-              <p>Cash Out</p>
+              <p className="clr-light">Cash Out</p>
               <input
                 type="number"
                 value={cashOut}
@@ -99,7 +103,7 @@ export default function EditSessionPage() {
               />
             </div>
             <div className="input-container r3">
-              <p>Hours Played</p>
+              <p className="clr-light">Hours Played</p>
               <input
                 type="number"
                 value={hours}
@@ -108,7 +112,7 @@ export default function EditSessionPage() {
               />
             </div>
             <div className="input-container r3">
-              <p>Date</p>
+              <p className="clr-light">Date</p>
               <input
                 type="date"
                 value={date}
@@ -117,7 +121,7 @@ export default function EditSessionPage() {
               />
             </div>
             <div className="input-container r4">
-              <p>Stakes</p>
+              <p className="clr-light">Stakes</p>
               <input
                 type="text"
                 value={stakes}
@@ -126,7 +130,7 @@ export default function EditSessionPage() {
               />
             </div>
             <div className="input-container r5">
-              <p>Notes</p>
+              <p className="clr-light">Notes</p>
               <textarea
                 type="text"
                 value={notes}
@@ -137,8 +141,11 @@ export default function EditSessionPage() {
             </div>
           </div>
           <div className="button-container">
-            <button className="btn-lg-primary" type="submit">
+            <button className="btn-sm-primary" type="submit">
               Save
+            </button>
+            <button className="btn-sm-light" onClick={cancelEdit}>
+              Cancel
             </button>
           </div>
         </form>
