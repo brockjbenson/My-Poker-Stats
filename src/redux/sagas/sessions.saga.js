@@ -96,7 +96,7 @@ function* editSession(action) {
     // now that the session has given us a user object
     // with an id and username set the client-side user object to let
     // the client-side code know the user is logged in
-    yield put({ type: "FETCH_SPECIFIC_SESSION" });
+    yield put({ type: "FETCH_SPECIFIC_SESSION", payload: action.payload.id });
     // console.log("all venues stats:", response.data);
   } catch (error) {
     console.log("deleting venue request failed", error);
