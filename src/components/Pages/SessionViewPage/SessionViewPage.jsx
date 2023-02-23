@@ -68,19 +68,35 @@ export default function SessionViewPage() {
         <div className="venue-view-container">
           {session[0] !== undefined && (
             <>
-              <div className="heading">
-                <h1>Session</h1>
-                <div className="session-buttons">
-                  <button onClick={goBackToVenue}>Back to Venue</button>
-                  <button onClick={() => editSession(session[0].id)}>
-                    Edit
-                  </button>
-                  <button onClick={() => confirmFunction(session[0].id)}>
-                    Delete
+              <div className="heading clr-light">
+                <div className="session-heading-cont-1">
+                  <button
+                    className="clr-light font-wt-bold"
+                    onClick={goBackToVenue}
+                  >
+                    Back
                   </button>
                 </div>
+                <div className="session-heading-cont-2">
+                  <h1>Session</h1>
+                </div>
+                <div className="session-heading-cont-3"></div>
               </div>
-              <div className="stats-container">
+              <div className="btn-container">
+                <button
+                  className="accent-btn"
+                  onClick={() => confirmFunction(session[0].id)}
+                >
+                  Delete
+                </button>
+                <button
+                  className="accent-btn"
+                  onClick={() => editSession(session[0].id)}
+                >
+                  Edit
+                </button>
+              </div>
+              <div className="stats-container clr-light">
                 <div className="stat">
                   <p>Total Net Profit</p>
                   <h2>${session[0].net_profit}</h2>
@@ -112,7 +128,7 @@ export default function SessionViewPage() {
             </>
           )}
           <div className="card-container">
-            <div className="notes-container">
+            <div className="notes-container clr-light">
               <h2>Session Notes</h2>
               {session[0] !== undefined && (
                 <>

@@ -12,7 +12,7 @@ export default function SpecificVenueViewPage() {
     dispatch({ type: "FETCH_SPECIFIC_VENUE", payload: id });
     dispatch({ type: "FETCH_SPECIFIC_VENUE_STATS", payload: id });
     dispatch({ type: "FETCH_VENUES_SESSIONS", payload: id });
-  }, [venue]);
+  }, [venue, dispatch]);
   const { id } = useParams();
   const wins = [];
   const [winPercentage, setWinPercentage] = useState(0);
@@ -71,11 +71,14 @@ export default function SpecificVenueViewPage() {
       <div className="main-container">
         <div className="venue-view-container">
           <>
-            <div className="heading">
-              <h1>{venName}</h1>
-              <button onClick={backToList}>Back</button>
+            <div className="heading clr-light">
+              <div className="session-heading-cont-1"></div>
+              <div className="session-heading-cont-2">
+                <h1>{venName}</h1>
+              </div>
+              <div className="session-heading-cont-3"></div>
             </div>
-            <div className="stats-container">
+            <div className="stats-container clr-light">
               <div className="stat">
                 <p>Total Net Profit</p>
                 {venue[0] !== undefined ? (

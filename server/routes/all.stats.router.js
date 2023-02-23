@@ -18,7 +18,7 @@ router.get("/stats", (req, res) => {
 	"user"."username",
 	round(sum(("session"."cash_out" - "session"."buy_in")),2) AS "total_net",
 	sum("session"."hours_played") AS "total_hours",
-	round(sum(("session"."cash_out" - "session"."buy_in")) /sum("session"."hours_played") , 1) AS "hourly_total",
+	round(sum(("session"."cash_out" - "session"."buy_in")) /sum("session"."hours_played") , 2) AS "hourly_total",
 	count("session") AS "total_sessions",
 	round(avg("cash_out" - "buy_in"), 2) AS "avg_session_net"
 FROM

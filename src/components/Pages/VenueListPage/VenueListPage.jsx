@@ -42,10 +42,10 @@ export default function VenueListPage() {
   return (
     <div className="body-container">
       <div className="main-container">
+        <div className="heading">
+          <h1>Venues</h1>
+        </div>
         <div className="venue-view-container">
-          <div className="venue-view-heading">
-            <h1>Venues</h1>
-          </div>
           <div className="venue-list-container">
             <div className="addnew-btn">
               <button onClick={addVenue}>Add New</button>

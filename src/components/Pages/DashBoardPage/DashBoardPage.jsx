@@ -6,6 +6,7 @@ import { number } from "prop-types";
 import { useEffect } from "react";
 import { format } from "date-fns";
 import { useHistory } from "react-router-dom";
+import { NumericFormat } from "react-number-format";
 import Nav from "../../Shared/Nav/Nav";
 
 function DashBoardPage() {
@@ -69,13 +70,20 @@ function DashBoardPage() {
       <div className="main-container">
         <div className="dashboard-container">
           <div className="heading">
-            <h1>Dashboard</h1>
+            <h1 className="clr-light ">Dashboard</h1>
           </div>
-          <div className="stats-container">
+          <div className="stats-container clr-light">
             <div className="stat">
               <p>Total Net Profit</p>
               {allStats[0] !== undefined ? (
-                <h2>${allStats[0].total_net}</h2>
+                <NumericFormat
+                  className="h2"
+                  value={allStats[0].total_net}
+                  prefix={"$"}
+                  thousandSeparator=","
+                  allowNegative
+                  decimalScale={2}
+                />
               ) : (
                 <h2>N/A</h2>
               )}
@@ -107,7 +115,14 @@ function DashBoardPage() {
             <div className="stat">
               <p>Session Avg</p>
               {allStats[0] !== undefined ? (
-                <h2>${allStats[0].avg_session_net}</h2>
+                <NumericFormat
+                  className="h2"
+                  value={allStats[0].avg_session_net}
+                  prefix={"$"}
+                  thousandSeparator=","
+                  allowNegative
+                  decimalScale={2}
+                />
               ) : (
                 <h2>N/A</h2>
               )}
@@ -115,7 +130,14 @@ function DashBoardPage() {
             <div className="stat">
               <p>Avg Hourly</p>
               {allStats[0] !== undefined ? (
-                <h2>${allStats[0].hourly_total}</h2>
+                <NumericFormat
+                  className="h2"
+                  value={allStats[0].hourly_total}
+                  prefix={"$"}
+                  thousandSeparator=","
+                  allowNegative
+                  decimalScale={2}
+                />
               ) : (
                 <h2>N/A</h2>
               )}
@@ -126,10 +148,12 @@ function DashBoardPage() {
             {allStats[0] !== undefined ? (
               <div className="recent-venue">
                 <div className="recent">
-                  <p>Recent</p>
+                  <p className="clr-light font-wt-bold">Recent</p>
                 </div>
                 <div className="recent">
-                  <p onClick={sendToVenues}>See All</p>
+                  <p className="clr-light font-wt-bold" onClick={sendToVenues}>
+                    See All
+                  </p>
                 </div>
               </div>
             ) : (
@@ -139,20 +163,33 @@ function DashBoardPage() {
               <div
                 key={venueStats[0].venue_id}
                 onClick={() => sendToVenue(venueStats[0].venue_id)}
-                className="venue-card"
+                className="venue-card clr-light"
               >
                 <div className="venue-header">
                   <h2>{venueStats[0].venue_name}</h2>
                 </div>
                 <div className="venue-stats">
                   <div className="venue-stat">
-                    {" "}
                     <p>Net Profit</p>
-                    <h2>${venueStats[0].venue_net}</h2>
+                    <NumericFormat
+                      className="h2"
+                      value={venueStats[0].venue_net}
+                      prefix={"$"}
+                      thousandSeparator=","
+                      allowNegative
+                      decimalScale={2}
+                    />
                   </div>
                   <div className="venue-stat">
                     <p>Hourly Net</p>
-                    <h2>${venueStats[0].venue_hourly}</h2>
+                    <NumericFormat
+                      className="h2"
+                      value={venueStats[0].venue_hourly}
+                      prefix={"$"}
+                      thousandSeparator=","
+                      allowNegative
+                      decimalScale={2}
+                    />
                   </div>
                   <div className="venue-stat">
                     <p>Total Hours</p>
@@ -165,7 +202,7 @@ function DashBoardPage() {
                 </div>
               </div>
             ) : (
-              <div className="venue-card">
+              <div className="venue-card clr-light">
                 <div className="venue-header">
                   <h2>No Stats to show</h2>
                   <p>
@@ -181,25 +218,32 @@ function DashBoardPage() {
                 onClick={() =>
                   sendToSession(sessionCard[3].id, sessionCard[3].venue_id)
                 }
-                className="session-card"
+                className="session-card clr-primary"
               >
                 <div className="session-header">
                   <div className="session-date">
-                    <h2>
+                    <p className="font-wt-bold">
                       {format(
                         new Date(sessionCard[3].session_date),
                         "dd/MM/yy"
                       )}
-                    </h2>
+                    </p>
                   </div>
                   <div className="venue-name">
-                    <h2>{sessionCard[3].venue}</h2>
+                    <p className="font-wt-bold">{sessionCard[3].venue}</p>
                   </div>
                 </div>
                 <div className="session-stats">
                   <div className="session-stat">
                     <p>Net Profit:</p>
-                    <h2>{sessionCard[3].net_profit}</h2>
+                    <NumericFormat
+                      className="p"
+                      value={sessionCard[3].net_profit}
+                      prefix={"$"}
+                      thousandSeparator=","
+                      allowNegative
+                      decimalScale={2}
+                    />
                   </div>
                   <div className="session-stat">
                     <p>Stakes:</p>
@@ -207,7 +251,14 @@ function DashBoardPage() {
                   </div>
                   <div className="session-stat">
                     <p>Hourly Net:</p>
-                    <h2>{sessionCard[3].hourly}</h2>
+                    <NumericFormat
+                      className="p"
+                      value={sessionCard[3].hourly}
+                      prefix={"$"}
+                      thousandSeparator=","
+                      allowNegative
+                      decimalScale={2}
+                    />
                   </div>
                 </div>
               </div>

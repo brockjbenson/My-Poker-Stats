@@ -126,7 +126,7 @@ router.get("/stats", (req, res) => {
 	"venue"."name" AS "venue_name",
 	round(sum(("cash_out" - "buy_in")),2) AS "venue_net",
 	sum("session"."hours_played") AS "total_hours",
-	round(sum(("cash_out" - "buy_in"))/sum("session"."hours_played"),1) AS "venue_hourly",
+	round(sum(("cash_out" - "buy_in"))/sum("session"."hours_played"),2) AS "venue_hourly",
 	count("session") AS "sessions_played",
 	round(avg("cash_out" - "buy_in"), 2) AS "avg_session_net"
 FROM 

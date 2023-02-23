@@ -35,7 +35,7 @@ router.get("/stats", (req, res) => {
 round(("cash_out" - "buy_in"),2) AS "net_profit",
 "session_date",
 "hours_played",
-round((("cash_out" - "buy_in") / "hours_played"), 1) AS "hourly",
+round((("cash_out" - "buy_in") / "hours_played"), 2) AS "hourly",
 "stakes",
 "notes"
 FROM
@@ -70,7 +70,7 @@ router.get("/specific/:id", (req, res) => {
 	round(("cash_out" - "buy_in"),2) AS "net_profit",
 	"session_date",
 	"hours_played",
-	round((("cash_out" - "buy_in") / "hours_played"), 1) AS "hourly",
+	round((("cash_out" - "buy_in") / "hours_played"), 2) AS "hourly",
 	"stakes",
 	"notes"
 FROM
