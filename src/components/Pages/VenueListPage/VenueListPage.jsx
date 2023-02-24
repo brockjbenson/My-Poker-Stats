@@ -22,6 +22,20 @@ export default function VenueListPage() {
     setNewName(name);
   }
 
+  function deleteVenue(id) {
+    dispatch({ type: "DELETE_VENUE", payload: id });
+  }
+
+  function confirmFunction(id) {
+    let r = confirm(
+      "Are you sure? All sessions and data connected to this venue will be deleted."
+    );
+    if (r == true) {
+      deleteVenue(id);
+    } else {
+    }
+  }
+
   console.log(newName);
 
   function saveEdit() {
@@ -96,6 +110,12 @@ export default function VenueListPage() {
                           onClick={() => sendToVenue(venue.id)}
                         >
                           View
+                        </p>
+                        <p
+                          className="font-wt-bold clr-primary"
+                          onClick={() => confirmFunction(venue.id)}
+                        >
+                          X
                         </p>
                       </>
                     )}

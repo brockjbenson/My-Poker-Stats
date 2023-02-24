@@ -29,6 +29,7 @@ p {
   padding: 0;
   margin: 0;
   letter-spacing: 0.05rem;
+  font-family: "Kanit", sans-serif;
 }
 
 /* ---- Utility Classes ---- */
@@ -194,11 +195,93 @@ p {
   justify-content: space-evenly;
 }
 
+.no-stats-container {
+  height: 100%;
+}
+
+.no-stats-body {
+  height: 30%;
+  width: 75%;
+  margin-inline: auto;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.no-stats-body > p {
+  padding-top: 2rem;
+}
+
+.add-venue-container {
+  height: 15%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.no-stats-header {
+  height: 20%;
+  text-align: center;
+}
+
+.session-heading-header {
+  width: 100%;
+  height: 70%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  text-align: center;
+}
+
+.venue-heading-header {
+  width: 100%;
+  height: 70%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  text-align: center;
+}
+
+.venue-heading-header > input {
+  width: 100%;
+  margin-top: 0.8rem;
+  height: 5.3rem;
+  padding-bottom: 0.6rem;
+  font-size: var(--ft-size-lg);
+  text-align: center;
+  background-color: transparent;
+  border: 0.3rem solid var(--clr-light);
+  border-radius: 1rem;
+  color: var(--clr-light);
+}
+
+.session-heading-header > input {
+  width: 100%;
+  margin-top: 0.8rem;
+  height: 5.3rem;
+  padding-bottom: 0.6rem;
+  font-size: var(--ft-size-lg);
+  text-align: center;
+  background-color: transparent;
+  border: 0.3rem solid var(--clr-light);
+  border-radius: 1rem;
+  color: var(--clr-light);
+}
+
+.session-edit-input {
+  background-color: transparent;
+  color: var(--clr-light);
+  border: 0.2rem solid var(--clr-light);
+  font-size: var(--ft-size-md);
+  width: 90%;
+  height: fit-content;
+  text-align: center;
+}
+
 .heading {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  min-height: 15%;
+  height: 20%;
   /* border: 1px solid black; */
 }
 
@@ -208,13 +291,34 @@ p {
   font-size: var(--ft-size-sm);
 }
 
+.edit-btns-container {
+  display: flex;
+  height: 30%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  margin-inline: auto;
+  text-align: center;
+}
+
 .session-heading-cont-2 {
   width: 70%;
+  height: 100%;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  min-height: 100%;
+  align-items: center;
+}
+
+.venue-heading-cont-2 {
+  width: 70%;
+  height: 100%;
+}
+.edit-btns-container > p {
+  font-size: var(--ft-size-md);
+  margin-inline: 2rem;
+}
+.session-heading-cont-2 > p {
+  font-size: var(--ft-size-md);
 }
 
 .venue-list-container {
@@ -227,7 +331,9 @@ p {
 }
 
 .session-heading-cont-1,
-.session-heading-cont-3 {
+.session-heading-cont-3,
+.venue-heading-cont-1,
+.venue-heading-cont-3 {
   width: 15%;
   min-height: 100%;
   /* border: 1px solid black; */
@@ -241,7 +347,7 @@ p {
   flex-basis: 3;
   justify-content: center;
   margin-inline: auto;
-  min-height: 20%;
+  height: 20%;
 }
 
 .stat {
@@ -253,14 +359,17 @@ p {
 }
 
 .recent {
-  margin-top: 1rem;
+  padding: 0;
+  margin: 0;
 }
 
 .recent-venue,
 .recent-session {
+  height: 5%;
   width: 85vw;
   margin-inline: auto;
   display: flex;
+  align-items: center;
   padding: 1rem;
   justify-content: space-between;
 }
@@ -273,7 +382,7 @@ p {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 15%;
+  height: 12.5%;
 }
 
 .edit-ven-input {
@@ -318,7 +427,7 @@ p {
 .card-container {
   display: flex;
   flex-direction: column;
-  height: 65%;
+  height: 60%;
 }
 
 .btn-container {
@@ -331,32 +440,47 @@ p {
 }
 
 .accent-btn {
-  width: 20rem;
-  height: 5rem;
+  width: 15rem;
+  height: 3.5rem;
   margin: 1rem;
   border: 0.3rem solid var(--clr-light);
   border-radius: 2rem;
   background-color: transparent;
-  font-size: var(--ft-size-md);
+  font-size: var(--ft-size-sm);
   color: var(--clr-light);
 }
 
 .sessions-list {
-  height: 70%;
+  height: 87.5%;
   overflow-y: auto;
 }
 
+.no-sessions {
+  width: 100%;
+  height: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--clr-light);
+}
+
+.no-sessions > p {
+  font-size: var(--ft-size-md);
+  font-weight: var(--ft-weight-bold);
+}
+
 .venue-view-card-container {
-  height: 100%;
+  height: 60%;
 }
 
 .venue-card {
   background-color: var(--clr-primary);
-  height: 30rem;
+  height: 50%;
 }
 
 .session-card {
   background-color: var(--clr-light);
+  height: 15%;
 }
 
 .venue-header {
@@ -380,9 +504,11 @@ p {
 
 .session-header {
   display: flex;
-  justify-content: space-between;
-  width: 89%;
+  justify-content: center;
+  width: 90%;
+  height: 30%;
   margin-inline: auto;
+  font-weight: var(--ft-weight-bold);
 }
 
 .venue-stats {
@@ -394,6 +520,7 @@ p {
 
 .session-stats {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   width: 100%;
 }
@@ -404,6 +531,11 @@ p {
   justify-content: center;
   align-items: center;
   width: 33%;
+}
+
+.session-stat > input {
+  padding-left: -0.5rem;
+  margin: 0;
 }
 
 .venue-stat {

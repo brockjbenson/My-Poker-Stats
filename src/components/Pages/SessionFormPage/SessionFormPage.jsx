@@ -8,6 +8,7 @@ import Nav from "../../Shared/Nav/Nav";
 export default function SessionFormPage() {
   const history = useHistory();
   const [venueID, setVenueID] = useState("");
+  const [venName, setVenName] = useState("");
   const [buyIn, setBuyIn] = useState("");
   const [cashOut, setCashOut] = useState("");
   const [hours, setHours] = useState("");
@@ -22,6 +23,7 @@ export default function SessionFormPage() {
 
   useEffect(() => {
     venue[0] !== undefined && setVenueID(venue[0].ven_id);
+    venue[0] !== undefined && setVenName(venue[0].name);
   }, [venue]);
 
   console.log(venueID);
@@ -30,7 +32,12 @@ export default function SessionFormPage() {
     dispatch({ type: "FETCH_SPECIFIC_VENUE", payload: id });
   }, []);
 
-  function addSession() {
+  function cancelAdd() {
+    history.push(`/venue-view/${venueID}`);
+  }
+
+  function addSession(e) {
+    e.preventDefault();
     const sessionObj = {
       buy_in: Number(buyIn),
       cash_out: Number(cashOut),
@@ -53,48 +60,86 @@ export default function SessionFormPage() {
   return (
     <div className="body-container">
       <div className="main-container">
-        <div className="heading">
+        <div className="add-session-heading clr-light">
           <h1>Add Session</h1>
         </div>
-        <div className="session-form">
-          <input
-            type="number"
-            value={buyIn}
-            onChange={(e) => setBuyIn(e.target.value)}
-            placeholder="Buy In"
-          />
-          <input
-            type="number"
-            value={cashOut}
-            onChange={(e) => setCashOut(e.target.value)}
-            placeholder="Cash Out"
-          />
-          <input
-            type="number"
-            value={hours}
-            onChange={(e) => setHours(e.target.value)}
-            placeholder="Hours Played"
-          />
-          <input
-            type="date"
-            value={date}
-            onChange={(e) => setDate(e.target.value)}
-            placeholder="Date Played"
-          />
-          <input
-            type="text"
-            value={stakes}
-            onChange={(e) => setStakes(e.target.value)}
-            placeholder="Stakes Played"
-          />
-          <input
-            type="text"
-            value={notes}
-            onChange={(e) => setNotes(e.target.value)}
-            placeholder="Session Notes"
-          />
-          <button onClick={addSession}>Add Session</button>
-        </div>
+        <form className="session-form" onSubmit={addSession}>
+          <div className="inputs">
+            <div className="input-container r1">
+              <p className="clr-light">Venue</p>
+              <input type="text" value={venName} readOnly required />
+            </div>
+            <div className="input-container r2">
+              <p className="clr-light">Buy In</p>
+              <input
+                type="number"
+                value={buyIn}
+                onChange={(e) => setBuyIn(e.target.value)}
+                placeholder="100"
+                required
+              />
+            </div>
+            <div className="input-container r2">
+              <p className="clr-light">Cash Out</p>
+              <input
+                type="number"
+                value={cashOut}
+                onChange={(e) => setCashOut(e.target.value)}
+                placeholder="200.25"
+                required
+              />
+            </div>
+            <div className="input-container r3">
+              <p className="clr-light">Hours Played</p>
+              <input
+                type="number"
+                value={hours}
+                onChange={(e) => setHours(e.target.value)}
+                placeholder="5.3"
+                required
+              />
+            </div>
+            <div className="input-container r3">
+              <p className="clr-light">Date</p>
+              <input
+                type="date"
+                value={date}
+                onChange={(e) => setDate(e.target.value)}
+                placeholder="Eg. 02/02/2023"
+                required
+              />
+            </div>
+            <div className="input-container r4">
+              <p className="clr-light">Stakes</p>
+              <input
+                type="text"
+                value={stakes}
+                onChange={(e) => setStakes(e.target.value)}
+                placeholder="Eg. 1/2"
+                required
+              />
+            </div>
+            <div className="input-container r5">
+              <p className="clr-light">Notes</p>
+              <textarea
+                type="text"
+                value={notes}
+                onChange={(e) => setNotes(e.target.value)}
+                placeholder="Eg. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque lobortis, massa vel pharetra consectetur, enim orci consequat ligula, a luctus."
+                required
+                maxLength="500"
+              />
+            </div>
+          </div>
+          <div className="button-container">
+            <button className="btn-sm-primary" type="submit">
+              Add Session
+            </button>
+            <button className="btn-sm-light" onClick={cancelAdd}>
+              Cancel
+            </button>
+          </div>
+        </form>
       </div>
       <div className="nav-container">
         <Nav />

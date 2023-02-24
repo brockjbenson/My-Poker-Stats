@@ -10,17 +10,17 @@ function Nav() {
     <div className="nav">
       <div className="nav-item">
         <Link to="/home">
-          <p className="nav-title  font-wt-bold">Dashboard</p>
+          <p className="nav-title font-md  font-wt-bold">Home</p>
         </Link>
       </div>
       <div className="nav-item">
         <Link to="/venue-list">
-          <p className="font-wt-bold">Venues</p>
+          <p className="font-wt-bold font-md">Venues</p>
         </Link>
       </div>
       <div className="nav-item">
         <p
-          className="log-out font-wt-bold"
+          className="log-out font-wt-bold font-md"
           onClick={() => dispatch({ type: "LOGOUT" })}
         >
           Log Out

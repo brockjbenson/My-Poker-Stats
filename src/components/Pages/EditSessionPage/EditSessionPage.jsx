@@ -69,7 +69,7 @@ export default function EditSessionPage() {
   return (
     <div className="body-container">
       <div className="main-container">
-        <div className="heading clr-light">
+        <div className="edit-session-heading clr-light">
           <h1>Edit Session</h1>
         </div>
         <form className="session-form" onSubmit={editSession}>
@@ -136,7 +136,7 @@ export default function EditSessionPage() {
                 value={notes}
                 onChange={(e) => setNotes(e.target.value)}
                 required
-                multiline={true}
+                maxlength="150"
               />
             </div>
           </div>

@@ -1,6 +1,6 @@
 // ------- Imports ------- //
 
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { format } from "date-fns";
 import { useHistory, useParams } from "react-router-dom";
@@ -16,14 +16,6 @@ export default function SessionViewPage() {
     dispatch({ type: "FETCH_SPECIFIC_VENUE", payload: Number(venid) });
   }, []);
 
-  // ------- Import Vars ------- //
-
-  const { id, venid } = useParams();
-  const dispatch = useDispatch();
-  const history = useHistory();
-
-  // ------- Stores ------- //
-
   const session = useSelector(
     (store) => store.sessionsReducer.getSpecificSessionReducer
   );
@@ -32,10 +24,59 @@ export default function SessionViewPage() {
     (store) => store.venuesReducer.getSpecificVenueStatsReducer
   );
 
+  // ------- Import Vars ------- //
+  const { id, venid } = useParams();
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const [editMode, setEditMode] = useState(false);
+  const [buyIn, setBuyIn] = useState("");
+  const [cashOut, setCashOut] = useState("");
+  const [hours, setHours] = useState("");
+  const [date, setDate] = useState("");
+  const [stakes, setStakes] = useState("");
+  const [notes, setNotes] = useState("");
+  const [venName, setVenName] = useState("");
+  const [sessionID, setSessionId] = useState("");
+
+  useEffect(() => {
+    session[0] !== undefined && setVenName(session[0].venue);
+    session[0] !== undefined && setSessionId(session[0].id);
+    session[0] !== undefined && setBuyIn(session[0].buy_in);
+    session[0] !== undefined && setCashOut(session[0].cash_out);
+    session[0] !== undefined && setDate(session[0].session_date);
+    session[0] !== undefined && setHours(session[0].hours_played);
+    session[0] !== undefined && setStakes(session[0].stakes);
+    session[0] !== undefined && setNotes(session[0].notes);
+  }, [session]);
+
+  console.log(session);
+
+  function editSession() {
+    const sessionObj = {
+      id: sessionID,
+      buy_in: Number(buyIn),
+      cash_out: Number(cashOut),
+      hours_played: Number(hours),
+      session_date: date,
+      stakes: stakes,
+      notes: notes,
+    };
+    dispatch({ type: "EDIT_SESSION", payload: sessionObj });
+    history.push(`/session-view/${id}/${venid}`);
+    setBuyIn("");
+    setCashOut("");
+    setStakes("");
+    setHours("");
+    setDate("");
+    setNotes("");
+    setSessionId("");
+  }
+  // ------- Stores ------- //
+
   // ------- Confirm Delete onClick fn------- //
 
   function confirmFunction(id) {
-    let r = confirm("Are You Sure?");
+    let r = confirm("Are You Sure? You will delete all data for this session!");
     if (r == true) {
       deleteSessionBtn(id);
     } else {
@@ -58,10 +99,6 @@ export default function SessionViewPage() {
 
   // ------- Edit Session fn ------- //
 
-  function editSession(id) {
-    history.push(`/edit-session/${id}/${venid}`);
-  }
-
   return (
     <div className="body-container">
       <div className="main-container">
@@ -77,61 +114,172 @@ export default function SessionViewPage() {
                     Back
                   </button>
                 </div>
-                <div className="session-heading-cont-2">
-                  <h1>Session</h1>
-                </div>
+                {editMode ? (
+                  <div className="venue-heading-cont-2">
+                    <div className="venue-heading-header">
+                      <h1>Edit Session {session[0].id}</h1>
+                    </div>
+                    <div className="edit-btns-container">
+                      <button className="accent-btn" onClick={editSession}>
+                        Save
+                      </button>
+                      <button
+                        className="accent-btn"
+                        onClick={() => setEditMode(false)}
+                      >
+                        Cancel
+                      </button>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="venue-heading-cont-2">
+                    <div className="venue-heading-header">
+                      <h1>Session {session[0].id}</h1>
+                    </div>
+                    <div className="edit-btns-container">
+                      <button
+                        className="accent-btn"
+                        onClick={() => confirmFunction(session[0].id)}
+                      >
+                        Delete
+                      </button>
+                      <button
+                        className="accent-btn"
+                        onClick={() => setEditMode(true)}
+                      >
+                        Edit
+                      </button>
+                    </div>
+                  </div>
+                )}
                 <div className="session-heading-cont-3"></div>
               </div>
               <div className="stats-container clr-light">
                 <div className="stat">
-                  <p>Total Net Profit</p>
-                  <h2>${session[0].net_profit}</h2>
+                  {editMode ? (
+                    <>
+                      <p>Cash Out</p>
+                      <input
+                        className="session-edit-input"
+                        type="text"
+                        value={cashOut}
+                        onChange={(e) => setCashOut(e.target.value)}
+                        required
+                      />
+                    </>
+                  ) : (
+                    <>
+                      <p>Total Net Profit</p>
+                      <h2>${session[0].net_profit}</h2>
+                    </>
+                  )}
                 </div>
                 <div className="stat">
                   <p>Date</p>
-                  <h2>
-                    {format(new Date(session[0].session_date), "dd/MM/yy")}
-                  </h2>
+                  {editMode ? (
+                    <>
+                      <input
+                        className="session-edit-input"
+                        type="date"
+                        value={format(new Date(date), "dd/MM/yy")}
+                        onChange={(e) => setDate(e.target.value)}
+                        required
+                      />
+                    </>
+                  ) : (
+                    <>
+                      <h2>
+                        {format(new Date(session[0].session_date), "dd/MM/yy")}
+                      </h2>
+                    </>
+                  )}
                 </div>
                 <div className="stat">
                   <p>Hours Played</p>
-                  <h2>{session[0].hours_played}</h2>
+                  {editMode ? (
+                    <>
+                      <input
+                        className="session-edit-input"
+                        type="number"
+                        value={hours}
+                        onChange={(e) => setHours(e.target.value)}
+                        required
+                      />
+                    </>
+                  ) : (
+                    <>
+                      <h2>{hours}</h2>
+                    </>
+                  )}
                 </div>
                 <div className="stat">
                   <p>Buy In</p>
-                  <h2>{session[0].buy_in}</h2>
+                  {editMode ? (
+                    <>
+                      <input
+                        className="session-edit-input"
+                        type="number"
+                        value={buyIn}
+                        onChange={(e) => setBuyIn(e.target.value)}
+                        required
+                      />
+                    </>
+                  ) : (
+                    <>
+                      <h2>{session[0].buy_in}</h2>
+                    </>
+                  )}
                 </div>
                 <div className="stat">
                   <p>Stakes</p>
-                  <h2>{session[0].stakes}</h2>
+                  {editMode ? (
+                    <>
+                      <input
+                        className="session-edit-input"
+                        type="text"
+                        value={stakes}
+                        onChange={(e) => setStakes(e.target.value)}
+                        required
+                      />
+                    </>
+                  ) : (
+                    <>
+                      <h2>{session[0].stakes}</h2>
+                    </>
+                  )}
                 </div>
                 <div className="stat">
                   <p>Hourly</p>
-                  <h2>{session[0].hourly}</h2>
+                  {editMode ? (
+                    <>
+                      <h2>-</h2>
+                    </>
+                  ) : (
+                    <>
+                      <h2>{session[0].buy_in}</h2>
+                    </>
+                  )}
                 </div>
               </div>
             </>
           )}
           <div className="card-container">
-            <div className="btn-container">
-              <button
-                className="accent-btn"
-                onClick={() => confirmFunction(session[0].id)}
-              >
-                Delete
-              </button>
-              <button
-                className="accent-btn"
-                onClick={() => editSession(session[0].id)}
-              >
-                Edit
-              </button>
-            </div>
             <div className="notes-container clr-light">
-              <h2>Session Notes</h2>
-              {session[0] !== undefined && (
+              {editMode ? (
                 <>
-                  <h2>{session[0].notes}</h2>
+                  <h2>Edit Notes</h2>
+                  <textarea
+                    type="text"
+                    value={notes}
+                    onChange={(e) => setNotes(e.target.value)}
+                    required
+                    maxlength="150"
+                  />
+                </>
+              ) : (
+                <>
+                  <h2>Notes</h2>
+                  <p>{notes}</p>
                 </>
               )}
             </div>

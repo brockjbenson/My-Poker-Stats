@@ -8,11 +8,13 @@ import Nav from "../../Shared/Nav/Nav";
 export default function SpecificVenueViewPage() {
   const [venName, setVenName] = useState("");
   const [venId, setVenID] = useState(0);
+  const [editMode, setEditMode] = useState(false);
   useEffect(() => {
     dispatch({ type: "FETCH_SPECIFIC_VENUE", payload: id });
     dispatch({ type: "FETCH_SPECIFIC_VENUE_STATS", payload: id });
     dispatch({ type: "FETCH_VENUES_SESSIONS", payload: id });
-  }, [venue, dispatch]);
+    dispatch({ type: "FETCH_SESSIONS" });
+  }, []);
   const { id } = useParams();
   const wins = [];
   const [winPercentage, setWinPercentage] = useState(0);
@@ -53,14 +55,49 @@ export default function SpecificVenueViewPage() {
     setWinPercentage(isNaN(workingWinPercent) ? 0 : workingWinPercent);
   }, [sessions]);
 
+  function confirmSessionDelete(sID) {
+    let r = confirm("Are You Sure? You will delete all data for this session!");
+    if (r == true) {
+      deleteSessionBtn(sID);
+    } else {
+    }
+  }
+
+  function confirmVenueDelete() {
+    let r = confirm(
+      "Are you sure? All sessions and data connected to this venue will be deleted."
+    );
+    if (r == true) {
+      deleteVenue();
+    } else {
+    }
+  }
+
+  function deleteVenue() {
+    dispatch({ type: "DELETE_VENUE", payload: venId });
+    history.push("/venue-list");
+  }
+
+  function deleteSessionBtn(sID) {
+    dispatch({ type: "DELETE_SESSION", payload: Number(sID) });
+    dispatch({ type: "FETCH_VENUES_SESSIONS", payload: venId });
+    history.push(`/venue-view/${venId}`);
+    // console.log(sID);
+  }
+
   function addNewSession() {
     dispatch({ type: "FETCH_SPECIFIC_VENUE", payload: venId });
+    dispatch({ type: "FETCH_VENUES_SESSIONS", payload: venId });
     // console.log(venId);
     history.push(`/add-session/${venId}`);
   }
 
-  function backToList() {
-    history.push("/venue-list");
+  function saveEdit() {
+    dispatch({
+      type: "EDIT_VENUE",
+      payload: { id: Number(venId), name: String(venName) },
+    });
+    setEditMode(false);
   }
 
   console.log("sessions: ", sessions);
@@ -72,11 +109,51 @@ export default function SpecificVenueViewPage() {
         <div className="venue-view-container">
           <>
             <div className="heading clr-light">
-              <div className="session-heading-cont-1"></div>
-              <div className="session-heading-cont-2">
-                <h1>{venName}</h1>
+              <div className="venue-heading-cont-1"></div>
+              <div className="venue-heading-cont-2">
+                {editMode ? (
+                  <>
+                    <div className="venue-heading-header">
+                      <input
+                        value={venName}
+                        onChange={(e) => setVenName(e.target.value)}
+                      />
+                    </div>
+                    <div className="edit-btns-container">
+                      <button className="accent-btn" onClick={saveEdit}>
+                        Save
+                      </button>
+                      <button
+                        className="accent-btn"
+                        onClick={() => setEditMode(false)}
+                      >
+                        Cancel
+                      </button>
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <div className="venue-heading-header">
+                      <h1>{venName}</h1>
+                    </div>
+                    <div className="edit-btns-container">
+                      <button
+                        className="accent-btn"
+                        onClick={confirmVenueDelete}
+                      >
+                        Delete
+                      </button>
+                      <button
+                        className="accent-btn"
+                        onClick={() => setEditMode(true)}
+                      >
+                        Edit
+                      </button>
+                    </div>
+                  </>
+                )}
               </div>
-              <div className="session-heading-cont-3"></div>
+              <div className="venue-heading-cont-3"></div>
             </div>
             <div className="stats-container clr-light">
               <div className="stat">
@@ -84,7 +161,7 @@ export default function SpecificVenueViewPage() {
                 {venue[0] !== undefined ? (
                   <h2>${venue[0].venue_net}</h2>
                 ) : (
-                  <h2>N/A</h2>
+                  <h2>-</h2>
                 )}
               </div>
               <div className="stat">
@@ -92,7 +169,7 @@ export default function SpecificVenueViewPage() {
                 {venue[0] !== undefined ? (
                   <h2>{venue[0].sessions_played}</h2>
                 ) : (
-                  <h2>N/A</h2>
+                  <h2>-</h2>
                 )}
               </div>
               <div className="stat">
@@ -100,7 +177,7 @@ export default function SpecificVenueViewPage() {
                 {venue[0] !== undefined ? (
                   <h2>{venue[0].total_hours}</h2>
                 ) : (
-                  <h2>N/A</h2>
+                  <h2>-</h2>
                 )}
               </div>
               <div className="stat">
@@ -108,7 +185,7 @@ export default function SpecificVenueViewPage() {
                 {venue[0] !== undefined ? (
                   <h2>{winPercentage}%</h2>
                 ) : (
-                  <h2>N/A</h2>
+                  <h2>-</h2>
                 )}
               </div>
               <div className="stat">
@@ -116,7 +193,7 @@ export default function SpecificVenueViewPage() {
                 {venue[0] !== undefined ? (
                   <h2>${venue[0].avg_session_net}</h2>
                 ) : (
-                  <h2>N/A</h2>
+                  <h2>-</h2>
                 )}
               </div>
               <div className="stat">
@@ -124,14 +201,14 @@ export default function SpecificVenueViewPage() {
                 {venue[0] !== undefined ? (
                   <h2>${venue[0].venue_hourly}</h2>
                 ) : (
-                  <h2>N/A</h2>
+                  <h2>-</h2>
                 )}
               </div>
             </div>
             <div className="venue-view-card-container bg">
               <div className="addnew-btn">
                 <button className="accent-btn" onClick={addNewSession}>
-                  Add New
+                  Add Session
                 </button>
               </div>
               <div className="sessions-list clr-primary">
@@ -154,10 +231,16 @@ export default function SpecificVenueViewPage() {
                                   "dd/MM/yy"
                                 )}
                               </h2>
-                            </div>
-                            <div className="stakes">
-                              <p>Stakes: </p>
-                              <h2> {sesh.stakes}</h2>
+                              <div className="delete-btn">
+                                <button
+                                  onClick={(e) => {
+                                    e.stopPropagation();
+                                    confirmSessionDelete(sesh.id);
+                                  }}
+                                >
+                                  Delete
+                                </button>
+                              </div>
                             </div>
                           </div>
                           <div className="session-stats">
@@ -181,7 +264,7 @@ export default function SpecificVenueViewPage() {
                 ) : (
                   <>
                     <div className="no-sessions">
-                      <p>Add Sessions to see Stats</p>
+                      <p className="clr-neutral">No sessions to show</p>
                     </div>
                   </>
                 )}

@@ -17,6 +17,7 @@ function DashBoardPage() {
   const wins = [];
   const [winPercentage, setWinPercentage] = useState(0);
   const dispatch = useDispatch();
+  const user = useSelector((store) => store.user);
   const allStats = useSelector((store) => store.allStatsReducer);
   const sessions = useSelector((store) => store.sessionsReducer);
   const sessionCard = useSelector(
@@ -27,7 +28,7 @@ function DashBoardPage() {
     (store) => store.venuesReducer.getVenuesStatsReducer
   );
   console.log("venues:", venueStats);
-  console.log(sessionCard[3]);
+  console.log(sessionCard[0]);
 
   useEffect(() => {
     dispatch({ type: "FETCH_ALL_STATS" });
@@ -85,7 +86,7 @@ function DashBoardPage() {
                   decimalScale={2}
                 />
               ) : (
-                <h2>N/A</h2>
+                <h2>-</h2>
               )}
             </div>
             <div className="stat">
@@ -93,7 +94,7 @@ function DashBoardPage() {
               {allStats[0] !== undefined ? (
                 <h2>{allStats[0].total_sessions}</h2>
               ) : (
-                <h2>N/A</h2>
+                <h2>-</h2>
               )}
             </div>
             <div className="stat">
@@ -101,7 +102,7 @@ function DashBoardPage() {
               {allStats[0] !== undefined ? (
                 <h2>{allStats[0].total_hours}</h2>
               ) : (
-                <h2>N/A</h2>
+                <h2>-</h2>
               )}
             </div>
             <div className="stat">
@@ -109,7 +110,7 @@ function DashBoardPage() {
               {allStats[0] !== undefined ? (
                 <h2>{winPercentage}%</h2>
               ) : (
-                <h2>N/A</h2>
+                <h2>-</h2>
               )}
             </div>
             <div className="stat">
@@ -124,7 +125,7 @@ function DashBoardPage() {
                   decimalScale={2}
                 />
               ) : (
-                <h2>N/A</h2>
+                <h2>-</h2>
               )}
             </div>
             <div className="stat">
@@ -139,7 +140,7 @@ function DashBoardPage() {
                   decimalScale={2}
                 />
               ) : (
-                <h2>N/A</h2>
+                <h2>-</h2>
               )}
             </div>
           </div>
@@ -157,7 +158,11 @@ function DashBoardPage() {
                 </div>
               </div>
             ) : (
-              <div className="recent-venue"></div>
+              <div className="add-venue-container">
+                <button className="accent-btn" onClick={sendToVenues}>
+                  Add Venue
+                </button>
+              </div>
             )}
             {venueStats[0] !== undefined ? (
               <div
@@ -202,35 +207,34 @@ function DashBoardPage() {
                 </div>
               </div>
             ) : (
-              <div className="venue-card clr-light">
-                <div className="venue-header">
-                  <h2>No Stats to show</h2>
-                  <p>
-                    Click the add venue the "Add Venue" button below to get
-                    started with MyPokerStats!
-                  </p>
-                  <button onClick={sendToVenues}>Add Venue</button>
+              <div className="no-stats-container clr-light">
+                <div className="no-stats-header">
+                  <h1>Welcome, {user.username}!</h1>
+                </div>
+                <div className="no-stats-body">
+                  <h2 className="font-wt-regular">
+                    To get started with MyPokerStats, click the add venue the
+                    "Add Venue" button above and enter some sessions!
+                  </h2>
                 </div>
               </div>
             )}
-            {sessionCard[3] !== undefined && (
+            {sessionCard[0] !== undefined && (
               <div
                 onClick={() =>
-                  sendToSession(sessionCard[3].id, sessionCard[3].venue_id)
+                  sendToSession(sessionCard[0].id, sessionCard[0].venue_id)
                 }
                 className="session-card clr-primary"
               >
                 <div className="session-header">
-                  <div className="session-date">
+                  <div className="venue-name">
                     <p className="font-wt-bold">
+                      {sessionCard[0].venue} on:{" "}
                       {format(
-                        new Date(sessionCard[3].session_date),
+                        new Date(sessionCard[0].session_date),
                         "dd/MM/yy"
                       )}
                     </p>
-                  </div>
-                  <div className="venue-name">
-                    <p className="font-wt-bold">{sessionCard[3].venue}</p>
                   </div>
                 </div>
                 <div className="session-stats">
@@ -238,7 +242,7 @@ function DashBoardPage() {
                     <p>Net Profit:</p>
                     <NumericFormat
                       className="p"
-                      value={sessionCard[3].net_profit}
+                      value={sessionCard[0].net_profit}
                       prefix={"$"}
                       thousandSeparator=","
                       allowNegative
@@ -247,13 +251,13 @@ function DashBoardPage() {
                   </div>
                   <div className="session-stat">
                     <p>Stakes:</p>
-                    <h2>{sessionCard[3].stakes}</h2>
+                    <h2>{sessionCard[0].stakes}</h2>
                   </div>
                   <div className="session-stat">
                     <p>Hourly Net:</p>
                     <NumericFormat
                       className="p"
-                      value={sessionCard[3].hourly}
+                      value={sessionCard[0].hourly}
                       prefix={"$"}
                       thousandSeparator=","
                       allowNegative
