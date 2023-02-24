@@ -43,7 +43,7 @@ p {
   border-radius: 1.5rem;
   font-weight: var(--ft-weight-bold); /* replace with desired font-weight */
   width: 21rem; /* replace with desired value */
-  height: 7.5rem; /* replace with desired value */
+  height: 9.5rem; /* replace with desired value */
   margin-block: 1rem;
   margin-inline: 1rem;
 }
@@ -57,7 +57,7 @@ p {
   border-radius: 1.5rem;
   font-weight: var(--ft-weight-bold); /* replace with desired font-weight */
   width: 45rem; /* replace with desired value */
-  height: 7.5rem; /* replace with desired value */
+  height: 9.5rem; /* replace with desired value */
   margin-block: 1rem;
   margin-inline: 1rem;
 }
@@ -71,7 +71,7 @@ p {
   border-radius: 1.5rem;
   font-weight: var(--ft-weight-bold); /* replace with desired font-weight */
   width: 21rem; /* replace with desired value */
-  height: 7.5rem; /* replace with desired value */
+  height: 9.5rem; /* replace with desired value */
   margin-block: 1rem;
   margin-inline: 1rem;
 }
@@ -85,7 +85,7 @@ p {
   border-radius: 1.5rem;
   font-weight: var(--ft-weight-bold); /* replace with desired font-weight */
   width: 45rem; /* replace with desired value */
-  height: 7.5rem; /* replace with desired value */
+  height: 9.5rem; /* replace with desired value */
   margin-block: 1rem;
   margin-inline: 1rem;
 }
@@ -167,6 +167,10 @@ p {
   background-color: rgba(255, 255, 255, 0.1);
 }
 
+button:hover {
+  cursor: pointer;
+}
+
 /* ---- End Utility Classes ---- */
 .dashboard-container,
 .venue-view-container {
@@ -174,6 +178,48 @@ p {
   flex-direction: column;
   height: 100%;
 }
+
+/* ------------------- Landing Style ------------------- */
+.landing-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.landing-header {
+  height: 25%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 5rem;
+}
+
+.landing-body {
+  height: 50%;
+}
+
+.landing-buttons {
+  height: 25%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.landing-section {
+  width: 75%;
+  height: 50%;
+  margin-inline: auto;
+}
+
+.landing-section-header {
+  height: 20%;
+}
+
+.landing-section-body {
+  height: 80%;
+}
+/* ------------------- End Landing Style ------------------- */
 
 .date > h2,
 .stakes > h2 {
@@ -183,6 +229,8 @@ p {
 
 .list-card-header {
   width: 86%;
+  display: flex;
+  justify-content: space-between;
   margin-inline: auto;
   margin-bottom: 0.5rem;
 }
@@ -291,14 +339,38 @@ p {
   font-size: var(--ft-size-sm);
 }
 
-.edit-btns-container {
-  display: flex;
-  height: 30%;
+.venue-list-btn,
+.venue-list-btn-2,
+.venue-list-btn-3 {
   width: 100%;
+  height: 100%;
+  display: flex;
   justify-content: center;
   align-items: center;
-  margin-inline: auto;
-  text-align: center;
+  font-size: var(--ft-size-sm);
+  font-weight: var(--ft-weight-bold);
+}
+
+.venue-list-btn {
+  background-color: var(--clr-primary);
+  color: var(--clr-light);
+}
+
+.venue-list-btn-2 {
+  padding-left: 1rem;
+  color: red;
+}
+
+.venue-list-btn-3 {
+  color: var(--clr-primary);
+  padding-left: 1rem;
+}
+
+.edit-btns-container {
+  display: flex;
+  justify-content: center;
+  height: 30%;
+  width: 100%;
 }
 
 .session-heading-cont-2 {
@@ -328,6 +400,7 @@ p {
 .venue-list {
   height: 84%;
   overflow-y: auto;
+  background-color: rgba(0, 0, 0, 0.3);
 }
 
 .session-heading-cont-1,
@@ -409,8 +482,12 @@ p {
   justify-content: space-between;
   width: 90vw;
   margin-inline: auto;
-  height: 7rem;
-  padding: 1rem;
+  height: 10rem;
+  padding-left: 1rem;
+}
+
+.venue-item:hover {
+  cursor: pointer;
 }
 
 .venue-item-name {
@@ -419,9 +496,19 @@ p {
 
 .venue-btns {
   display: flex;
-  width: 25%;
+  width: 40%;
+  height: 100%;
   justify-content: space-between;
   padding-right: 1rem;
+}
+
+.btn-1-cont,
+.btn-2-cont {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .card-container {
@@ -453,6 +540,7 @@ p {
 .sessions-list {
   height: 87.5%;
   overflow-y: auto;
+  background-color: rgba(0, 0, 0, 0.3);
 }
 
 .no-sessions {
@@ -480,7 +568,7 @@ p {
 
 .session-card {
   background-color: var(--clr-light);
-  height: 15%;
+  height: 20%;
 }
 
 .venue-header {
@@ -502,10 +590,19 @@ p {
   margin-block: 2rem;
 }
 
-.session-header {
+.session-header-dash {
   display: flex;
   justify-content: center;
-  width: 90%;
+  width: 87%;
+  height: 30%;
+  margin-inline: auto;
+  font-weight: var(--ft-weight-bold);
+}
+
+.session-header-ven {
+  display: flex;
+  justify-content: space-between;
+  width: 87%;
   height: 30%;
   margin-inline: auto;
   font-weight: var(--ft-weight-bold);

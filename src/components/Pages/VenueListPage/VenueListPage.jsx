@@ -36,6 +36,8 @@ export default function VenueListPage() {
     }
   }
 
+  console.log("edit mode:", editMode);
+
   console.log(newName);
 
   function saveEdit() {
@@ -57,7 +59,12 @@ export default function VenueListPage() {
     <div className="body-container">
       <div className="main-container">
         <div className="heading clr-light">
-          <h1>Venues</h1>
+          <div className="venue-heading-cont-2">
+            <div className="venue-heading-header">
+              <h1>My Venues</h1>
+            </div>
+            <div className="edit-btns-container"></div>
+          </div>
         </div>
         <div className="venue-list-container bg">
           <div className="addnew-btn">
@@ -65,65 +72,101 @@ export default function VenueListPage() {
               Add New
             </button>
           </div>
-          <div className="venue-list">
-            {venueList.map((venue, index) => {
-              return (
-                <div key={index} className="venue-item">
-                  <div className="venue-item-name">
+          {venueList[0] !== undefined ? (
+            <div className="venue-list">
+              {venueList.map((venue, index) => {
+                return (
+                  <div key={index} className="venue-item">
+                    <div
+                      onClick={() => sendToVenue(venue.id)}
+                      className="venue-item-name"
+                    >
+                      {editMode && Number(editID) === venue.id ? (
+                        <input
+                          className="edit-ven-input"
+                          type="text"
+                          value={newName}
+                          onChange={(e) => {
+                            setNewName(e.target.value);
+                          }}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                          }}
+                        />
+                      ) : (
+                        <h2>{venue.name}</h2>
+                      )}
+                    </div>
                     {editMode && Number(editID) === venue.id ? (
-                      <input
-                        className="edit-ven-input"
-                        type="text"
-                        value={newName}
-                        onChange={(e) => setNewName(e.target.value)}
-                      />
+                      <div className="venue-btns">
+                        <div className="btn-1-cont">
+                          <p
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              saveEdit();
+                            }}
+                            className="clr-primary venue-list-btn"
+                          >
+                            Save
+                          </p>
+                        </div>
+                        <div className="btn-2-cont">
+                          <p
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              setEditMode(false);
+                            }}
+                            className="clr-primary venue-list-btn-3"
+                          >
+                            Cancel
+                          </p>
+                        </div>
+                      </div>
                     ) : (
-                      <h2>{venue.name}</h2>
+                      <div className="venue-btns">
+                        <div className="btn-1-cont">
+                          <p
+                            className="clr-primary venue-list-btn"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              editVenue(venue.id, venue.name);
+                            }}
+                          >
+                            Edit
+                          </p>
+                        </div>
+                        <div className="btn-2-cont">
+                          <p
+                            className="clr-primary venue-list-btn-2"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              confirmFunction(venue.id);
+                            }}
+                          >
+                            Delete
+                          </p>
+                        </div>
+                      </div>
                     )}
                   </div>
-                  <div className="venue-btns">
-                    {editMode && Number(editID) === venue.id ? (
-                      <>
-                        <p
-                          className="font-wt-bold clr-primary"
-                          onClick={saveEdit}
-                        >
-                          Save
-                        </p>
-                        <p
-                          className="font-wt-bold clr-primary"
-                          onClick={() => setEditMode(false)}
-                        >
-                          Cancel
-                        </p>
-                      </>
-                    ) : (
-                      <>
-                        <p
-                          className="font-wt-bold clr-primary"
-                          onClick={() => editVenue(venue.id, venue.name)}
-                        >
-                          Edit
-                        </p>
-                        <p
-                          className="font-wt-bold clr-primary"
-                          onClick={() => sendToVenue(venue.id)}
-                        >
-                          View
-                        </p>
-                        <p
-                          className="font-wt-bold clr-primary"
-                          onClick={() => confirmFunction(venue.id)}
-                        >
-                          X
-                        </p>
-                      </>
-                    )}
-                  </div>
+                );
+              })}
+            </div>
+          ) : (
+            <div className="venue-list">
+              <div className="no-stats-container clr-light">
+                <div className="no-stats-header">
+                  <h2 className="clr-neutral">No Venues</h2>
                 </div>
-              );
-            })}
-          </div>
+                <div className="no-stats-body">
+                  <h2 className="font-wt-regular">
+                    Here is where your list of created venues will be. Click the
+                    "Add Venue" button to start your list!
+                  </h2>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       </div>
       <div className="nav-container">

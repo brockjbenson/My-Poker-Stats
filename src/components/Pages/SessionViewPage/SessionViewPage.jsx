@@ -94,6 +94,7 @@ export default function SessionViewPage() {
 
   function deleteSessionBtn(id) {
     dispatch({ type: "DELETE_SESSION", payload: id });
+    dispatch({ type: "FETCH_VENUES_SESSIONS" });
     history.push(`/venue-view/${venid}`);
   }
 
@@ -273,7 +274,7 @@ export default function SessionViewPage() {
                     value={notes}
                     onChange={(e) => setNotes(e.target.value)}
                     required
-                    maxlength="150"
+                    maxLength="150"
                   />
                 </>
               ) : (

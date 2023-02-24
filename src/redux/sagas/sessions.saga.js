@@ -52,7 +52,10 @@ function* addSession(action) {
     // now that the session has given us a user object
     // with an id and username set the client-side user object to let
     // the client-side code know the user is logged in
-    yield put({ type: "FETCH_SESSIONS" });
+    yield put({
+      type: "FETCH_VENUES_SESSIONS",
+      payload: action.payload.venue_id,
+    });
     console.log("adding session");
   } catch (error) {
     console.log("adding session post request failed", error);
@@ -70,7 +73,10 @@ function* deleteSession(action) {
     // now that the session has given us a user object
     // with an id and username set the client-side user object to let
     // the client-side code know the user is logged in
-    yield put({ type: "FETCH_SESSIONS" });
+    // yield put({
+    //   type: "FETCH_VENUES_SESSIONS",
+    //   payload: action.payload.venue_id,
+    // });
     // console.log("all venues stats:", response.data);
   } catch (error) {
     console.log("deleting venue request failed", error);

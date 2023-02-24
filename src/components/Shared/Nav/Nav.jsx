@@ -2,9 +2,15 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./Nav.css";
 import { useSelector, useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 
 function Nav() {
   const dispatch = useDispatch();
+  const history = useHistory();
+  function logOut() {
+    dispatch({ type: "LOGOUT" });
+    history.push("/");
+  }
 
   return (
     <div className="nav">
@@ -19,10 +25,7 @@ function Nav() {
         </Link>
       </div>
       <div className="nav-item">
-        <p
-          className="log-out font-wt-bold font-md"
-          onClick={() => dispatch({ type: "LOGOUT" })}
-        >
+        <p className="log-out font-wt-bold font-md" onClick={logOut}>
           Log Out
         </p>
       </div>

@@ -80,16 +80,17 @@ export default function SpecificVenueViewPage() {
 
   function deleteSessionBtn(sID) {
     dispatch({ type: "DELETE_SESSION", payload: Number(sID) });
-    dispatch({ type: "FETCH_VENUES_SESSIONS", payload: venId });
+    dispatch({ type: "FETCH_VENUES_SESSIONS", payload: id });
+    dispatch({ type: "FETCH_SPECIFIC_VENUE", payload: id });
     history.push(`/venue-view/${venId}`);
     // console.log(sID);
   }
 
   function addNewSession() {
-    dispatch({ type: "FETCH_SPECIFIC_VENUE", payload: venId });
-    dispatch({ type: "FETCH_VENUES_SESSIONS", payload: venId });
+    dispatch({ type: "FETCH_SPECIFIC_VENUE", payload: id });
+    dispatch({ type: "FETCH_VENUES_SESSIONS", payload: id });
     // console.log(venId);
-    history.push(`/add-session/${venId}`);
+    history.push(`/add-session/${id}`);
   }
 
   function saveEdit() {
@@ -222,7 +223,7 @@ export default function SpecificVenueViewPage() {
                           onClick={() => getSession(sesh.id)}
                           className="session-card"
                         >
-                          <div className="session-header list-card-header">
+                          <div className="session-header-ven list-card-header">
                             <div className="date">
                               <p>Date: </p>
                               <h2>
@@ -231,16 +232,17 @@ export default function SpecificVenueViewPage() {
                                   "dd/MM/yy"
                                 )}
                               </h2>
-                              <div className="delete-btn">
-                                <button
-                                  onClick={(e) => {
-                                    e.stopPropagation();
-                                    confirmSessionDelete(sesh.id);
-                                  }}
-                                >
-                                  Delete
-                                </button>
-                              </div>
+                            </div>
+                            <div className="delete-btn clr-primary ">
+                              <p
+                                className="font-wt-bold"
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  confirmSessionDelete(sesh.id);
+                                }}
+                              >
+                                Delete
+                              </p>
                             </div>
                           </div>
                           <div className="session-stats">
@@ -262,11 +264,18 @@ export default function SpecificVenueViewPage() {
                     })}
                   </>
                 ) : (
-                  <>
-                    <div className="no-sessions">
-                      <p className="clr-neutral">No sessions to show</p>
+                  <div className="no-stats-container clr-light">
+                    <div className="no-stats-header">
+                      <h2 className="clr-neutral">No sessions to show</h2>
                     </div>
-                  </>
+                    <div className="no-stats-body">
+                      <h2 className="font-wt-regular">
+                        Here is where your list of sessions for this venue will
+                        be. Click the "Add Session" button to create a new
+                        session for this venue!
+                      </h2>
+                    </div>
+                  </div>
                 )}
               </div>
             </div>

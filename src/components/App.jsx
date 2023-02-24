@@ -21,7 +21,6 @@ import SessionFormPage from "./Pages/SessionFormPage/SessionFormPage";
 import VenueListPage from "./Pages/VenueListPage/VenueListPage";
 import SpecificVenueViewPage from "./Pages/SpecificVenuePage/SpecificVenuePage";
 import SessionViewPage from "./Pages/SessionViewPage/SessionViewPage";
-import EditSessionPage from "./Pages/EditSessionPage/EditSessionPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -71,10 +70,6 @@ function App() {
 
           <ProtectedRoute exact path="/add-session/:id">
             <SessionFormPage />
-          </ProtectedRoute>
-
-          <ProtectedRoute exact path="/edit-session/:id/:venid">
-            <EditSessionPage />
           </ProtectedRoute>
 
           <Route exact path="/login">

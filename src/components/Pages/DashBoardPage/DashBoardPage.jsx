@@ -71,7 +71,12 @@ function DashBoardPage() {
       <div className="main-container">
         <div className="dashboard-container">
           <div className="heading">
-            <h1 className="clr-light ">Dashboard</h1>
+            <div className="venue-heading-cont-2">
+              <div className="venue-heading-header">
+                <h1 className="clr-light ">Dashboard</h1>
+              </div>
+              <div className="edit-btns-container"></div>
+            </div>
           </div>
           <div className="stats-container clr-light">
             <div className="stat">
@@ -213,8 +218,8 @@ function DashBoardPage() {
                 </div>
                 <div className="no-stats-body">
                   <h2 className="font-wt-regular">
-                    To get started with MyPokerStats, click the add venue the
-                    "Add Venue" button above and enter some sessions!
+                    To get started with MyPokerStats, click the "Add Venue"
+                    button above and create a new venue!
                   </h2>
                 </div>
               </div>

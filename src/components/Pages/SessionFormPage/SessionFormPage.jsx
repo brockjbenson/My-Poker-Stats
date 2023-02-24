@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import Nav from "../../Shared/Nav/Nav";
+import "../EditSessionPage/EditSessionPage.css";
 
 export default function SessionFormPage() {
   const history = useHistory();
@@ -29,7 +30,7 @@ export default function SessionFormPage() {
   console.log(venueID);
 
   useEffect(() => {
-    dispatch({ type: "FETCH_SPECIFIC_VENUE", payload: id });
+    dispatch({ type: "FETCH_SPECIFIC_VENUE", payload: venueID });
   }, []);
 
   function cancelAdd() {
@@ -48,6 +49,7 @@ export default function SessionFormPage() {
       venue_id: Number(venueID),
     };
     dispatch({ type: "ADD_SESSION", payload: sessionObj });
+    dispatch({ type: "FETCH_VENUES_SESSIONS", payload: venueID });
     setBuyIn("");
     setCashOut("");
     setStakes("");
@@ -127,7 +129,7 @@ export default function SessionFormPage() {
                 onChange={(e) => setNotes(e.target.value)}
                 placeholder="Eg. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque lobortis, massa vel pharetra consectetur, enim orci consequat ligula, a luctus."
                 required
-                maxLength="500"
+                maxLength="150"
               />
             </div>
           </div>
