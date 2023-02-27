@@ -59,23 +59,20 @@ export default function SessionFormPage() {
     history.push(`/venue-view/${venueID}`);
   }
   return (
-    <div className="body-container">
-      <div className="main-container">
-        <div className="heading-container clr-light">
-          <h1>Add Session</h1>
+    <div className="body">
+      <div className="main">
+        <div className="header-add-session clr-light">
+          <div className="heading">
+            <h1>Add Session for:</h1>
+            <h2 className="clr-light font-wt-bold">{venName}</h2>
+          </div>
         </div>
         <form className="session-form" onSubmit={addSession}>
           <div className="inputs">
-            <div className="input-container r1">
-              <div className="session-venue-header">
-                <h2 className="clr-light font-wt-regular">
-                  Venue: <span className="font-wt-bold">{venName}</span>
-                </h2>
-              </div>
-            </div>
             <div className="input-container r2">
               <p className="clr-light">Buy In</p>
               <input
+                className="add-session-input"
                 type="number"
                 value={buyIn}
                 onChange={(e) => setBuyIn(e.target.value)}
@@ -87,6 +84,7 @@ export default function SessionFormPage() {
               <p className="clr-light">Cash Out</p>
               <input
                 type="number"
+                className="add-session-input"
                 value={cashOut}
                 onChange={(e) => setCashOut(e.target.value)}
                 placeholder="200.25"
@@ -98,6 +96,7 @@ export default function SessionFormPage() {
               <input
                 type="number"
                 value={hours}
+                className="add-session-input"
                 onChange={(e) => setHours(e.target.value)}
                 placeholder="5.3"
                 required
@@ -107,6 +106,7 @@ export default function SessionFormPage() {
               <p className="clr-light">Date</p>
               <input
                 type="date"
+                className="add-session-input"
                 value={date}
                 onChange={(e) => setDate(e.target.value)}
                 placeholder="Eg. 02/02/2023"
@@ -117,6 +117,7 @@ export default function SessionFormPage() {
               <p className="clr-light">Stakes</p>
               <input
                 type="text"
+                className="add-session-input"
                 value={stakes}
                 onChange={(e) => setStakes(e.target.value)}
                 placeholder="Eg. 1/2"

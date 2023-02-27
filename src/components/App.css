@@ -25,7 +25,8 @@ h1,
 h2,
 h3,
 input,
-p {
+p,
+textarea {
   padding: 0;
   margin: 0;
   letter-spacing: 0.05rem;
@@ -228,6 +229,14 @@ button:hover {
   /* align-items: top; */
 }
 
+.header-add-session {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 15%;
+}
+
 .stats-container {
   display: flex;
   flex-wrap: wrap;
@@ -272,7 +281,20 @@ button:hover {
 /* ------------------- Session View Page ------------------- */
 .notes-container {
   height: 100%;
+  width: 100%;
 }
+
+.session-edit-input {
+  background-color: transparent;
+  color: var(--clr-light);
+  border: none;
+  border-bottom: 0.2rem solid var(--clr-light);
+  font-size: var(--ft-size-md);
+  width: 15rem;
+  height: fit-content;
+  text-align: center;
+}
+
 .notes-header {
   height: 10%;
   display: flex;
@@ -280,8 +302,14 @@ button:hover {
   align-items: center;
 }
 
+.session-edit-textarea {
+  width: 100%;
+  font-size: var(--ft-size-sm);
+  border: 0.25rem solid var(--clr-light);
+  font-weight: var(--ft-weight-regular);
+}
+
 .notes-body {
-  border: 1px solid white;
   height: 90%;
   padding: 1rem;
   padding-inline: 5rem;
@@ -296,6 +324,10 @@ button:hover {
   height: 85%;
   display: flex;
   flex-direction: column;
+}
+
+.add-session-input {
+  height: 80%;
 }
 
 input::placeholder,
@@ -525,16 +557,6 @@ button:hover {
   color: var(--clr-light);
 }
 
-.session-edit-input {
-  background-color: transparent;
-  color: var(--clr-light);
-  border: 0.2rem solid var(--clr-light);
-  font-size: var(--ft-size-md);
-  width: 90%;
-  height: fit-content;
-  text-align: center;
-}
-
 .session-heading-cont-1 > button {
   border: none;
   background-color: transparent;
@@ -559,17 +581,6 @@ button:hover {
 
 .venue-list-container {
   height: 85%;
-}
-
-.session-heading-cont-1,
-.session-heading-cont-3,
-.venue-heading-cont-1,
-.venue-heading-cont-3 {
-  width: 15%;
-  min-height: 100%;
-  /* border: 1px solid black; */
-  display: flex;
-  justify-content: center;
 }
 
 .recent {

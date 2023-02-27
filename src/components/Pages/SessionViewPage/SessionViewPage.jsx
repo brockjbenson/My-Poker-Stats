@@ -102,218 +102,210 @@ export default function SessionViewPage() {
   // ------- Edit Session fn ------- //
 
   return (
-    <div className="body-container">
-      <div className="main-container">
-        <div className="venue-view-container">
-          {session[0] !== undefined && (
+    <div className="body">
+      <div className="main">
+        <div className="header clr-light">
+          {editMode ? (
             <>
-              <div className="heading clr-light">
-                <div className="session-heading-cont-1">
-                  <button
-                    className="clr-light font-wt-bold"
-                    onClick={goBackToVenue}
-                  >
-                    Back
-                  </button>
-                </div>
-                {editMode ? (
-                  <div className="venue-heading-cont-2">
-                    <div className="venue-heading-header">
-                      <h1>Edit Session {session[0].id}</h1>
-                    </div>
-                    <div className="edit-btns-container">
-                      <button className="accent-btn" onClick={editSession}>
-                        Save
-                      </button>
-                      <button
-                        className="accent-btn"
-                        onClick={() => setEditMode(false)}
-                      >
-                        Cancel
-                      </button>
-                    </div>
-                  </div>
-                ) : (
-                  <div className="venue-heading-cont-2">
-                    <div className="venue-heading-header">
-                      <h1>Session {session[0].id}</h1>
-                    </div>
-                    <div className="edit-btns-container">
-                      <button
-                        className="accent-btn"
-                        onClick={() => confirmFunction(session[0].id)}
-                      >
-                        Delete
-                      </button>
-                      <button
-                        className="accent-btn"
-                        onClick={() => setEditMode(true)}
-                      >
-                        Edit
-                      </button>
-                    </div>
-                  </div>
-                )}
-                <div className="session-heading-cont-3"></div>
+              <div className="heading">
+                <h1>Edit Session at</h1>
+                <h2 onClick={goBackToVenue}>{venName}</h2>
               </div>
-              <div className="stats-container clr-light">
-                <div className="stat">
-                  {editMode ? (
-                    <>
-                      <p>Cash Out</p>
-                      <input
-                        className="session-edit-input"
-                        type="text"
-                        value={cashOut}
-                        onChange={(e) => setCashOut(e.target.value)}
-                        required
-                      />
-                    </>
-                  ) : (
-                    <>
-                      <p>Total Net Profit</p>
-                      <NumericFormat
-                        className="h2"
-                        value={session[0].net_profit}
-                        prefix={"$"}
-                        thousandSeparator=","
-                        allowNegative
-                        decimalScale={2}
-                      />
-                    </>
-                  )}
-                </div>
-                <div className="stat">
-                  <p>Date</p>
-                  {editMode ? (
-                    <>
-                      <input
-                        className="session-edit-input"
-                        type="date"
-                        value={format(new Date(date), "dd/MM/yy")}
-                        onChange={(e) => setDate(e.target.value)}
-                        required
-                      />
-                    </>
-                  ) : (
-                    <>
-                      <h2>
-                        {format(new Date(session[0].session_date), "dd/MM/yy")}
-                      </h2>
-                    </>
-                  )}
-                </div>
-                <div className="stat">
-                  <p>Hours Played</p>
-                  {editMode ? (
-                    <>
-                      <input
-                        className="session-edit-input"
-                        type="number"
-                        value={hours}
-                        onChange={(e) => setHours(e.target.value)}
-                        required
-                      />
-                    </>
-                  ) : (
-                    <>
-                      <h2>{hours}</h2>
-                    </>
-                  )}
-                </div>
-                <div className="stat">
-                  <p>Buy In</p>
-                  {editMode ? (
-                    <>
-                      <input
-                        className="session-edit-input"
-                        type="number"
-                        value={buyIn}
-                        onChange={(e) => setBuyIn(e.target.value)}
-                        required
-                      />
-                    </>
-                  ) : (
-                    <>
-                      <NumericFormat
-                        className="h2"
-                        value={session[0].buy_in}
-                        prefix={"$"}
-                        thousandSeparator=","
-                        allowNegative
-                        decimalScale={2}
-                      />
-                    </>
-                  )}
-                </div>
-                <div className="stat">
-                  <p>Stakes</p>
-                  {editMode ? (
-                    <>
-                      <input
-                        className="session-edit-input"
-                        type="text"
-                        value={stakes}
-                        onChange={(e) => setStakes(e.target.value)}
-                        required
-                      />
-                    </>
-                  ) : (
-                    <>
-                      <h2>{session[0].stakes}</h2>
-                    </>
-                  )}
-                </div>
-                <div className="stat">
-                  <p>Hourly</p>
-                  {editMode ? (
-                    <>
-                      <h2>-</h2>
-                    </>
-                  ) : (
-                    <>
-                      <NumericFormat
-                        className="h2"
-                        value={session[0].hourly}
-                        prefix={"$"}
-                        thousandSeparator=","
-                        allowNegative
-                        decimalScale={2}
-                      />
-                    </>
-                  )}
-                </div>
+              <div className="button-container">
+                <button className="accent-btn" onClick={editSession}>
+                  Save
+                </button>
+                <button
+                  className="accent-btn"
+                  onClick={() => setEditMode(false)}
+                >
+                  Cancel
+                </button>
+              </div>
+            </>
+          ) : (
+            <>
+              <div className="heading">
+                <h1>Session at</h1>
+                <h2 onClick={goBackToVenue}>{venName}</h2>
+              </div>
+              <div className="button-container">
+                <button
+                  className="accent-btn"
+                  onClick={() => confirmFunction(sessionID)}
+                >
+                  Delete
+                </button>
+                <button
+                  className="accent-btn"
+                  onClick={() => setEditMode(true)}
+                >
+                  Edit
+                </button>
               </div>
             </>
           )}
-          <div className="card-container bg">
-            <div className="notes-container clr-light">
-              {editMode ? (
-                <>
-                  <div className="notes-header">
-                    <h2>Edit Notes</h2>
-                  </div>
-                  <div className="notes-body">
-                    <textarea
+        </div>
+        {session[0] !== undefined && (
+          <>
+            <div className="stats-container clr-light">
+              <div className="stat">
+                {editMode ? (
+                  <>
+                    <p>Cash Out</p>
+                    <input
+                      className="session-edit-input"
                       type="text"
-                      value={notes}
-                      onChange={(e) => setNotes(e.target.value)}
+                      value={cashOut}
+                      onChange={(e) => setCashOut(e.target.value)}
                       required
-                      maxLength="150"
                     />
-                  </div>
-                </>
-              ) : (
-                <>
-                  <div className="notes-header">
-                    <h2>Notes</h2>
-                  </div>
-                  <div className="notes-body">
-                    <p>{notes}</p>
-                  </div>
-                </>
-              )}
+                  </>
+                ) : (
+                  <>
+                    <p>Total Net Profit</p>
+                    <NumericFormat
+                      className="h2"
+                      value={session[0].net_profit}
+                      prefix={"$"}
+                      thousandSeparator=","
+                      allowNegative
+                      decimalScale={2}
+                    />
+                  </>
+                )}
+              </div>
+              <div className="stat">
+                <p>Date</p>
+                {editMode ? (
+                  <>
+                    <input
+                      className="session-edit-input"
+                      type="date"
+                      value={format(new Date(date), "dd/MM/yy")}
+                      onChange={(e) => setDate(e.target.value)}
+                      required
+                    />
+                  </>
+                ) : (
+                  <>
+                    <h2>
+                      {format(new Date(session[0].session_date), "dd/MM/yy")}
+                    </h2>
+                  </>
+                )}
+              </div>
+              <div className="stat">
+                <p>Hours Played</p>
+                {editMode ? (
+                  <>
+                    <input
+                      className="session-edit-input"
+                      type="number"
+                      value={hours}
+                      onChange={(e) => setHours(e.target.value)}
+                      required
+                    />
+                  </>
+                ) : (
+                  <>
+                    <h2>{hours}</h2>
+                  </>
+                )}
+              </div>
+              <div className="stat">
+                <p>Buy In</p>
+                {editMode ? (
+                  <>
+                    <input
+                      className="session-edit-input"
+                      type="number"
+                      value={buyIn}
+                      onChange={(e) => setBuyIn(e.target.value)}
+                      required
+                    />
+                  </>
+                ) : (
+                  <>
+                    <NumericFormat
+                      className="h2"
+                      value={session[0].buy_in}
+                      prefix={"$"}
+                      thousandSeparator=","
+                      allowNegative
+                      decimalScale={2}
+                    />
+                  </>
+                )}
+              </div>
+              <div className="stat">
+                <p>Stakes</p>
+                {editMode ? (
+                  <>
+                    <input
+                      className="session-edit-input"
+                      type="text"
+                      value={stakes}
+                      onChange={(e) => setStakes(e.target.value)}
+                      required
+                    />
+                  </>
+                ) : (
+                  <>
+                    <h2>{session[0].stakes}</h2>
+                  </>
+                )}
+              </div>
+              <div className="stat">
+                <p>Hourly</p>
+                {editMode ? (
+                  <>
+                    <h2>-</h2>
+                  </>
+                ) : (
+                  <>
+                    <NumericFormat
+                      className="h2"
+                      value={session[0].hourly}
+                      prefix={"$"}
+                      thousandSeparator=","
+                      allowNegative
+                      decimalScale={2}
+                    />
+                  </>
+                )}
+              </div>
             </div>
+          </>
+        )}
+        <div className="card-container bg">
+          <div className="notes-container clr-light">
+            {editMode ? (
+              <>
+                <div className="notes-header">
+                  <h2>Edit Notes</h2>
+                </div>
+                <div className="notes-body">
+                  <textarea
+                  className="session-edit-textarea"
+                    type="text"
+                    value={notes}
+                    onChange={(e) => setNotes(e.target.value)}
+                    required
+                    maxLength="150"
+                  />
+                </div>
+              </>
+            ) : (
+              <>
+                <div className="notes-header">
+                  <h2>Notes</h2>
+                </div>
+                <div className="notes-body">
+                  <p>{notes}</p>
+                </div>
+              </>
+            )}
           </div>
         </div>
       </div>
