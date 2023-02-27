@@ -11,7 +11,7 @@ function LoginPage() {
       <div className="main">
         <div className="header">
           <div className="heading">
-            <h1 className="clr-light">Welcome Back</h1>
+            <h1 className="clr-light">Log In</h1>
           </div>
         </div>
         <LoginForm />
