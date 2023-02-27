@@ -1,0 +1,54 @@
+:root {
+  /* Colors */
+  --clr-primary: #5937a4;
+  --clr-dark: #000;
+  --clr-light: #fff;
+  --clr-neutral: #959595;
+  /* Font-Sizes */
+  --ft-size-lg: 5rem;
+  --ft-size-md: 3rem;
+  --ft-size-sm: 2rem;
+  /* Font Weights */
+  --ft-weight-light: 200;
+  --ft-weight-regular: 300;
+  --ft-weight-bold: 400;
+}
+
+.new-user-container {
+  height: 25%;
+  text-align: center;
+}
+
+.register-redirect {
+  color: var(--clr-neutral);
+}
+
+.register-text {
+  color: var(--clr-light);
+  font-weight: var(--ft-weight-bold);
+}
+
+.log-reg-input {
+  width: 85%;
+  height: 8rem;
+  margin-bottom: 5rem;
+  font-size: var(--ft-size-md);
+  color: var(--clr-light);
+  border: 0.2rem solid var(--clr-light);
+  background-color: transparent;
+  border-radius: 1.5rem;
+  padding-left: 1rem;
+}
+
+.log-reg-inputs-container {
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.log-reg-btn-container {
+  display: flex;
+  justify-content: center;
+}
