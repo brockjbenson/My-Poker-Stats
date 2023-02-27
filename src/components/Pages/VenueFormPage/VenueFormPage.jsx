@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import Nav from "../../Shared/Nav/Nav";
+import "../VenueFormPage/VenueFormPage.css";
 
 export default function VenueFormPage() {
   const dispatch = useDispatch();
@@ -17,22 +18,34 @@ export default function VenueFormPage() {
     history.push("/venue-list");
   }
   return (
-    <>
-      <div className="form">
-        <div className="heading">
-          <h1>Add Venue</h1>
+    <div className="body">
+      <div className="main">
+        <div className="header">
+          <div className="heading">
+            <h1>Add Venue</h1>
+          </div>
         </div>
-        <input
-          type="text"
-          value={venueName}
-          onChange={(e) => setVenueName(e.target.value)}
-          placeholder="Venue Name"
-        />
-        <button onClick={addVenue}>Add Venue</button>
+        <div className="venue-form">
+          <div className="venue-input">
+            <input
+              className="add-venue-input"
+              type="text"
+              value={venueName}
+              onChange={(e) => setVenueName(e.target.value)}
+              placeholder="Venue Name"
+            />
+          </div>
+          <div className="venue-add-button">
+            <button className="btn-lg-primary" onClick={addVenue}>
+              Add Venue
+            </button>
+          </div>
+          <div className="filler"></div>
+        </div>
       </div>
       <div className="nav-container">
         <Nav />
       </div>
-    </>
+    </div>
   );
 }

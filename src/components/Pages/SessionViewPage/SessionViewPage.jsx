@@ -6,6 +6,7 @@ import { format } from "date-fns";
 import { useHistory, useParams } from "react-router-dom";
 import { useEffect } from "react";
 import Nav from "../../Shared/Nav/Nav";
+import { NumericFormat } from "react-number-format";
 
 // ------- Component ------- //
 export default function SessionViewPage() {
@@ -38,6 +39,9 @@ export default function SessionViewPage() {
   const [venName, setVenName] = useState("");
   const [sessionID, setSessionId] = useState("");
 
+  console.log("venue id:", Number(venid));
+  console.log("session:", session);
+
   useEffect(() => {
     session[0] !== undefined && setVenName(session[0].venue);
     session[0] !== undefined && setSessionId(session[0].id);
@@ -48,8 +52,6 @@ export default function SessionViewPage() {
     session[0] !== undefined && setStakes(session[0].stakes);
     session[0] !== undefined && setNotes(session[0].notes);
   }, [session]);
-
-  console.log(session);
 
   function editSession() {
     const sessionObj = {
@@ -87,7 +89,6 @@ export default function SessionViewPage() {
 
   function goBackToVenue() {
     history.push(`/venue-view/${venid}`);
-    console.log(venid);
   }
 
   // ------- Delete Session fn ------- //
@@ -171,7 +172,14 @@ export default function SessionViewPage() {
                   ) : (
                     <>
                       <p>Total Net Profit</p>
-                      <h2>${session[0].net_profit}</h2>
+                      <NumericFormat
+                        className="h2"
+                        value={session[0].net_profit}
+                        prefix={"$"}
+                        thousandSeparator=","
+                        allowNegative
+                        decimalScale={2}
+                      />
                     </>
                   )}
                 </div>
@@ -227,7 +235,14 @@ export default function SessionViewPage() {
                     </>
                   ) : (
                     <>
-                      <h2>{session[0].buy_in}</h2>
+                      <NumericFormat
+                        className="h2"
+                        value={session[0].buy_in}
+                        prefix={"$"}
+                        thousandSeparator=","
+                        allowNegative
+                        decimalScale={2}
+                      />
                     </>
                   )}
                 </div>
@@ -257,30 +272,45 @@ export default function SessionViewPage() {
                     </>
                   ) : (
                     <>
-                      <h2>{session[0].buy_in}</h2>
+                      <NumericFormat
+                        className="h2"
+                        value={session[0].hourly}
+                        prefix={"$"}
+                        thousandSeparator=","
+                        allowNegative
+                        decimalScale={2}
+                      />
                     </>
                   )}
                 </div>
               </div>
             </>
           )}
-          <div className="card-container">
+          <div className="card-container bg">
             <div className="notes-container clr-light">
               {editMode ? (
                 <>
-                  <h2>Edit Notes</h2>
-                  <textarea
-                    type="text"
-                    value={notes}
-                    onChange={(e) => setNotes(e.target.value)}
-                    required
-                    maxLength="150"
-                  />
+                  <div className="notes-header">
+                    <h2>Edit Notes</h2>
+                  </div>
+                  <div className="notes-body">
+                    <textarea
+                      type="text"
+                      value={notes}
+                      onChange={(e) => setNotes(e.target.value)}
+                      required
+                      maxLength="150"
+                    />
+                  </div>
                 </>
               ) : (
                 <>
-                  <h2>Notes</h2>
-                  <p>{notes}</p>
+                  <div className="notes-header">
+                    <h2>Notes</h2>
+                  </div>
+                  <div className="notes-body">
+                    <p>{notes}</p>
+                  </div>
                 </>
               )}
             </div>

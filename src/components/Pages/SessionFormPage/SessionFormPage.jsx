@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import Nav from "../../Shared/Nav/Nav";
-import "../EditSessionPage/EditSessionPage.css";
 
 export default function SessionFormPage() {
   const history = useHistory();
@@ -62,14 +61,17 @@ export default function SessionFormPage() {
   return (
     <div className="body-container">
       <div className="main-container">
-        <div className="add-session-heading clr-light">
+        <div className="heading-container clr-light">
           <h1>Add Session</h1>
         </div>
         <form className="session-form" onSubmit={addSession}>
           <div className="inputs">
             <div className="input-container r1">
-              <p className="clr-light">Venue</p>
-              <input type="text" value={venName} readOnly required />
+              <div className="session-venue-header">
+                <h2 className="clr-light font-wt-regular">
+                  Venue: <span className="font-wt-bold">{venName}</span>
+                </h2>
+              </div>
             </div>
             <div className="input-container r2">
               <p className="clr-light">Buy In</p>
@@ -127,9 +129,9 @@ export default function SessionFormPage() {
                 type="text"
                 value={notes}
                 onChange={(e) => setNotes(e.target.value)}
-                placeholder="Eg. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque lobortis, massa vel pharetra consectetur, enim orci consequat ligula, a luctus."
+                placeholder="Notes Example"
                 required
-                maxLength="150"
+                maxLength="1000"
               />
             </div>
           </div>

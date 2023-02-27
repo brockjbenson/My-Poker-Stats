@@ -16,6 +16,8 @@ export default function VenueListPage() {
     (store) => store.venuesReducer.allVenuesReducer
   );
 
+  console.log("venue list:", venueList);
+
   function editVenue(id, name) {
     setEditMode(true);
     setEditId(id);
@@ -56,15 +58,13 @@ export default function VenueListPage() {
     history.push("/add-venue");
   };
   return (
-    <div className="body-container">
-      <div className="main-container">
-        <div className="heading clr-light">
-          <div className="venue-heading-cont-2">
-            <div className="venue-heading-header">
-              <h1>My Venues</h1>
-            </div>
-            <div className="edit-btns-container"></div>
+    <div className="body">
+      <div className="main">
+        <div className="header">
+          <div className="heading">
+            <h1>My Venues</h1>
           </div>
+          <div className="buttons-container"></div>
         </div>
         <div className="venue-list-container bg">
           <div className="addnew-btn">

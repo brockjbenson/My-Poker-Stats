@@ -1,0 +1,33 @@
+.add-venue-input {
+  width: 85%;
+  height: 8rem;
+  margin-bottom: 5rem;
+  font-size: var(--ft-size-md);
+  color: var(--clr-light);
+  border: 0.2rem solid var(--clr-light);
+  background-color: transparent;
+  border-radius: 1.5rem;
+}
+
+.venue-add-button {
+  height: 20%;
+}
+
+.venue-input {
+  width: 100%;
+  height: 20%;
+  display: flex;
+  justify-content: center;
+}
+
+.venue-form {
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.filler {
+  height: 60%;
+}

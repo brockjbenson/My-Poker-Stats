@@ -149,6 +149,15 @@ h2 {
   font-family: "Kanit", sans-serif;
 }
 
+.h2-2 {
+  background-color: transparent;
+  color: var(--clr-primary);
+  text-align: center;
+  font-size: var(--ft-size-sm);
+  border: none;
+  font-family: "Kanit", sans-serif;
+}
+
 .p {
   background-color: transparent;
   color: var(--clr-primary);
@@ -163,6 +172,11 @@ p {
   font-weight: var(--ft-weight-regular);
 }
 
+/* input {
+  border-radius: 1.5rem;
+  padding-left: 0.5rem;
+} */
+
 .bg {
   background-color: rgba(255, 255, 255, 0.1);
 }
@@ -172,12 +186,78 @@ button:hover {
 }
 
 /* ---- End Utility Classes ---- */
-.dashboard-container,
-.venue-view-container {
+
+/* ------------------- Global Style ------------------- */
+
+.body {
+  height: 100vh;
+  width: 100vw;
   display: flex;
   flex-direction: column;
-  height: 100%;
+  background: linear-gradient(
+    28deg,
+    rgba(0, 0, 0, 1) 34%,
+    rgba(45, 28, 84, 1) 77%,
+    rgba(85, 49, 166, 1) 100%
+  );
 }
+
+.main {
+  height: 90%;
+  width: 100vw;
+  /* border: 1px solid black; */
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 20%;
+}
+
+.buttons-container {
+  display: flex;
+  justify-content: center;
+  height: 30%;
+  width: 100%;
+}
+
+.heading {
+  width: 100%;
+  height: 70%;
+  text-align: center;
+  color: var(--clr-light);
+  /* align-items: top; */
+}
+
+.stats-container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-basis: 3;
+  justify-content: center;
+  margin-inline: auto;
+  height: 20%;
+  color: var(--clr-light);
+}
+
+.stat {
+  width: 33%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.list-container {
+  height: 87.5%;
+  overflow-y: auto;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+/* ------------------- End Global Style ------------------- */
 
 /* ------------------- Landing Style ------------------- */
 .landing-container {
@@ -220,6 +300,183 @@ button:hover {
   height: 80%;
 }
 /* ------------------- End Landing Style ------------------- */
+
+/* ------------------- Venue View Page ------------------- */
+
+.edit-venue-input {
+  width: 50%;
+  font-size: var(--ft-size-lg);
+  height: min-content;
+  border: none;
+  border-bottom: 0.25rem solid white;
+  background-color: transparent;
+  color: var(--clr-neutral);
+  text-align: center;
+}
+
+/* ------------------- End Venue View Page ------------------- */
+
+/* ------------------- Session View Page ------------------- */
+.notes-container {
+  height: 100%;
+}
+.notes-header {
+  height: 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.notes-body {
+  border: 1px solid white;
+  height: 90%;
+  padding: 1rem;
+  padding-inline: 5rem;
+}
+
+/* ------------------- End Session View Page ------------------- */
+
+/* ------------------- Session Form Page ------------------- */
+
+.session-form {
+  /* border: 1px solid white; */
+  height: 85%;
+  display: flex;
+  flex-direction: column;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--clr-neutral);
+}
+
+.edit-session-heading,
+.add-session-heading {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 15%;
+}
+
+.inputs {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  height: 95%;
+}
+
+.button-container {
+  min-height: 15%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  /* border: 1px solid white; */
+}
+
+.session-ven-name-container {
+  color: var(--clr-light);
+  width: 90%;
+  height: 20%;
+  /* border: 1px solid white; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.session-ven-name-container > input {
+  width: 100%;
+  height: 8rem;
+}
+
+.input-container {
+  /* border: 0.2rem solid var(--clr-light); */
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.input-container > input {
+  height: 60%;
+  background-color: transparent;
+  border: 0.3rem solid var(--clr-light);
+  border-radius: 2rem;
+  font-size: var(--ft-size-md);
+  width: 90%;
+  padding-inline: 0;
+  padding-left: 0.5rem;
+}
+
+.input-container > input:hover {
+  cursor: text;
+}
+
+.r1 {
+  width: 100%;
+  height: 15%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.r2,
+.r3 {
+  width: 47.5%;
+  height: 15%;
+}
+
+.r4 {
+  height: 15%;
+  width: 100%;
+}
+
+.r2 > input,
+.r3 > input {
+  width: 85%;
+}
+
+.r2 > input,
+.r3 > input,
+.r3 > input,
+.r4 > input,
+.r5 > input {
+  color: var(--clr-light);
+}
+
+.r5 {
+  height: 40%;
+  width: 100%;
+}
+
+.r5 > textarea {
+  text-align: left;
+  height: 80%;
+  width: 88%;
+  display: flex;
+  flex-wrap: wrap;
+  padding-top: 0.5rem;
+}
+
+textarea {
+  background-color: transparent;
+  height: 90%;
+  border: 0.3rem solid var(--clr-light);
+  border-radius: 2rem;
+  color: var(--clr-light);
+  font-size: var(--ft-size-md);
+  padding-left: 1rem;
+  overflow-y: auto;
+  resize: none;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+/* ------------------- End Session Form Page ------------------- */
 
 .date > h2,
 .stakes > h2 {
@@ -325,14 +582,6 @@ button:hover {
   text-align: center;
 }
 
-.heading {
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  height: 20%;
-  /* border: 1px solid black; */
-}
-
 .session-heading-cont-1 > button {
   border: none;
   background-color: transparent;
@@ -366,13 +615,6 @@ button:hover {
   padding-left: 1rem;
 }
 
-.edit-btns-container {
-  display: flex;
-  justify-content: center;
-  height: 30%;
-  width: 100%;
-}
-
 .session-heading-cont-2 {
   width: 70%;
   height: 100%;
@@ -381,10 +623,6 @@ button:hover {
   align-items: center;
 }
 
-.venue-heading-cont-2 {
-  width: 70%;
-  height: 100%;
-}
 .edit-btns-container > p {
   font-size: var(--ft-size-md);
   margin-inline: 2rem;
@@ -412,23 +650,6 @@ button:hover {
   /* border: 1px solid black; */
   display: flex;
   justify-content: center;
-}
-
-.stats-container {
-  display: flex;
-  flex-wrap: wrap;
-  flex-basis: 3;
-  justify-content: center;
-  margin-inline: auto;
-  height: 20%;
-}
-
-.stat {
-  width: 33%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
 }
 
 .recent {
@@ -535,12 +756,6 @@ button:hover {
   background-color: transparent;
   font-size: var(--ft-size-sm);
   color: var(--clr-light);
-}
-
-.sessions-list {
-  height: 87.5%;
-  overflow-y: auto;
-  background-color: rgba(0, 0, 0, 0.3);
 }
 
 .no-sessions {
@@ -675,25 +890,4 @@ button:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.main-container {
-  height: 90%;
-  width: 100vw;
-  /* border: 1px solid black; */
-  overflow-x: hidden;
-  overflow-y: hidden;
-}
-
-.body-container {
-  height: 100vh;
-  width: 100vw;
-  display: flex;
-  flex-direction: column;
-  background: linear-gradient(
-    28deg,
-    rgba(0, 0, 0, 1) 34%,
-    rgba(45, 28, 84, 1) 77%,
-    rgba(85, 49, 166, 1) 100%
-  );
 }
