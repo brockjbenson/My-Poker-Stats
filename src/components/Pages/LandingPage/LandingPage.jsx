@@ -16,7 +16,7 @@ function LandingPage() {
   }
 
   return (
-    <div className="body-container">
+    <div className="body">
       <div className="landing-container">
         <div className="landing-header">
           <h2 className="clr-neutral">Welcome to</h2>

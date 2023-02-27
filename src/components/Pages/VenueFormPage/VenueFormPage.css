@@ -7,6 +7,7 @@
   border: 0.2rem solid var(--clr-light);
   background-color: transparent;
   border-radius: 1.5rem;
+  padding-left: 1rem;
 }
 
 .venue-add-button {

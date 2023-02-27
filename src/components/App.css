@@ -172,11 +172,6 @@ p {
   font-weight: var(--ft-weight-regular);
 }
 
-/* input {
-  border-radius: 1.5rem;
-  padding-left: 0.5rem;
-} */
-
 .bg {
   background-color: rgba(255, 255, 255, 0.1);
 }
@@ -258,48 +253,6 @@ button:hover {
 }
 
 /* ------------------- End Global Style ------------------- */
-
-/* ------------------- Landing Style ------------------- */
-.landing-container {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
-
-.landing-header {
-  height: 25%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding-left: 5rem;
-}
-
-.landing-body {
-  height: 50%;
-}
-
-.landing-buttons {
-  height: 25%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
-}
-
-.landing-section {
-  width: 75%;
-  height: 50%;
-  margin-inline: auto;
-}
-
-.landing-section-header {
-  height: 20%;
-}
-
-.landing-section-body {
-  height: 80%;
-}
-/* ------------------- End Landing Style ------------------- */
 
 /* ------------------- Venue View Page ------------------- */
 
@@ -588,33 +541,6 @@ button:hover {
   font-size: var(--ft-size-sm);
 }
 
-.venue-list-btn,
-.venue-list-btn-2,
-.venue-list-btn-3 {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: var(--ft-size-sm);
-  font-weight: var(--ft-weight-bold);
-}
-
-.venue-list-btn {
-  background-color: var(--clr-primary);
-  color: var(--clr-light);
-}
-
-.venue-list-btn-2 {
-  padding-left: 1rem;
-  color: red;
-}
-
-.venue-list-btn-3 {
-  color: var(--clr-primary);
-  padding-left: 1rem;
-}
-
 .session-heading-cont-2 {
   width: 70%;
   height: 100%;
@@ -633,12 +559,6 @@ button:hover {
 
 .venue-list-container {
   height: 85%;
-}
-
-.venue-list {
-  height: 84%;
-  overflow-y: auto;
-  background-color: rgba(0, 0, 0, 0.3);
 }
 
 .session-heading-cont-1,
@@ -677,42 +597,6 @@ button:hover {
   justify-content: center;
   align-items: center;
   height: 12.5%;
-}
-
-.edit-ven-input {
-  height: 4rem;
-  font-size: var(--ft-size-md);
-  font-family: "Kanit", sans-serif;
-  margin-left: -0.1rem;
-  color: var(--clr-primary);
-  border: 1px solid var(--clr-primary);
-  width: 30rem;
-}
-
-.edit-ven-input:focus {
-  border: none;
-}
-
-.venue-item {
-  background-color: var(--clr-light);
-  color: var(--clr-primary);
-  border-radius: 2rem;
-  margin-block: 3rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 90vw;
-  margin-inline: auto;
-  height: 10rem;
-  padding-left: 1rem;
-}
-
-.venue-item:hover {
-  cursor: pointer;
-}
-
-.venue-item-name {
-  width: 75%;
 }
 
 .venue-btns {

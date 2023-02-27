@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import Nav from "../../Shared/Nav/Nav";
+import "../VenueListPage/VenueListPage.css";
 
 export default function VenueListPage() {
   const dispatch = useDispatch();
@@ -76,10 +77,10 @@ export default function VenueListPage() {
             <div className="venue-list">
               {venueList.map((venue, index) => {
                 return (
-                  <div key={index} className="venue-item">
+                  <div key={index} className="venue-list-card">
                     <div
                       onClick={() => sendToVenue(venue.id)}
-                      className="venue-item-name"
+                      className="venue-list-name"
                     >
                       {editMode && Number(editID) === venue.id ? (
                         <input
@@ -94,7 +95,7 @@ export default function VenueListPage() {
                           }}
                         />
                       ) : (
-                        <h2>{venue.name}</h2>
+                        <h2 className="venue-card-name">{venue.name}</h2>
                       )}
                     </div>
                     {editMode && Number(editID) === venue.id ? (
