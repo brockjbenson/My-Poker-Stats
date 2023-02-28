@@ -71,7 +71,7 @@ export default function SessionFormPage() {
         <form className="session-form" onSubmit={addSession}>
           <div className="session-form-inputs">
             <div className="input-container r2">
-              <p className="clr-light">Buy In</p>
+              <p>Buy In</p>
               <input
                 className="add-session-input"
                 type="number"
@@ -82,7 +82,7 @@ export default function SessionFormPage() {
               />
             </div>
             <div className="input-container r2">
-              <p className="clr-light">Cash Out</p>
+              <p>Cash Out</p>
               <input
                 type="number"
                 className="add-session-input"
@@ -93,7 +93,7 @@ export default function SessionFormPage() {
               />
             </div>
             <div className="input-container r3">
-              <p className="clr-light">Hours Played</p>
+              <p>Hours Played</p>
               <input
                 type="number"
                 value={hours}
@@ -104,7 +104,7 @@ export default function SessionFormPage() {
               />
             </div>
             <div className="input-container r3">
-              <p className="clr-light">Date</p>
+              <p>Date</p>
               <input
                 type="date"
                 className="add-session-input"
@@ -115,7 +115,7 @@ export default function SessionFormPage() {
               />
             </div>
             <div className="input-container r4">
-              <p className="clr-light">Stakes</p>
+              <p>Stakes</p>
               <input
                 type="text"
                 className="add-session-input"
@@ -126,7 +126,7 @@ export default function SessionFormPage() {
               />
             </div>
             <div className="input-container r5">
-              <p className="clr-light">Notes</p>
+              <p>Notes</p>
               <textarea
                 type="text"
                 value={notes}

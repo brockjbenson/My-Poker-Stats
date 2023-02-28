@@ -114,3 +114,118 @@ textarea {
   justify-content: center;
   height: 95%;
 }
+
+@media screen and (min-width: 754px) {
+  .session-form {
+    /* border: 1px solid white; */
+    height: 60rem;
+    width: 80rem;
+    margin-inline: auto;
+    margin-block: 5rem;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .add-session-input {
+    height: 80%;
+  }
+
+  .input-container {
+    /* border: 0.2rem solid var(--clr-light); */
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    color: var(--clr-light);
+    font-size: var(--ft-size-md);
+  }
+
+  .input-container > input {
+    height: 60%;
+    border: 0.3rem solid var(--clr-light);
+    border-radius: 2rem;
+    font-size: var(--ft-size-md);
+    width: 90%;
+    padding-inline: 0;
+    padding-left: 0.5rem;
+  }
+
+  .input-container > input:hover {
+    cursor: text;
+  }
+
+  .r1 {
+    width: 100%;
+    height: 15%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .r2,
+  .r3 {
+    width: 30rem;
+    height: 15%;
+  }
+
+  .r4 {
+    height: 15%;
+    width: 30rem;
+  }
+
+  .r2 > input,
+  .r3 > input {
+    width: 85%;
+  }
+
+  .r2 > input,
+  .r3 > input,
+  .r3 > input,
+  .r4 > input,
+  .r5 > input {
+    color: var(--clr-primary);
+  }
+
+  .r5 {
+    height: 40%;
+    width: 100%;
+  }
+
+  .r5 > textarea {
+    text-align: left;
+    height: 80%;
+    width: 55rem;
+    display: flex;
+    flex-wrap: wrap;
+    padding-top: 0.5rem;
+  }
+
+  textarea {
+    background-color: transparent;
+    height: 90%;
+    border: 0.3rem solid var(--clr-light);
+    border-radius: 2rem;
+    color: var(--clr-light);
+    font-size: var(--ft-size-md);
+    padding-left: 1rem;
+    overflow-y: auto;
+    resize: none;
+  }
+
+  .session-button-container {
+    height: 15%;
+    width: 100%;
+    justify-content: space-evenly;
+    display: flex;
+  }
+
+  .session-form-inputs {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    height: 95%;
+  }
+}

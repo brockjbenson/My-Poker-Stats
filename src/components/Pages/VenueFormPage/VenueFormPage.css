@@ -32,3 +32,6 @@
 .filler {
   height: 60%;
 }
+
+@media screen and (min-width: 754px) {
+}

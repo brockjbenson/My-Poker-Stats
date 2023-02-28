@@ -85,3 +85,7 @@
   justify-content: space-between;
   padding-right: 1rem;
 }
+
+.venue-list-container {
+  height: 85%;
+}

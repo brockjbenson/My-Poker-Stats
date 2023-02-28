@@ -8,6 +8,7 @@ import { useHistory } from "react-router-dom";
 import { NumericFormat } from "react-number-format";
 import Nav from "../../Shared/Nav/Nav";
 import "../SpecificVenuePage/SpecificVenuePage.css";
+import "../DashBoardPage/DashBoardPage.css";
 
 function DashBoardPage() {
   // this component doesn't do much to start, just renders some user reducer info to the DOM

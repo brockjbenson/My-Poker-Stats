@@ -1,1 +1,41 @@
+.session-header-ven {
+  display: flex;
+  justify-content: space-between;
+  width: 87%;
+  height: 30%;
+  margin-inline: auto;
+  font-weight: var(--ft-weight-bold);
+}
 
+.list-card-header {
+  width: 86%;
+  display: flex;
+  justify-content: space-between;
+  margin-inline: auto;
+  margin-bottom: 0.5rem;
+}
+
+.date > h2,
+.stakes > h2 {
+  font-size: var(--ft-size-sm);
+  margin-left: 1rem;
+}
+
+.list-card-header,
+.date,
+.stakes {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.edit-venue-input {
+  width: 50%;
+  font-size: var(--ft-size-lg);
+  height: min-content;
+  border: none;
+  border-bottom: 0.25rem solid white;
+  background-color: transparent;
+  color: var(--clr-neutral);
+  text-align: center;
+}

@@ -1,0 +1,29 @@
+.recent {
+  padding: 0;
+  margin: 0;
+}
+
+.recent-venue,
+.recent-session {
+  height: 5%;
+  width: 85vw;
+  margin-inline: auto;
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  justify-content: space-between;
+}
+
+.venue-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 20%;
+}
+
+.venue-stats {
+  display: flex;
+  flex-wrap: wrap;
+  height: 80%;
+  align-items: center;
+}

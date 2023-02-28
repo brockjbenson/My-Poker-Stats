@@ -14,20 +14,25 @@ function Nav() {
 
   return (
     <div className="nav">
-      <div className="nav-item">
-        <Link to="/home">
-          <p className="nav-title font-md  font-wt-bold">Home</p>
-        </Link>
+      <div className="nav-header">
+        <h1>MyPokerStats</h1>
       </div>
-      <div className="nav-item">
-        <Link to="/venue-list">
-          <p className="font-wt-bold font-md">Venues</p>
-        </Link>
-      </div>
-      <div className="nav-item">
-        <p className="log-out font-wt-bold font-md" onClick={logOut}>
-          Log Out
-        </p>
+      <div className="nav-items">
+        <div className="nav-item item-1">
+          <Link to="/home">
+            <p className="nav-title font-wt-bold">Home</p>
+          </Link>
+        </div>
+        <div className="nav-item">
+          <Link to="/venue-list">
+            <p className="font-wt-bold ">Venues</p>
+          </Link>
+        </div>
+        <div className="nav-item">
+          <p className="log-out font-wt-bold " onClick={logOut}>
+            Log Out
+          </p>
+        </div>
       </div>
     </div>
   );

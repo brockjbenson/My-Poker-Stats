@@ -6,6 +6,7 @@ import { useHistory, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { NumericFormat } from "react-number-format";
 import Nav from "../../Shared/Nav/Nav";
+import "./SpecificVenuePage.css";
 export default function SpecificVenueViewPage() {
   const [venName, setVenName] = useState("");
   const [venId, setVenID] = useState(0);
@@ -243,7 +244,7 @@ export default function SpecificVenueViewPage() {
                     >
                       <div className="session-header-ven list-card-header">
                         <div className="date">
-                          <p>Date: </p>
+                          <p>Date:</p>
                           <h2>
                             {format(new Date(sesh.session_date), "dd/MM/yy")}
                           </h2>
