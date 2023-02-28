@@ -69,7 +69,7 @@ export default function SessionFormPage() {
           </div>
         </div>
         <form className="session-form" onSubmit={addSession}>
-          <div className="inputs">
+          <div className="session-form-inputs">
             <div className="input-container r2">
               <p className="clr-light">Buy In</p>
               <input

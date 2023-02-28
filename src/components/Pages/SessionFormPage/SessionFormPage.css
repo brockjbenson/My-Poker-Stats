@@ -107,6 +107,10 @@ textarea {
   display: flex;
 }
 
-button:hover {
-  cursor: pointer;
+.session-form-inputs {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  height: 95%;
 }

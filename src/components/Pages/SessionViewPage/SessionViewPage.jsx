@@ -7,6 +7,7 @@ import { useHistory, useParams } from "react-router-dom";
 import { useEffect } from "react";
 import Nav from "../../Shared/Nav/Nav";
 import { NumericFormat } from "react-number-format";
+import "./SessionViewPage.css";
 
 // ------- Component ------- //
 export default function SessionViewPage() {
@@ -287,7 +288,7 @@ export default function SessionViewPage() {
                 </div>
                 <div className="notes-body">
                   <textarea
-                  className="session-edit-textarea"
+                    className="session-edit-textarea"
                     type="text"
                     value={notes}
                     onChange={(e) => setNotes(e.target.value)}
