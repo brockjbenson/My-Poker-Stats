@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import Nav from "../../Shared/Nav/Nav";
+import "./SessionFormPage.css";
 
 export default function SessionFormPage() {
   const history = useHistory();
@@ -136,7 +137,7 @@ export default function SessionFormPage() {
               />
             </div>
           </div>
-          <div className="button-container">
+          <div className="session-button-container">
             <button className="btn-sm-primary" type="submit">
               Add Session
             </button>
