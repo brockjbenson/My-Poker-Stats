@@ -170,7 +170,7 @@ export default function VenueListPage() {
           )}
         </div>
       </div>
-      <div className="nav-container">
+      <div className="nav">
         <Nav />
       </div>
     </div>

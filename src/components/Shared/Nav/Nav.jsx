@@ -13,7 +13,7 @@ function Nav() {
   }
 
   return (
-    <div className="nav">
+    <>
       <div className="nav-header">
         <h1>MyPokerStats</h1>
       </div>
@@ -34,7 +34,7 @@ function Nav() {
           </p>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 

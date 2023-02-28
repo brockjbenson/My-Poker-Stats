@@ -103,24 +103,22 @@ export default function SpecificVenueViewPage() {
   }
 
   return (
-    <div className="body">
+    <>
       <div className="main">
         <div className="header">
           {editMode ? (
             <>
-              <div className="heading">
-                <input
-                  className="edit-venue-input"
-                  value={venName}
-                  onChange={(e) => setVenName(e.target.value)}
-                />
-              </div>
+              <input
+                className="edit-venue-input"
+                value={venName}
+                onChange={(e) => setVenName(e.target.value)}
+              />
               <div className="button-container">
-                <button className="accent-btn" onClick={saveEdit}>
+                <button className="accent-btn-light" onClick={saveEdit}>
                   Save
                 </button>
                 <button
-                  className="accent-btn"
+                  className="accent-btn-light"
                   onClick={() => setEditMode(false)}
                 >
                   Cancel
@@ -129,15 +127,17 @@ export default function SpecificVenueViewPage() {
             </>
           ) : (
             <>
-              <div className="heading">
-                <h1>{venName}</h1>
-              </div>
+              <h1 className="clr-light">{venName}</h1>
+
               <div className="button-container">
-                <button className="accent-btn" onClick={confirmVenueDelete}>
+                <button
+                  className="accent-btn-light"
+                  onClick={confirmVenueDelete}
+                >
                   Delete
                 </button>
                 <button
-                  className="accent-btn"
+                  className="accent-btn-light"
                   onClick={() => setEditMode(true)}
                 >
                   Edit
@@ -226,9 +226,9 @@ export default function SpecificVenueViewPage() {
             )}
           </div>
         </div>
-        <div className="card-container bg">
-          <div className="addnew-btn">
-            <button className="accent-btn" onClick={addNewSession}>
+        <div className="card-container">
+          <div className="card-section-1b">
+            <button className="accent-btn-primary" onClick={addNewSession}>
               Add Session
             </button>
           </div>
@@ -314,9 +314,9 @@ export default function SpecificVenueViewPage() {
           </div>
         </div>
       </div>
-      <div className="nav-container">
+      <div className="nav">
         <Nav />
       </div>
-    </div>
+    </>
   );
 }

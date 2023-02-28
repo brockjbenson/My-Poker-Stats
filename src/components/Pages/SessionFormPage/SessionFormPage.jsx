@@ -60,86 +60,61 @@ export default function SessionFormPage() {
     history.push(`/venue-view/${venueID}`);
   }
   return (
-    <div className="body">
+    <>
       <div className="main">
-        <div className="header-add-session clr-light">
-          <div className="heading">
-            <h1>Add Session for:</h1>
-            <h2 className="clr-light font-wt-bold">{venName}</h2>
-          </div>
+        <div className="header">
+          <h1 className="clr-light">Add Session to:</h1>
+          <h2 className="clr-light">{venName}</h2>
+          <div className="buttons-container"></div>
         </div>
-        <form className="session-form" onSubmit={addSession}>
-          <div className="session-form-inputs">
-            <div className="input-container r2">
-              <p>Buy In</p>
+        <form onSubmit={addSession} className="add-session">
+          <div className="form-inputs">
+            <div className="row-1">
               <input
-                className="add-session-input"
                 type="number"
+                placeholder="In For"
+                onChange={setBuyIn}
                 value={buyIn}
-                onChange={(e) => setBuyIn(e.target.value)}
-                placeholder="100"
                 required
               />
-            </div>
-            <div className="input-container r2">
-              <p>Cash Out</p>
               <input
                 type="number"
-                className="add-session-input"
-                value={cashOut}
-                onChange={(e) => setCashOut(e.target.value)}
-                placeholder="200.25"
-                required
-              />
-            </div>
-            <div className="input-container r3">
-              <p>Hours Played</p>
-              <input
-                type="number"
+                placeholder="Out For"
+                onChange={setCashOut}
                 value={hours}
-                className="add-session-input"
-                onChange={(e) => setHours(e.target.value)}
-                placeholder="5.3"
                 required
               />
             </div>
-            <div className="input-container r3">
-              <p>Date</p>
+            <div className="row-2">
               <input
                 type="date"
-                className="add-session-input"
+                placeholder="Date"
+                onChange={setDate}
                 value={date}
-                onChange={(e) => setDate(e.target.value)}
-                placeholder="Eg. 02/02/2023"
                 required
               />
-            </div>
-            <div className="input-container r4">
-              <p>Stakes</p>
+              <input
+                type="number"
+                placeholder="Hours Played"
+                onChange={setHours}
+                value={hours}
+                required
+              />
               <input
                 type="text"
-                className="add-session-input"
+                placeholder="Stakes"
+                onChange={setStakes}
                 value={stakes}
-                onChange={(e) => setStakes(e.target.value)}
-                placeholder="Eg. 1/2"
                 required
               />
             </div>
-            <div className="input-container r5">
-              <p>Notes</p>
-              <textarea
-                type="text"
-                value={notes}
-                onChange={(e) => setNotes(e.target.value)}
-                placeholder="Notes Example"
-                required
-                maxLength="1000"
-              />
+            <div className="row-3">
+              <textarea required placeholder="Notes" maxLength={1000} />
             </div>
           </div>
-          <div className="session-button-container">
+          <div className="submit-button">
             <button className="btn-sm-primary" type="submit">
-              Add Session
+              Add
             </button>
             <button className="btn-sm-light" onClick={cancelAdd}>
               Cancel
@@ -147,9 +122,9 @@ export default function SessionFormPage() {
           </div>
         </form>
       </div>
-      <div className="nav-container">
+      <div className="nav">
         <Nav />
       </div>
-    </div>
+    </>
   );
 }

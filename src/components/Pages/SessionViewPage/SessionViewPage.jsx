@@ -310,7 +310,7 @@ export default function SessionViewPage() {
           </div>
         </div>
       </div>
-      <div className="nav-container">
+      <div className="nav">
         <Nav />
       </div>
     </div>

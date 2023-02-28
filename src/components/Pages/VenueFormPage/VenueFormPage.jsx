@@ -43,7 +43,7 @@ export default function VenueFormPage() {
           <div className="filler"></div>
         </div>
       </div>
-      <div className="nav-container">
+      <div className="nav">
         <Nav />
       </div>
     </div>

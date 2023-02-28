@@ -43,7 +43,7 @@ textarea {
   border: none;
   border-radius: 1.5rem;
   font-weight: var(--ft-weight-bold); /* replace with desired font-weight */
-  width: 21rem; /* replace with desired value */
+  width: 20rem; /* replace with desired value */
   height: 9.5rem; /* replace with desired value */
   margin-block: 1rem;
   margin-inline: 1rem;
@@ -57,7 +57,7 @@ textarea {
   border: none;
   border-radius: 1.5rem;
   font-weight: var(--ft-weight-bold); /* replace with desired font-weight */
-  width: 45rem; /* replace with desired value */
+  width: 40rem; /* replace with desired value */
   height: 9.5rem; /* replace with desired value */
   margin-block: 1rem;
   margin-inline: 1rem;
@@ -85,7 +85,7 @@ textarea {
   border: none;
   border-radius: 1.5rem;
   font-weight: var(--ft-weight-bold); /* replace with desired font-weight */
-  width: 45rem; /* replace with desired value */
+  width: 40rem; /* replace with desired value */
   height: 9.5rem; /* replace with desired value */
   margin-block: 1rem;
   margin-inline: 1rem;
@@ -199,7 +199,7 @@ button:hover {
 }
 
 .main {
-  height: 90%;
+  height: 93%;
   width: 100vw;
   /* border: 1px solid black; */
   overflow-x: hidden;
@@ -221,14 +221,6 @@ button:hover {
   width: 100%;
 }
 
-.heading {
-  width: 100%;
-  height: 70%;
-  text-align: center;
-  color: var(--clr-light);
-  /* align-items: top; */
-}
-
 .stats-container {
   display: flex;
   flex-wrap: wrap;
@@ -248,7 +240,8 @@ button:hover {
 }
 
 .list-container {
-  height: 87.5%;
+  height: 90.5%;
+  width: 100%;
   overflow-y: auto;
   overflow-x: hidden;
   background-color: rgba(0, 0, 0, 0.3);
@@ -316,6 +309,9 @@ button:hover {
   overflow-y: auto;
   overflow-x: hidden;
   height: 60%;
+  background-color: rgba(255, 255, 255, 0.25);
+  border-top-right-radius: 2rem;
+  border-top-left-radius: 2rem;
 }
 
 .btn-container {
@@ -327,7 +323,7 @@ button:hover {
   justify-content: space-evenly;
 }
 
-.accent-btn {
+.accent-btn-light {
   width: 15rem;
   height: 3.5rem;
   margin: 1rem;
@@ -336,6 +332,18 @@ button:hover {
   background-color: transparent;
   font-size: var(--ft-size-sm);
   color: var(--clr-light);
+}
+
+.accent-btn-primary {
+  width: 15rem;
+  height: 3.5rem;
+  margin: 1rem;
+  border: 0.25rem solid var(--clr-primary);
+  border-radius: 2rem;
+  background-color: transparent;
+  font-size: var(--ft-size-sm);
+  color: var(--clr-primary);
+  font-weight: var(--ft-weight-bold);
 }
 
 .no-sessions {
@@ -354,28 +362,61 @@ button:hover {
 
 .venue-card {
   background-color: var(--clr-primary);
-  height: 50%;
+  height: 30rem;
+  color: var(--clr-light);
+}
+
+.venue-card h2 {
+  text-align: center;
+}
+
+.card-section-1a {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-inline: auto;
+  align-items: center;
+  height: 7rem;
+}
+
+.card-section-2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 100%;
+}
+
+.card-section-1b {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-inline: auto;
+  align-items: center;
+  height: 7rem;
+}
+
+.card-section-1a p {
+  font-weight: var(--ft-weight-bold);
+  color: var(--clr-primary);
+  margin-inline: 2rem;
+}
+
+.card-section-1a,
+.card-section-1b {
+  background-color: var(--clr-light);
 }
 
 .session-card {
   background-color: var(--clr-light);
-  height: 20%;
-}
-
-.venue-header {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 20%;
+  height: 10rem;
 }
 
 .venue-card,
 .session-card {
   display: flex;
   flex-direction: column;
-  /* border: 2px solid black; */
   border-radius: 2rem;
-  width: 85%;
+  width: 45rem;
   margin-inline: auto;
   padding: 1rem;
   margin-block: 2rem;
@@ -420,51 +461,6 @@ button:hover {
   font-size: var(--ft-size-sm);
 }
 
-.nav {
-  min-width: 100vw;
-  height: 100%;
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-}
-
-.nav a {
-  color: var(--clr-light);
-  text-decoration: none;
-}
-
-.nav-container {
-  height: 10%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--clr-light);
-  background-color: var(--clr-primary);
-}
-
-.nav-item {
-  width: 33%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-left: 0.25rem solid var(--clr-dark);
-}
-
-.nav-items {
-  width: 100%;
-  height: 100%;
-  display: flex;
-}
-
-.item-1 {
-  border: none;
-}
-
-.nav-header {
-  display: none;
-}
-
 /* ------------------- Global Desktop Style ------------------- */
 
 @media screen and (min-width: 754px) {
@@ -482,7 +478,7 @@ button:hover {
     box-sizing: border-box;
   }
 
-  .nav-container {
+  .nav {
     height: 10%;
     color: var(--clr-light);
     background-color: rgba(0, 0, 0, 0.3);
@@ -650,7 +646,7 @@ button:hover {
   .accent-btn {
     width: 15rem;
     height: 3.5rem;
-    margin: 1rem;
+    margin: 0;
     border: 0.3rem solid var(--clr-light);
     border-radius: 2rem;
     background-color: transparent;
