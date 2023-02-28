@@ -14,12 +14,9 @@ import DashBoardStats from "./DashBoardStats";
 function DashBoardPage() {
   // this component doesn't do much to start, just renders some user reducer info to the DOM
   const history = useHistory();
-  const [sessionID, setSessionId] = useState("");
-  const [venueID, setVenueID] = useState("");
   const dispatch = useDispatch();
   const user = useSelector((store) => store.user);
   const allStats = useSelector((store) => store.allStatsReducer);
-  const sessions = useSelector((store) => store.sessionsReducer);
   const sessionCard = useSelector(
     (store) => store.sessionsReducer.allSessionsReducer
   );
