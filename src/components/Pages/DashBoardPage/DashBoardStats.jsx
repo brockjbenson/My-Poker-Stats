@@ -44,6 +44,8 @@ export default function DashBoardStats({}) {
             thousandSeparator=","
             allowNegative
             decimalScale={2}
+            readOnly
+            thousandsGroupStyle="lakh"
           />
         ) : (
           <h2>-</h2>
@@ -79,6 +81,9 @@ export default function DashBoardStats({}) {
             thousandSeparator=","
             allowNegative
             decimalScale={2}
+            readOnly
+            thousandsGroupStyle="lakh"
+            
           />
         ) : (
           <h2>-</h2>
@@ -94,6 +99,7 @@ export default function DashBoardStats({}) {
             thousandSeparator=","
             allowNegative
             decimalScale={2}
+            readOnly
           />
         ) : (
           <h2>-</h2>

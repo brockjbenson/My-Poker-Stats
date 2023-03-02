@@ -141,7 +141,43 @@ h2 {
   font-weight: var(--ft-weight-bold);
 }
 
+.icon-btn-edit,
+.icon-btn-delete {
+  width: 10rem;
+  height: 2.5rem;
+  /* border: 1px solid white; */
+  color: white;
+}
+
+.session-delete-icon {
+  height: 2rem;
+  width: 1.5rem;
+  display: flex;
+  align-items: center;
+  color: var(--clr-primary);
+}
+
+input:focus {
+  outline: none;
+}
+
 .h2 {
+  background-color: transparent;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  border: none;
+  color: var(--clr-light);
+  text-align: center;
+  font-size: var(--ft-size-md);
+  font-family: "Kanit", sans-serif;
+}
+
+.h2:focus {
+  outline: none;
+}
+
+.h2-2 {
   background-color: transparent;
   color: var(--clr-light);
   text-align: center;
@@ -150,13 +186,17 @@ h2 {
   font-family: "Kanit", sans-serif;
 }
 
-.h2-2 {
+.h2-3 {
   background-color: transparent;
   color: var(--clr-primary);
   text-align: center;
   font-size: var(--ft-size-sm);
   border: none;
   font-family: "Kanit", sans-serif;
+}
+
+.h2-2:hover {
+  cursor: pointer;
 }
 
 .p {
@@ -179,6 +219,13 @@ p {
 
 button:hover {
   cursor: pointer;
+  scale: 110%;
+  transition: 0.2s;
+}
+
+button:active {
+  scale: 97%;
+  transition: 0.2s;
 }
 
 /* ---- End Utility Classes ---- */
@@ -244,7 +291,7 @@ button:hover {
   width: 100%;
   overflow-y: auto;
   overflow-x: hidden;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: var(--clr-light);
 }
 
 input::placeholder,
@@ -303,15 +350,31 @@ button:hover {
   height: 12.5%;
 }
 
+.session-view-heading {
+  text-align: center;
+}
+
+.session-view-heading h2:hover {
+  cursor: pointer;
+  scale: 120%;
+  transition: 0.2s;
+  border-radius: 1rem;
+  /* background-color: rgba(85, 49, 166, 0.5); */
+}
+
 .card-container {
   display: flex;
   flex-direction: column;
-  overflow-y: auto;
+  overflow-y: hidden;
   overflow-x: hidden;
   height: 60%;
   background-color: rgba(255, 255, 255, 0.25);
   border-top-right-radius: 2rem;
   border-top-left-radius: 2rem;
+}
+
+.see-all:hover {
+  cursor: pointer;
 }
 
 .btn-container {
@@ -362,12 +425,21 @@ button:hover {
 
 .venue-card {
   background-color: var(--clr-primary);
-  height: 30rem;
+  height: 50%;
   color: var(--clr-light);
 }
 
 .venue-card h2 {
   text-align: center;
+}
+.venue-card:hover {
+  cursor: pointer;
+  scale: 103%;
+  transition: 0.2s;
+}
+
+.venue-card > p:hover {
+  cursor: pointer;
 }
 
 .card-section-1a {
@@ -376,14 +448,22 @@ button:hover {
   justify-content: space-between;
   margin-inline: auto;
   align-items: center;
-  height: 7rem;
+  height: 10%;
 }
 
-.card-section-2 {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  height: 100%;
+.scroll-btn {
+  height: 3rem;
+  width: 5rem;
+  color: #5937a4;
+}
+
+.dashboard-card-container {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 100%;
+  height: 90%;
+  overflow-x: hidden;
+  background-color: var(--clr-light);
 }
 
 .card-section-1b {
@@ -392,7 +472,7 @@ button:hover {
   justify-content: center;
   margin-inline: auto;
   align-items: center;
-  height: 7rem;
+  height: 10%;
 }
 
 .card-section-1a p {
@@ -404,11 +484,19 @@ button:hover {
 .card-section-1a,
 .card-section-1b {
   background-color: var(--clr-light);
+  border-bottom: 0.2rem solid #e4e4e4;
 }
 
 .session-card {
   background-color: var(--clr-light);
-  height: 10rem;
+  border: 0.2rem solid var(--clr-primary);
+  height: 20%;
+}
+
+.session-card:hover {
+  cursor: pointer;
+  scale: 103%;
+  transition: 0.2s;
 }
 
 .venue-card,
@@ -418,8 +506,9 @@ button:hover {
   border-radius: 2rem;
   width: 45rem;
   margin-inline: auto;
-  padding: 1rem;
-  margin-block: 2rem;
+  /* padding: 1rem; */
+  margin-block: 4rem;
+  overflow: hidden;
 }
 
 .venue-stats {
@@ -491,6 +580,11 @@ button:hover {
     justify-content: center;
     font-size: var(--ft-size-sm);
     border: none;
+  }
+
+  .nav-item:hover {
+    scale: 115%;
+    transition: 0.2s;
   }
 
   .nav {
@@ -567,7 +661,12 @@ button:hover {
     height: 87.5%;
     overflow-y: auto;
     overflow-x: hidden;
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: var(--clr-light);
+  }
+
+  .card-element {
+    height: 100%;
+    overflow-y: hidden;
   }
 
   input::placeholder,
@@ -670,7 +769,7 @@ button:hover {
 
   .venue-card {
     background-color: var(--clr-primary);
-    height: 50%;
+    height: 55%;
   }
 
   .session-card {
@@ -691,7 +790,7 @@ button:hover {
     flex-direction: column;
     /* border: 2px solid black; */
     border-radius: 2rem;
-    width: 85%;
+    width: 90rem;
     margin-inline: auto;
     padding: 1rem;
     margin-block: 2rem;

@@ -1,5 +1,4 @@
 import React from "react";
-import LogOutButton from "../../Shared/LogOutButton/LogOutButton";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
@@ -22,7 +21,7 @@ export default function VenueFormPage() {
       <div className="main">
         <div className="header">
           <div className="heading">
-            <h1>Add Venue</h1>
+            <h1 className="clr-light">Add Venue</h1>
           </div>
         </div>
         <div className="venue-form">

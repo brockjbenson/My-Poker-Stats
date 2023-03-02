@@ -73,15 +73,15 @@ export default function SessionFormPage() {
               <input
                 type="number"
                 placeholder="In For"
-                onChange={setBuyIn}
+                onChange={(e) => setBuyIn(e.target.value)}
                 value={buyIn}
                 required
               />
               <input
                 type="number"
                 placeholder="Out For"
-                onChange={setCashOut}
-                value={hours}
+                onChange={(e) => setCashOut(e.target.value)}
+                value={cashOut}
                 required
               />
             </div>
@@ -89,27 +89,32 @@ export default function SessionFormPage() {
               <input
                 type="date"
                 placeholder="Date"
-                onChange={setDate}
+                onChange={(e) => setDate(e.target.value)}
                 value={date}
                 required
               />
               <input
                 type="number"
-                placeholder="Hours Played"
-                onChange={setHours}
+                placeholder="Duration"
+                onChange={(e) => setHours(e.target.value)}
                 value={hours}
                 required
               />
               <input
                 type="text"
                 placeholder="Stakes"
-                onChange={setStakes}
+                onChange={(e) => setStakes(e.target.value)}
                 value={stakes}
                 required
               />
             </div>
             <div className="row-3">
-              <textarea required placeholder="Notes" maxLength={1000} />
+              <textarea
+                required
+                placeholder="Notes"
+                onChange={(e) => setNotes(e.target.value)}
+                maxLength={1000}
+              />
             </div>
           </div>
           <div className="submit-button">

@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import Nav from "../../Shared/Nav/Nav";
 import "../VenueListPage/VenueListPage.css";
+import { FaPen, FaTrash } from "react-icons/fa";
 
 export default function VenueListPage() {
   const dispatch = useDispatch();
@@ -63,13 +64,13 @@ export default function VenueListPage() {
       <div className="main">
         <div className="header">
           <div className="heading">
-            <h1>My Venues</h1>
+            <h1 className="clr-light">My Venues</h1>
           </div>
           <div className="buttons-container"></div>
         </div>
         <div className="venue-list-container bg">
           <div className="addnew-btn">
-            <button className="accent-btn" onClick={addVenue}>
+            <button className="accent-btn-light" onClick={addVenue}>
               Add New
             </button>
           </div>
@@ -133,7 +134,7 @@ export default function VenueListPage() {
                               editVenue(venue.id, venue.name);
                             }}
                           >
-                            Edit
+                            <FaPen />
                           </p>
                         </div>
                         <div className="btn-2-cont">
@@ -144,7 +145,7 @@ export default function VenueListPage() {
                               confirmFunction(venue.id);
                             }}
                           >
-                            Delete
+                            <FaTrash />
                           </p>
                         </div>
                       </div>

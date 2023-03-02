@@ -1,32 +1,52 @@
-.session-header-ven {
+/* .session-header-ven {
   display: flex;
-  justify-content: space-between;
-  width: 87%;
+  justify-content: center;
+  width: 100%;
   height: 30%;
-  margin-inline: auto;
-  font-weight: var(--ft-weight-bold);
-}
-
+  /* margin-inline: auto; */
+/* font-weight: var(--ft-weight-bold);
+} */
 .list-card-header {
-  width: 86%;
+  width: 100%;
+  border-bottom: 0.2rem solid var(--clr-primary);
   display: flex;
-  justify-content: space-between;
+  flex-direction: row;
+  justify-content: center;
   margin-inline: auto;
   margin-bottom: 0.5rem;
+}
+
+.list-card-header > h2 {
+  margin-left: 1rem;
+}
+
+.delete-session-card:hover {
+  cursor: pointer;
+  transition: 0.2s;
+  scale: 115%;
+}
+
+.delete-session-card:active {
+  transition: 0.2s;
+  scale: 95%;
+}
+
+.delete-btn {
+  width: 45%;
+  display: flex;
+  justify-content: flex-end;
 }
 
 .date > h2,
 .stakes > h2 {
   font-size: var(--ft-size-sm);
-  margin-left: 1rem;
 }
 
-.list-card-header,
-.date,
-.stakes {
+.date {
+  width: 45%;
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: flex-start;
 }
 
 .edit-venue-input {

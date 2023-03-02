@@ -7,6 +7,9 @@ import { useState, useEffect } from "react";
 import { NumericFormat } from "react-number-format";
 import Nav from "../../Shared/Nav/Nav";
 import "./SpecificVenuePage.css";
+import { FaPen, FaTrash } from "react-icons/fa";
+import { useRef } from "react";
+
 export default function SpecificVenueViewPage() {
   const [venName, setVenName] = useState("");
   const [venId, setVenID] = useState(0);
@@ -102,6 +105,13 @@ export default function SpecificVenueViewPage() {
     setEditMode(false);
   }
 
+  const editInput = useRef(null);
+
+  function editTitle() {
+    setEditMode(true);
+    focus(editInput);
+  }
+
   return (
     <>
       <div className="main">
@@ -110,6 +120,7 @@ export default function SpecificVenueViewPage() {
             <>
               <input
                 className="edit-venue-input"
+                ref={editInput}
                 value={venName}
                 onChange={(e) => setVenName(e.target.value)}
               />
@@ -130,18 +141,12 @@ export default function SpecificVenueViewPage() {
               <h1 className="clr-light">{venName}</h1>
 
               <div className="button-container">
-                <button
-                  className="accent-btn-light"
+                <FaTrash
+                  className="icon-btn-delete"
                   onClick={confirmVenueDelete}
-                >
-                  Delete
-                </button>
-                <button
-                  className="accent-btn-light"
-                  onClick={() => setEditMode(true)}
-                >
-                  Edit
-                </button>
+                />
+
+                <FaPen className="icon-btn-edit" onClick={editTitle} />
               </div>
             </>
           )}
@@ -242,23 +247,20 @@ export default function SpecificVenueViewPage() {
                       onClick={() => getSession(sesh.id)}
                       className="session-card"
                     >
-                      <div className="session-header-ven list-card-header">
+                      <div className="list-card-header">
                         <div className="date">
-                          <p>Date:</p>
                           <h2>
                             {format(new Date(sesh.session_date), "dd/MM/yy")}
                           </h2>
                         </div>
                         <div className="delete-btn clr-primary ">
-                          <p
-                            className="font-wt-bold"
+                          <FaTrash
+                            className="session-delete-icon"
                             onClick={(e) => {
                               e.stopPropagation();
                               confirmSessionDelete(sesh.id);
                             }}
-                          >
-                            Delete
-                          </p>
+                          />
                         </div>
                       </div>
                       <div className="session-stats">
@@ -266,7 +268,7 @@ export default function SpecificVenueViewPage() {
                           <p>Net Profit:</p>
                           <h2>
                             <NumericFormat
-                              className="h2-2"
+                              className="h2-3"
                               value={sesh.net_profit}
                               prefix={"$"}
                               thousandSeparator=","
@@ -283,7 +285,7 @@ export default function SpecificVenueViewPage() {
                           <p>Hourly Net:</p>
                           <h2>
                             <NumericFormat
-                              className="h2-2"
+                              className="h2-3"
                               value={sesh.hourly}
                               prefix={"$"}
                               thousandSeparator=","

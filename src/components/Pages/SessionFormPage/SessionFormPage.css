@@ -40,12 +40,14 @@
   background-color: transparent;
   border: 0.25rem solid white;
   border-radius: 1rem;
-  font-size: var(--ft-size-sm);
+  font-size: var(--ft-size-md);
+  color: var(--clr-light);
 }
 
 .row-1 > input::placeholder,
 .row-2 > input::placeholder,
 textarea::placeholder {
+  font-size: var(--ft-size-md);
   color: var(--clr-light);
 }
 
@@ -57,7 +59,8 @@ textarea::placeholder {
   border: 0.25rem solid white;
   border-radius: 1rem;
   color-scheme: dark;
-  font-size: var(--ft-size-sm);
+  font-size: var(--ft-size-md);
+  color: var(--clr-light);
 }
 
 .row-3 > textarea {
@@ -68,7 +71,8 @@ textarea::placeholder {
   border-radius: 1rem;
   padding: 1rem 0 0 1rem;
   color: white;
-  font-size: var(--ft-size-sm);
+  font-size: var(--ft-size-md);
+  color: var(--clr-light);
 }
 
 .submit-button {

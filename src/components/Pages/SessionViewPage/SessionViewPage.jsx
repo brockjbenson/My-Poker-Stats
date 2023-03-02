@@ -108,16 +108,16 @@ export default function SessionViewPage() {
         <div className="header clr-light">
           {editMode ? (
             <>
-              <div className="heading">
+              <div className="session-view-heading">
                 <h1>Edit Session at</h1>
                 <h2 onClick={goBackToVenue}>{venName}</h2>
               </div>
               <div className="button-container">
-                <button className="accent-btn" onClick={editSession}>
+                <button className="accent-btn-light" onClick={editSession}>
                   Save
                 </button>
                 <button
-                  className="accent-btn"
+                  className="accent-btn-light"
                   onClick={() => setEditMode(false)}
                 >
                   Cancel
@@ -126,19 +126,19 @@ export default function SessionViewPage() {
             </>
           ) : (
             <>
-              <div className="heading">
+              <div className="session-view-heading">
                 <h1>Session at</h1>
                 <h2 onClick={goBackToVenue}>{venName}</h2>
               </div>
               <div className="button-container">
                 <button
-                  className="accent-btn"
+                  className="accent-btn-light"
                   onClick={() => confirmFunction(sessionID)}
                 >
                   Delete
                 </button>
                 <button
-                  className="accent-btn"
+                  className="accent-btn-light"
                   onClick={() => setEditMode(true)}
                 >
                   Edit
@@ -283,8 +283,8 @@ export default function SessionViewPage() {
           <div className="notes-container clr-light">
             {editMode ? (
               <>
-                <div className="notes-header">
-                  <h2>Edit Notes</h2>
+                <div className="card-section-1b">
+                  <h2 className="clr-primary">Edit Notes</h2>
                 </div>
                 <div className="notes-body">
                   <textarea
@@ -299,8 +299,8 @@ export default function SessionViewPage() {
               </>
             ) : (
               <>
-                <div className="notes-header">
-                  <h2>Notes</h2>
+                <div className="card-section-1b">
+                  <h2 className="clr-primary">Notes</h2>
                 </div>
                 <div className="notes-body">
                   <p>{notes}</p>

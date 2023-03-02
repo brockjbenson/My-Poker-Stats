@@ -20,6 +20,8 @@ const getSpecificSessionReducer = (state = {}, action) => {
   }
 };
 
+
+
 // user will be on the redux state at:
 export default combineReducers({
   allSessionsReducer,
