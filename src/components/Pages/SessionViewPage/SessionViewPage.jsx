@@ -8,6 +8,13 @@ import { useEffect } from "react";
 import Nav from "../../Shared/Nav/Nav";
 import { NumericFormat } from "react-number-format";
 import "./SessionViewPage.css";
+import {
+  FaPen,
+  FaTrash,
+  FaArrowAltCircleLeft,
+  FaTimes,
+  FaCheck,
+} from "react-icons/fa";
 
 // ------- Component ------- //
 export default function SessionViewPage() {
@@ -109,40 +116,32 @@ export default function SessionViewPage() {
           {editMode ? (
             <>
               <div className="session-view-heading">
-                <h1>Edit Session at</h1>
-                <h2 onClick={goBackToVenue}>{venName}</h2>
+                <h1>Edit Session</h1>
               </div>
               <div className="button-container">
-                <button className="accent-btn-light" onClick={editSession}>
-                  Save
-                </button>
-                <button
-                  className="accent-btn-light"
+                <FaCheck className="icon-btn-delete" onClick={editSession} />
+
+                <FaTimes
+                  className="icon-btn-edit"
                   onClick={() => setEditMode(false)}
-                >
-                  Cancel
-                </button>
+                />
               </div>
             </>
           ) : (
             <>
               <div className="session-view-heading">
-                <h1>Session at</h1>
-                <h2 onClick={goBackToVenue}>{venName}</h2>
+                <h1>Session</h1>
               </div>
               <div className="button-container">
-                <button
-                  className="accent-btn-light"
+                <FaTrash
+                  className="icon-btn-delete"
                   onClick={() => confirmFunction(sessionID)}
-                >
-                  Delete
-                </button>
-                <button
-                  className="accent-btn-light"
+                />
+
+                <FaPen
+                  className="icon-btn-edit"
                   onClick={() => setEditMode(true)}
-                >
-                  Edit
-                </button>
+                />
               </div>
             </>
           )}
@@ -164,7 +163,7 @@ export default function SessionViewPage() {
                   </>
                 ) : (
                   <>
-                    <p>Total Net Profit</p>
+                    <p>Net Profit</p>
                     <NumericFormat
                       className="h2"
                       value={session[0].net_profit}
@@ -182,7 +181,7 @@ export default function SessionViewPage() {
                   <>
                     <input
                       className="session-edit-input"
-                      type="date"
+                      type="text"
                       value={format(new Date(date), "dd/MM/yy")}
                       onChange={(e) => setDate(e.target.value)}
                       required
@@ -190,14 +189,14 @@ export default function SessionViewPage() {
                   </>
                 ) : (
                   <>
-                    <h2>
+                    <h2 className="h2">
                       {format(new Date(session[0].session_date), "dd/MM/yy")}
                     </h2>
                   </>
                 )}
               </div>
               <div className="stat">
-                <p>Hours Played</p>
+                <p>Duration</p>
                 {editMode ? (
                   <>
                     <input
@@ -210,7 +209,7 @@ export default function SessionViewPage() {
                   </>
                 ) : (
                   <>
-                    <h2>{hours}</h2>
+                    <h2 className="h2">{hours} Hrs</h2>
                   </>
                 )}
               </div>
@@ -253,7 +252,7 @@ export default function SessionViewPage() {
                   </>
                 ) : (
                   <>
-                    <h2>{session[0].stakes}</h2>
+                    <h2 className="h2">{session[0].stakes}</h2>
                   </>
                 )}
               </div>
@@ -299,11 +298,16 @@ export default function SessionViewPage() {
               </>
             ) : (
               <>
-                <div className="card-section-1b">
-                  <h2 className="clr-primary">Notes</h2>
+                <div className="card-section-session-1b">
+                  <FaArrowAltCircleLeft
+                    className="back-button"
+                    onClick={goBackToVenue}
+                  />
+                  <h2 className="clr-primary notes-title">Notes</h2>
+                  <h2></h2>
                 </div>
                 <div className="notes-body">
-                  <p>{notes}</p>
+                  <p className="font-wt-bold">{notes}</p>
                 </div>
               </>
             )}

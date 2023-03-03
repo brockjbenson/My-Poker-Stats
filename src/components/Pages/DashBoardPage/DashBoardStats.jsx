@@ -35,7 +35,7 @@ export default function DashBoardStats({}) {
   return (
     <>
       <div className="stat">
-        <p>Total Net Profit</p>
+        <p>Net Profit</p>
         {allStats[0] !== undefined ? (
           <NumericFormat
             className="h2"
@@ -48,28 +48,32 @@ export default function DashBoardStats({}) {
             thousandsGroupStyle="lakh"
           />
         ) : (
-          <h2>-</h2>
+          <h2 className="h2">-</h2>
         )}
       </div>
       <div className="stat">
-        <p>Total Sessions</p>
+        <p>Sessions</p>
         {allStats[0] !== undefined ? (
-          <h2>{allStats[0].total_sessions}</h2>
+          <h2 className="h2">{allStats[0].total_sessions}</h2>
         ) : (
-          <h2>-</h2>
+          <h2 className="h2">-</h2>
         )}
       </div>
       <div className="stat">
         <p>Total Hours</p>
         {allStats[0] !== undefined ? (
-          <h2>{allStats[0].total_hours}</h2>
+          <h2 className="h2">{allStats[0].total_hours}</h2>
         ) : (
-          <h2>-</h2>
+          <h2 className="h2">-</h2>
         )}
       </div>
       <div className="stat">
         <p>Win Rate</p>
-        {allStats[0] !== undefined ? <h2>{winPercentage}%</h2> : <h2>-</h2>}
+        {allStats[0] !== undefined ? (
+          <h2 className="h2">{winPercentage}%</h2>
+        ) : (
+          <h2 className="h2">-</h2>
+        )}
       </div>
       <div className="stat">
         <p>Session Avg</p>
@@ -83,10 +87,9 @@ export default function DashBoardStats({}) {
             decimalScale={2}
             readOnly
             thousandsGroupStyle="lakh"
-            
           />
         ) : (
-          <h2>-</h2>
+          <h2 className="h2">-</h2>
         )}
       </div>
       <div className="stat">
@@ -102,7 +105,7 @@ export default function DashBoardStats({}) {
             readOnly
           />
         ) : (
-          <h2>-</h2>
+          <h2 className="h2">-</h2>
         )}
       </div>
     </>

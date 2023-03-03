@@ -7,7 +7,13 @@ import { useState, useEffect } from "react";
 import { NumericFormat } from "react-number-format";
 import Nav from "../../Shared/Nav/Nav";
 import "./SpecificVenuePage.css";
-import { FaPen, FaTrash } from "react-icons/fa";
+import {
+  FaPen,
+  FaTrash,
+  FaTimes,
+  FaCheck,
+  FaArrowAltCircleLeft,
+} from "react-icons/fa";
 import { useRef } from "react";
 
 export default function SpecificVenueViewPage() {
@@ -77,6 +83,10 @@ export default function SpecificVenueViewPage() {
     }
   }
 
+  function backToList() {
+    history.push("/venue-list");
+  }
+
   function deleteVenue() {
     dispatch({ type: "DELETE_VENUE", payload: venId });
     history.push("/venue-list");
@@ -125,15 +135,12 @@ export default function SpecificVenueViewPage() {
                 onChange={(e) => setVenName(e.target.value)}
               />
               <div className="button-container">
-                <button className="accent-btn-light" onClick={saveEdit}>
-                  Save
-                </button>
-                <button
-                  className="accent-btn-light"
+                <FaCheck className="icon-btn-edit" onClick={saveEdit} />
+
+                <FaTimes
+                  className="icon-btn-delete"
                   onClick={() => setEditMode(false)}
-                >
-                  Cancel
-                </button>
+                />
               </div>
             </>
           ) : (
@@ -153,7 +160,7 @@ export default function SpecificVenueViewPage() {
         </div>
         <div className="stats-container">
           <div className="stat">
-            <p>Total Net Profit</p>
+            <p>Net Profit</p>
             {venue[0] !== undefined ? (
               <NumericFormat
                 className="h2"
@@ -168,15 +175,15 @@ export default function SpecificVenueViewPage() {
             )}
           </div>
           <div className="stat">
-            <p>Total Sessions</p>
+            <p>Sessions</p>
             {venue[0] !== undefined ? (
-              <h2>{venue[0].sessions_played}</h2>
+              <h2 className="h2">{venue[0].sessions_played}</h2>
             ) : (
-              <h2>-</h2>
+              <h2 className="h2">-</h2>
             )}
           </div>
           <div className="stat">
-            <p>Total Hours</p>
+            <p>Hours</p>
             {venue[0] !== undefined ? (
               <NumericFormat
                 className="h2"
@@ -184,7 +191,7 @@ export default function SpecificVenueViewPage() {
                 decimalScale={2}
               />
             ) : (
-              <h2>-</h2>
+              <h2 className="h2">-</h2>
             )}
           </div>
           <div className="stat">
@@ -197,7 +204,7 @@ export default function SpecificVenueViewPage() {
                 decimalScale={2}
               />
             ) : (
-              <h2>-</h2>
+              <h2 className="h2">-</h2>
             )}
           </div>
           <div className="stat">
@@ -212,7 +219,7 @@ export default function SpecificVenueViewPage() {
                 decimalScale={2}
               />
             ) : (
-              <h2>-</h2>
+              <h2 className="h2">-</h2>
             )}
           </div>
           <div className="stat">
@@ -227,15 +234,23 @@ export default function SpecificVenueViewPage() {
                 decimalScale={2}
               />
             ) : (
-              <h2>-</h2>
+              <h2 className="h2">-</h2>
             )}
           </div>
         </div>
         <div className="card-container">
-          <div className="card-section-1b">
-            <button className="accent-btn-primary" onClick={addNewSession}>
+          <div className="card-section-session-1b">
+            <FaArrowAltCircleLeft
+              className="back-button"
+              onClick={backToList}
+            />
+            <button
+              className="accent-btn-primary notes-title"
+              onClick={addNewSession}
+            >
               Add Session
             </button>
+            <h2></h2>
           </div>
           <div className="list-container clr-primary">
             {venue[0] !== undefined ? (

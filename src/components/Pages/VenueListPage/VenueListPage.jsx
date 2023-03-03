@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import Nav from "../../Shared/Nav/Nav";
 import "../VenueListPage/VenueListPage.css";
-import { FaPen, FaTrash } from "react-icons/fa";
+import { FaPen, FaTrash, FaTimes, FaCheck } from "react-icons/fa";
 
 export default function VenueListPage() {
   const dispatch = useDispatch();
@@ -102,26 +102,22 @@ export default function VenueListPage() {
                     {editMode && Number(editID) === venue.id ? (
                       <div className="venue-btns">
                         <div className="btn-1-cont">
-                          <p
+                          <FaCheck
                             onClick={(e) => {
                               e.stopPropagation();
                               saveEdit();
                             }}
-                            className="clr-primary venue-list-btn"
-                          >
-                            Save
-                          </p>
+                            className="venue-list-btn btn-4"
+                          />
                         </div>
                         <div className="btn-2-cont">
-                          <p
+                          <FaTimes
                             onClick={(e) => {
                               e.stopPropagation();
                               setEditMode(false);
                             }}
-                            className="clr-primary venue-list-btn-3"
-                          >
-                            Cancel
-                          </p>
+                            className="clr-primary venue-list-btn-2"
+                          />
                         </div>
                       </div>
                     ) : (

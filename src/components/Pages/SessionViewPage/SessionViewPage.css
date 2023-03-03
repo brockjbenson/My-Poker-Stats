@@ -14,7 +14,7 @@
   border: none;
   border-bottom: 0.2rem solid var(--clr-light);
   font-size: var(--ft-size-md);
-  width: 15rem;
+  width: 80%;
   height: fit-content;
   text-align: center;
 }
@@ -24,10 +24,17 @@
   font-size: var(--ft-size-sm);
   border: 0.25rem solid var(--clr-light);
   font-weight: var(--ft-weight-regular);
+  background-color: transparent;
+  height: 80%;
+  padding-left: 1rem;
+  border-radius: 1.5rem;
+  color: var(--clr-light);
 }
 
 .notes-body {
   height: 90%;
   padding: 1rem;
   padding-inline: 5rem;
+  background-color: var(--clr-light);
+  color: var(--clr-primary);
 }

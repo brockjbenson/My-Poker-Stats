@@ -19,6 +19,8 @@ function DashBoardPage() {
   // this component doesn't do much to start, just renders some user reducer info to the DOM
   const history = useHistory();
   const [totalNet, setTotalNet] = useState(0);
+  const [ind1, setInd1] = useState("indicator-active");
+  const [ind2, setInd2] = useState("indicator-not-active");
   const dispatch = useDispatch();
   const user = useSelector((store) => store.user);
   const allStats = useSelector((store) => store.allStatsReducer);
@@ -60,16 +62,18 @@ function DashBoardPage() {
   const sendToCards = () => {
     const element = document.getElementById("el-1");
     if (element) {
-      // 👇 Will scroll smoothly to the top of the next section
       element.scrollIntoView({ behavior: "smooth" });
+      setInd2("indicator-not-active");
+      setInd1("indicator-active");
     }
   };
 
   const sendToGraph = () => {
     const element = document.getElementById("el-2");
     if (element) {
-      // 👇 Will scroll smoothly to the top of the next section
       element.scrollIntoView({ behavior: "smooth" });
+      setInd2("indicator-active");
+      setInd1("indicator-not-active");
     }
   };
 
@@ -77,7 +81,7 @@ function DashBoardPage() {
     <>
       <div className="main">
         <div className="header">
-          <h1 className="clr-light">Dashboard</h1>
+          <h1 className="clr-light">Overview</h1>
           <div className="buttons-container"></div>
         </div>
         <div className="stats-container">
@@ -87,15 +91,23 @@ function DashBoardPage() {
         <div className="card-container">
           {allStats[0] !== undefined ? (
             <div className="card-section-1a">
-              <p>Recent</p>
+              <div className="card-header-section-1">
+                <p>Recent</p>
+              </div>
+              <div className="middle-card-section">
+                <FaAngleLeft className="scroll-btn" onClick={sendToCards} />
+                <div className="indicators">
+                  <div className={ind1}></div>
+                  <div className={ind2}></div>
+                </div>
 
-              <FaAngleLeft className="scroll-btn" onClick={sendToCards} />
-
-              <FaAngleRight className="scroll-btn" onClick={sendToGraph} />
-
-              <p className="see-all" onClick={sendToVenues}>
-                See All
-              </p>
+                <FaAngleRight className="scroll-btn" onClick={sendToGraph} />
+              </div>
+              <div className="card-header-section-2">
+                <p className="see-all" onClick={sendToVenues}>
+                  Venues
+                </p>
+              </div>
             </div>
           ) : (
             <div className="card-section-1b">
@@ -113,10 +125,7 @@ function DashBoardPage() {
                     onClick={() => sendToVenue(venueStats[0].venue_id)}
                     className="venue-card"
                   >
-                    <h2>
-                      {venueStats[0].venue_name}
-                      <span className="font-wt-regular"> Overview</span>
-                    </h2>
+                    <h2>{venueStats[0].venue_name}</h2>
                     <div className="venue-stats">
                       <div className="venue-stat">
                         <p>Net Profit</p>
@@ -150,7 +159,6 @@ function DashBoardPage() {
                       </div>
                     </div>
                   </div>
-                  <div className="arrow-container"></div>
                 </>
               ) : (
                 <div className="no-stats-container clr-light">
@@ -173,9 +181,8 @@ function DashBoardPage() {
                   className="session-card clr-primary"
                 >
                   <div className="session-header">
-                    <p>Session at</p>
                     <div className="venue-name">
-                      <p className="font-wt-bold">{sessionCard[0].venue}</p>
+                      <p>Session</p>
                     </div>
                     <p>on</p>
                     <div className="session-date">
@@ -229,7 +236,7 @@ function DashBoardPage() {
                     {
                       lineTension: 0.5,
                       label: "Session Net",
-                      backgroundColor: "white",
+                      backgroundColor: "transparent",
                       borderColor: "#5937a4",
 
                       data: sessionCard.map((session) => {

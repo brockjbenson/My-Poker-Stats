@@ -41,8 +41,8 @@
 }
 
 .log-reg-input {
-  width: 40rem;
-  height: 8rem;
+  width: 35rem;
+  height: 7rem;
   margin-bottom: 5rem;
   font-size: var(--ft-size-md);
   color: var(--clr-light);
@@ -63,6 +63,7 @@
 .log-reg-btn-container {
   display: flex;
   justify-content: center;
+  width: 100%;
 }
 
 @media screen and (min-width: 754px) {

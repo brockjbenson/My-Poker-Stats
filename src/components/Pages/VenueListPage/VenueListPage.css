@@ -7,18 +7,17 @@
 .venue-list-btn,
 .venue-list-btn-2,
 .venue-list-btn-3 {
-  width: 100%;
-  height: 100%;
+  width: 2rem;
+  height: 2rem;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: var(--ft-size-sm);
   font-weight: var(--ft-weight-bold);
 }
-
 .venue-list-btn {
-  background-color: var(--clr-primary);
-  color: var(--clr-light);
+  /* background-color: var(--clr-primary); */
+  color: var(--clr-primary);
 }
 
 .venue-list-btn-2 {
@@ -75,7 +74,7 @@
   color: var(--clr-primary);
   border: none;
   border-bottom: 0.25rem solid var(--clr-primary);
-  width: 20rem;
+  width: fit-content;
 }
 
 .venue-btns {
