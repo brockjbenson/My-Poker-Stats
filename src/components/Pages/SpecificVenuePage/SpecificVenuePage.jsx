@@ -12,7 +12,8 @@ import {
   FaTrash,
   FaTimes,
   FaCheck,
-  FaArrowAltCircleLeft,
+  FaArrowLeft,
+  FaPlus,
 } from "react-icons/fa";
 import { useRef } from "react";
 
@@ -240,17 +241,9 @@ export default function SpecificVenueViewPage() {
         </div>
         <div className="card-container">
           <div className="card-section-session-1b">
-            <FaArrowAltCircleLeft
-              className="back-button"
-              onClick={backToList}
-            />
-            <button
-              className="accent-btn-primary notes-title"
-              onClick={addNewSession}
-            >
-              Add Session
-            </button>
-            <h2></h2>
+            <FaArrowLeft className="back-button" onClick={backToList} />
+            <h2 className="font-wt-bold clr-primary font-md">Sessions</h2>
+            <FaPlus className="add-button" onClick={addNewSession} />
           </div>
           <div className="list-container clr-primary">
             {venue[0] !== undefined ? (
@@ -260,15 +253,15 @@ export default function SpecificVenueViewPage() {
                     <div
                       key={index}
                       onClick={() => getSession(sesh.id)}
-                      className="session-card"
+                      className="session-card-2"
                     >
-                      <div className="list-card-header">
-                        <div className="date">
+                      <div className="list-card-header-2">
+                        <div className="date clr-primary">
                           <h2>
-                            {format(new Date(sesh.session_date), "dd/MM/yy")}
+                            {format(new Date(sesh.session_date), "MM/dd/yy")}
                           </h2>
                         </div>
-                        <div className="delete-btn clr-primary ">
+                        <div className="delete-btn">
                           <FaTrash
                             className="session-delete-icon"
                             onClick={(e) => {
@@ -278,12 +271,12 @@ export default function SpecificVenueViewPage() {
                           />
                         </div>
                       </div>
-                      <div className="session-stats">
+                      <div className="session-stats clr-light">
                         <div className="session-stat">
                           <p>Net Profit:</p>
                           <h2>
                             <NumericFormat
-                              className="h2-3"
+                              className="h2-3 clr-light"
                               value={sesh.net_profit}
                               prefix={"$"}
                               thousandSeparator=","

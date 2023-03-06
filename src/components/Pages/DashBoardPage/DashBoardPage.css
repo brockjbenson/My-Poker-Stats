@@ -9,14 +9,17 @@
   justify-content: center;
   border-bottom: 0.2rem solid var(--clr-primary);
   margin-inline: auto;
+  background-color: var(--clr-primary);
+  color: var(--clr-light);
 }
 
 .session-header > p {
   margin-inline: 1rem;
 }
 
-.venue-card > h2 {
-  border-bottom: 0.2rem solid var(--clr-light);
+.venue-card-header {
+  background-color: var(--clr-light);
+  color: var(--clr-primary);
 }
 
 .recent-venue,
@@ -28,13 +31,6 @@
   align-items: center;
   padding: 1rem;
   justify-content: space-between;
-}
-
-.venue-header {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 20%;
 }
 
 .venue-stats {

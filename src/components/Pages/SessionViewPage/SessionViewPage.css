@@ -28,7 +28,8 @@
   height: 80%;
   padding-left: 1rem;
   border-radius: 1.5rem;
-  color: var(--clr-light);
+  color: var(--clr-primary);
+  font-weight: var(--ft-weight-bold);
 }
 
 .notes-body {

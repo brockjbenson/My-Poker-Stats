@@ -92,7 +92,7 @@ function DashBoardPage() {
           {allStats[0] !== undefined ? (
             <div className="card-section-1a">
               <div className="card-header-section-1">
-                <p>Recent</p>
+                <p></p>
               </div>
               <div className="middle-card-section">
                 <FaAngleLeft className="scroll-btn" onClick={sendToCards} />
@@ -104,9 +104,7 @@ function DashBoardPage() {
                 <FaAngleRight className="scroll-btn" onClick={sendToGraph} />
               </div>
               <div className="card-header-section-2">
-                <p className="see-all" onClick={sendToVenues}>
-                  Venues
-                </p>
+                <p></p>
               </div>
             </div>
           ) : (
@@ -125,7 +123,9 @@ function DashBoardPage() {
                     onClick={() => sendToVenue(venueStats[0].venue_id)}
                     className="venue-card"
                   >
-                    <h2>{venueStats[0].venue_name}</h2>
+                    <div className="venue-card-header">
+                      <h2>{venueStats[0].venue_name}</h2>
+                    </div>
                     <div className="venue-stats">
                       <div className="venue-stat">
                         <p>Net Profit</p>
@@ -151,11 +151,13 @@ function DashBoardPage() {
                       </div>
                       <div className="venue-stat">
                         <p>Total Hours</p>
-                        <h2>{venueStats[0].total_hours}</h2>
+                        <h2 className="h2-2">{venueStats[0].total_hours}</h2>
                       </div>
                       <div className="venue-stat">
                         <p>Sessions</p>
-                        <h2>{venueStats[0].sessions_played}</h2>
+                        <h2 className="h2-2">
+                          {venueStats[0].sessions_played}
+                        </h2>
                       </div>
                     </div>
                   </div>
@@ -229,7 +231,7 @@ function DashBoardPage() {
               <Line
                 data={{
                   labels: sessionCard.map((session) => {
-                    return format(new Date(session.session_date), "dd/MM/yy");
+                    return format(new Date(session.session_date), "MM/dd/yy");
                   }),
 
                   datasets: [

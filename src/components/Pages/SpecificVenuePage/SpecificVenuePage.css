@@ -16,6 +16,17 @@
   margin-bottom: 0.5rem;
 }
 
+.list-card-header-2 {
+  width: 100%;
+  border-bottom: 0.2rem solid var(--clr-light);
+  background-color: var(--clr-light);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-inline: auto;
+  margin-bottom: 0.5rem;
+}
+
 .list-card-header > h2 {
   margin-left: 1rem;
 }

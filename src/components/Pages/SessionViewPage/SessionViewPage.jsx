@@ -8,13 +8,7 @@ import { useEffect } from "react";
 import Nav from "../../Shared/Nav/Nav";
 import { NumericFormat } from "react-number-format";
 import "./SessionViewPage.css";
-import {
-  FaPen,
-  FaTrash,
-  FaArrowAltCircleLeft,
-  FaTimes,
-  FaCheck,
-} from "react-icons/fa";
+import { FaPen, FaTrash, FaArrowLeft, FaTimes, FaCheck } from "react-icons/fa";
 
 // ------- Component ------- //
 export default function SessionViewPage() {
@@ -182,7 +176,7 @@ export default function SessionViewPage() {
                     <input
                       className="session-edit-input"
                       type="text"
-                      value={format(new Date(date), "dd/MM/yy")}
+                      value={format(new Date(date), "MM/dd/yy")}
                       onChange={(e) => setDate(e.target.value)}
                       required
                     />
@@ -190,7 +184,7 @@ export default function SessionViewPage() {
                 ) : (
                   <>
                     <h2 className="h2">
-                      {format(new Date(session[0].session_date), "dd/MM/yy")}
+                      {format(new Date(session[0].session_date), "MM/dd/yy")}
                     </h2>
                   </>
                 )}
@@ -283,7 +277,9 @@ export default function SessionViewPage() {
             {editMode ? (
               <>
                 <div className="card-section-1b">
-                  <h2 className="clr-primary">Edit Notes</h2>
+                  <h2 className="clr-primary font-md font-wt-bold">
+                    Edit Notes
+                  </h2>
                 </div>
                 <div className="notes-body">
                   <textarea
@@ -299,11 +295,13 @@ export default function SessionViewPage() {
             ) : (
               <>
                 <div className="card-section-session-1b">
-                  <FaArrowAltCircleLeft
+                  <FaArrowLeft
                     className="back-button"
                     onClick={goBackToVenue}
                   />
-                  <h2 className="clr-primary notes-title">Notes</h2>
+                  <h2 className="clr-primary notes-title font-md font-wt-bold">
+                    Notes
+                  </h2>
                   <h2></h2>
                 </div>
                 <div className="notes-body">

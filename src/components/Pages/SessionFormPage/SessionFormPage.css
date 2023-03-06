@@ -39,7 +39,7 @@
   text-align: center;
   background-color: transparent;
   border: 0.25rem solid white;
-  border-radius: 1rem;
+  border-radius: 1.5rem;
   font-size: var(--ft-size-md);
   color: var(--clr-light);
 }
@@ -57,7 +57,7 @@ textarea::placeholder {
   text-align: center;
   background-color: transparent;
   border: 0.25rem solid white;
-  border-radius: 1rem;
+  border-radius: 1.5rem;
   color-scheme: dark;
   font-size: var(--ft-size-md);
   color: var(--clr-light);
@@ -68,7 +68,7 @@ textarea::placeholder {
   height: 90%;
   background-color: transparent;
   border: 0.25rem solid var(--clr-light);
-  border-radius: 1rem;
+  border-radius: 1.5rem;
   padding: 1rem 0 0 1rem;
   color: white;
   font-size: var(--ft-size-md);

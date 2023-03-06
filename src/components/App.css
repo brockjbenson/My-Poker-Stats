@@ -6,7 +6,7 @@
   --clr-neutral: #959595;
   /* Font-Sizes */
   --ft-size-lg: 3.6rem;
-  --ft-size-md: 2.5rem;
+  --ft-size-md: 2.75rem;
   --ft-size-sm: 1.8rem;
   /* Font Weights */
   --ft-weight-light: 200;
@@ -155,6 +155,7 @@ h2 {
   display: flex;
   align-items: center;
   color: var(--clr-primary);
+  padding: 0.25rem;
 }
 
 input:focus {
@@ -189,7 +190,7 @@ input:focus {
 
 .h2-3 {
   background-color: transparent;
-  color: var(--clr-primary);
+  color: var(--clr-light);
   text-align: center;
   font-size: var(--ft-size-sm);
   border: none;
@@ -292,10 +293,11 @@ h2 {
   font-size: var(--ft-size-sm);
 }
 .list-container {
-  height: 90.5%;
+  height: 90%;
   width: 100%;
   overflow-y: auto;
   overflow-x: hidden;
+  border-bottom: 0.25rem solid var(--clr-light);
   background-color: var(--clr-light);
 }
 
@@ -431,6 +433,7 @@ button:hover {
 
 .venue-card {
   background-color: var(--clr-primary);
+  border: 0.25rem solid var(--clr-primary);
   height: 20rem;
   margin-block: 1rem;
 
@@ -546,10 +549,17 @@ button:hover {
 
 .back-button {
   color: var(--clr-primary);
-  height: 3rem;
-  width: 3rem;
+  height: 2rem;
+  width: 2rem;
 
-  margin-left: 1rem;
+  margin-left: 2rem;
+}
+
+.add-button {
+  margin-right: 2rem;
+  color: var(--clr-primary);
+  height: 2rem;
+  width: 2rem;
 }
 
 .card-section-1a p {
@@ -572,6 +582,14 @@ button:hover {
   margin-block: 1rem;
 }
 
+.session-card-2 {
+  background-color: var(--clr-primary);
+  color: var(--clr-light);
+  border: 0.25rem solid var(--clr-primary);
+  height: 10rem;
+  margin-block: 1rem;
+}
+
 .session-card:hover {
   cursor: pointer;
   scale: 103%;
@@ -579,7 +597,8 @@ button:hover {
 }
 
 .venue-card,
-.session-card {
+.session-card,
+.session-card-2 {
   display: flex;
   flex-direction: column;
   border-radius: 2rem;
@@ -676,6 +695,16 @@ button:hover {
   .nav a {
     color: var(--clr-light);
     text-decoration: none;
+  }
+
+  .session-header {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    border-bottom: 0.2rem solid var(--clr-primary);
+    margin-inline: auto;
+    background-color: var(--clr-primary);
+    color: var(--clr-light);
   }
 
   .nav-header {
@@ -860,6 +889,7 @@ button:hover {
 
   .session-card {
     background-color: var(--clr-light);
+    border: 0.2rem solid var(--clr-primary);
     height: 20%;
   }
 
@@ -902,6 +932,11 @@ button:hover {
     justify-content: center;
     align-items: center;
     width: 33%;
+  }
+
+  .venue-card-header {
+    background-color: var(--clr-light);
+    color: var(--clr-primary);
   }
 
   .session-stat > input {

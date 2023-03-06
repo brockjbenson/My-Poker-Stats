@@ -16,6 +16,10 @@ export default function VenueFormPage() {
     setVenueName("");
     history.push("/venue-list");
   }
+
+  function backToVenueList() {
+    history.push("/venue-list");
+  }
   return (
     <div className="body">
       <div className="main">
@@ -37,6 +41,9 @@ export default function VenueFormPage() {
           <div className="venue-add-button">
             <button className="btn-lg-primary" onClick={addVenue}>
               Add Venue
+            </button>
+            <button className="btn-lg-light" onClick={backToVenueList}>
+              Cancel
             </button>
           </div>
           <div className="filler"></div>

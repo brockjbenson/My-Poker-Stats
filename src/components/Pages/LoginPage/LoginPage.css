@@ -41,7 +41,7 @@
 }
 
 .log-reg-input {
-  width: 35rem;
+  width: 90%;
   height: 7rem;
   margin-bottom: 5rem;
   font-size: var(--ft-size-md);

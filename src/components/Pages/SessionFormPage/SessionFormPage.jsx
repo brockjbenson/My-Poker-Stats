@@ -63,8 +63,8 @@ export default function SessionFormPage() {
     <>
       <div className="main">
         <div className="header">
-          <h1 className="clr-light">Add Session to:</h1>
-          <h2 className="clr-light">{venName}</h2>
+          <h1 className="clr-light font-wt-regular">Session for:</h1>
+          <h1 className="clr-light">{venName}</h1>
           <div className="buttons-container"></div>
         </div>
         <form onSubmit={addSession} className="add-session">
