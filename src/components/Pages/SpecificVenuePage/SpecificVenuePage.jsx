@@ -136,10 +136,10 @@ export default function SpecificVenueViewPage() {
                 onChange={(e) => setVenName(e.target.value)}
               />
               <div className="button-container">
-                <FaCheck className="icon-btn-edit" onClick={saveEdit} />
+                <FaCheck className="icon-btn-edit hover" onClick={saveEdit} />
 
                 <FaTimes
-                  className="icon-btn-delete"
+                  className="icon-btn-delete hover"
                   onClick={() => setEditMode(false)}
                 />
               </div>
@@ -150,11 +150,11 @@ export default function SpecificVenueViewPage() {
 
               <div className="button-container">
                 <FaTrash
-                  className="icon-btn-delete"
+                  className="icon-btn-delete hover"
                   onClick={confirmVenueDelete}
                 />
 
-                <FaPen className="icon-btn-edit" onClick={editTitle} />
+                <FaPen className="icon-btn-edit hover" onClick={editTitle} />
               </div>
             </>
           )}
@@ -241,9 +241,9 @@ export default function SpecificVenueViewPage() {
         </div>
         <div className="card-container">
           <div className="card-section-session-1b">
-            <FaArrowLeft className="back-button" onClick={backToList} />
+            <FaArrowLeft className="back-button hover" onClick={backToList} />
             <h2 className="font-wt-bold clr-primary font-md">Sessions</h2>
-            <FaPlus className="add-button" onClick={addNewSession} />
+            <FaPlus className="add-button hover" onClick={addNewSession} />
           </div>
           <div className="list-container clr-primary">
             {venue[0] !== undefined ? (
@@ -263,7 +263,7 @@ export default function SpecificVenueViewPage() {
                         </div>
                         <div className="delete-btn">
                           <FaTrash
-                            className="session-delete-icon"
+                            className="session-delete-icon hover"
                             onClick={(e) => {
                               e.stopPropagation();
                               confirmSessionDelete(sesh.id);

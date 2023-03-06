@@ -288,6 +288,10 @@ button:active {
   align-items: center;
 }
 
+.hover:hover {
+  cursor: pointer;
+}
+
 .stat > p,
 h2 {
   font-size: var(--ft-size-sm);
@@ -590,7 +594,8 @@ button:hover {
   margin-block: 1rem;
 }
 
-.session-card:hover {
+.session-card:hover,
+.session-card-2:hover {
   cursor: pointer;
   scale: 103%;
   transition: 0.2s;

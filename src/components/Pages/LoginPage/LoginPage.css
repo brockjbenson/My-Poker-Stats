@@ -65,24 +65,3 @@
   justify-content: center;
   width: 100%;
 }
-
-@media screen and (min-width: 754px) {
-  .log-reg-input {
-    width: 85%;
-    height: 8rem;
-    margin-bottom: 5rem;
-    font-size: var(--ft-size-md);
-    color: var(--clr-light);
-    border: 0.2rem solid var(--clr-light);
-    background-color: transparent;
-    border-radius: 1.5rem;
-    padding-left: 1rem;
-  }
-
-  .login-reg-form {
-    background-color: rgba(255, 255, 255, 0.2);
-    width: 100rem;
-    margin: auto;
-    height: 100rem;
-  }
-}

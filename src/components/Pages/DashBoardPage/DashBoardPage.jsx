@@ -95,13 +95,19 @@ function DashBoardPage() {
                 <p></p>
               </div>
               <div className="middle-card-section">
-                <FaAngleLeft className="scroll-btn" onClick={sendToCards} />
+                <FaAngleLeft
+                  className="scroll-btn hover"
+                  onClick={sendToCards}
+                />
                 <div className="indicators">
                   <div className={ind1}></div>
                   <div className={ind2}></div>
                 </div>
 
-                <FaAngleRight className="scroll-btn" onClick={sendToGraph} />
+                <FaAngleRight
+                  className="scroll-btn hover"
+                  onClick={sendToGraph}
+                />
               </div>
               <div className="card-header-section-2">
                 <p></p>

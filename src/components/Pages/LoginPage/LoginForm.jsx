@@ -66,7 +66,7 @@ function LoginForm() {
           <p className="register-redirect">
             Need an account?{" "}
             <span
-              className="register-text"
+              className="register-text hover"
               onClick={() => {
                 history.push("/registration");
               }}

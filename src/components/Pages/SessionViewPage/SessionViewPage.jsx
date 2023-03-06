@@ -113,10 +113,13 @@ export default function SessionViewPage() {
                 <h1>Edit Session</h1>
               </div>
               <div className="button-container">
-                <FaCheck className="icon-btn-delete" onClick={editSession} />
+                <FaCheck
+                  className="icon-btn-delete hover"
+                  onClick={editSession}
+                />
 
                 <FaTimes
-                  className="icon-btn-edit"
+                  className="icon-btn-edit hover"
                   onClick={() => setEditMode(false)}
                 />
               </div>
@@ -128,12 +131,12 @@ export default function SessionViewPage() {
               </div>
               <div className="button-container">
                 <FaTrash
-                  className="icon-btn-delete"
+                  className="icon-btn-delete hover"
                   onClick={() => confirmFunction(sessionID)}
                 />
 
                 <FaPen
-                  className="icon-btn-edit"
+                  className="icon-btn-edit hover"
                   onClick={() => setEditMode(true)}
                 />
               </div>
@@ -296,7 +299,7 @@ export default function SessionViewPage() {
               <>
                 <div className="card-section-session-1b">
                   <FaArrowLeft
-                    className="back-button"
+                    className="back-button hover"
                     onClick={goBackToVenue}
                   />
                   <h2 className="clr-primary notes-title font-md font-wt-bold">
