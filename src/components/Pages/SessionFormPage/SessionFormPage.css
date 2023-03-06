@@ -47,7 +47,7 @@
 .row-1 > input::placeholder,
 .row-2 > input::placeholder,
 textarea::placeholder {
-  font-size: var(--ft-size-md);
+  font-size: var(--ft-size-sm);
   color: var(--clr-light);
 }
 
@@ -59,7 +59,7 @@ textarea::placeholder {
   border: 0.25rem solid white;
   border-radius: 1.5rem;
   color-scheme: dark;
-  font-size: var(--ft-size-md);
+  font-size: var(--ft-size-sm);
   color: var(--clr-light);
 }
 
