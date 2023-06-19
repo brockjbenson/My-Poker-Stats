@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import "./LandingPage.css";
+import { BsGraphUp } from "react-icons/bs";
+import { AiOutlineEye } from "react-icons/ai";
 
 // CUSTOM COMPONENTS
 
@@ -25,6 +27,7 @@ function LandingPage() {
         <div className="landing-body">
           <div className="landing-section">
             <div className="landing-section-header clr-light">
+              <BsGraphUp className="landing-graph-icon" />
               <h2>Custom Stats</h2>
             </div>
             <div className="landing-section-body">
@@ -35,6 +38,7 @@ function LandingPage() {
           </div>
           <div className="landing-section">
             <div className="landing-section-header clr-light">
+              <AiOutlineEye className="landing-eye-icon" />
               <h2>Visualize</h2>
             </div>
             <div className="landing-section-body">

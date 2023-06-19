@@ -45,3 +45,63 @@
 .landing-section-body {
   height: 80%;
 }
+
+@media screen and (min-width: 980px) {
+  .landing-body {
+    width: 80%;
+    margin-inline: auto;
+    display: flex;
+    justify-content: center;
+  }
+
+  .landing-section {
+    display: flex;
+    height: 20rem;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .landing-section-header {
+    width: 40%;
+    height: 100%;
+    display: flex;
+    align-items: start;
+  }
+
+  .landing-graph-icon {
+    width: 3rem;
+    height: 3rem;
+    margin-top: 1rem;
+    margin-right: 3rem;
+  }
+
+  .landing-eye-icon {
+    width: 3.5rem;
+    height: 3.5rem;
+    margin-top: 1rem;
+    margin-right: 3rem;
+  }
+
+  .landing-section-body {
+    width: 40%;
+    height: 100%;
+    display: flex;
+    align-items: start;
+  }
+
+  .landing-section-body p {
+    font-size: 2.5rem;
+  }
+
+  .landing-section-header h2 {
+    font-size: 3rem;
+  }
+
+  .landing-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 40%;
+    margin-inline: auto;
+  }
+}
