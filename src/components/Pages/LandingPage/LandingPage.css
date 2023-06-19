@@ -48,7 +48,7 @@
 
 @media screen and (min-width: 980px) {
   .landing-body {
-    width: 80%;
+    width: 60%;
     margin-inline: auto;
     display: flex;
     justify-content: center;
@@ -62,7 +62,7 @@
   }
 
   .landing-section-header {
-    width: 40%;
+    width: 35%;
     height: 100%;
     display: flex;
     align-items: start;
@@ -83,7 +83,7 @@
   }
 
   .landing-section-body {
-    width: 40%;
+    width: 60%;
     height: 100%;
     display: flex;
     align-items: start;

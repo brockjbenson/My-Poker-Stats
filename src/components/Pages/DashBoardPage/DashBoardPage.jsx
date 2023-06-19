@@ -244,7 +244,7 @@ function DashBoardPage() {
                     {
                       lineTension: 0.5,
                       label: "Session Net",
-                      backgroundColor: "transparent",
+                      backgroundColor: "#5937a4",
                       borderColor: "#5937a4",
 
                       data: sessionCard.map((session) => {

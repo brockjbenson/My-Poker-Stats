@@ -9,7 +9,7 @@
   justify-content: center;
   border-bottom: 0.2rem solid var(--clr-primary);
   margin-inline: auto;
-  background-color: var(--clr-primary);
+  /* background-color: var(--clr-primary); */
   color: var(--clr-light);
 }
 
@@ -18,8 +18,7 @@
 }
 
 .venue-card-header {
-  background-color: var(--clr-light);
-  color: var(--clr-primary);
+  color: var(--clr-light);
 }
 
 .recent-venue,
@@ -38,4 +37,24 @@
   flex-wrap: wrap;
   height: 80%;
   align-items: center;
+}
+
+@media screen and (min-width: 760px) {
+  .card-container {
+    width: 100rem;
+    margin-inline: auto;
+  }
+
+  .venue-card-header h2 {
+    color: var(--clr-primary);
+  }
+
+  .venue-card-header {
+    background-color: var(--clr-primary);
+  }
+
+  .venue-card {
+    width: 90%;
+    margin-inline: auto;
+  }
 }
