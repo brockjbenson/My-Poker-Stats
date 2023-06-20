@@ -70,7 +70,10 @@ export default function VenueListPage() {
         </div>
         <div className="venue-list-container bg">
           <div className="addnew-btn">
-            <button className="accent-btn-light" onClick={addVenue}>
+            <button
+              className="accent-btn-light add-new-button"
+              onClick={addVenue}
+            >
               Add New
             </button>
           </div>
@@ -157,7 +160,7 @@ export default function VenueListPage() {
                   <h2 className="clr-neutral">No Venues</h2>
                 </div>
                 <div className="no-stats-body">
-                  <h2 className="font-wt-regular">
+                  <h2 className="font-wt-regular clr-light no-stats-text">
                     Here is where your list of created venues will be. Click the
                     "Add Venue" button to start your list!
                   </h2>

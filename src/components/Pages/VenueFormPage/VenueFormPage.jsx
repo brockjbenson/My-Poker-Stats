@@ -39,10 +39,13 @@ export default function VenueFormPage() {
             />
           </div>
           <div className="venue-add-button">
-            <button className="btn-lg-primary" onClick={addVenue}>
+            <button className="btn-sm-primary add-venue-btn" onClick={addVenue}>
               Add Venue
             </button>
-            <button className="btn-lg-light" onClick={backToVenueList}>
+            <button
+              className="btn-sm-light cancel-add-btn"
+              onClick={backToVenueList}
+            >
               Cancel
             </button>
           </div>

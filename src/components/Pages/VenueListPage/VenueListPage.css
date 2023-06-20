@@ -88,3 +88,34 @@
 .venue-list-container {
   height: 85%;
 }
+
+@media (min-width: 760px) {
+  .venue-list-card {
+    width: 90rem;
+    transition: 0.3s;
+  }
+
+  .venue-list-card:hover {
+    scale: 102%;
+  }
+
+  .add-new-button {
+    transition: 0.3s;
+  }
+
+  .add-new-button:hover {
+    cursor: pointer;
+    scale: 105%;
+  }
+
+  .no-stats-container {
+    width: 100rem;
+    margin-inline: auto;
+    margin-top: 5rem;
+    height: 50rem;
+  }
+
+  .no-stats-text {
+    font-size: 2rem;
+  }
+}
