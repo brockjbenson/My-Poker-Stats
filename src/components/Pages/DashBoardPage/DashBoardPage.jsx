@@ -5,7 +5,7 @@ import { format } from "date-fns";
 import { useHistory } from "react-router-dom";
 import { NumericFormat } from "react-number-format";
 import Nav from "../../Shared/Nav/Nav";
-import "../SpecificVenuePage/SpecificVenuePage.css";
+// import "../SpecificVenuePage/SpecificVenuePage.css";
 import "../DashBoardPage/DashBoardPage.css";
 import DashBoardStats from "./DashBoardStats";
 import { Line } from "react-chartjs-2";
@@ -130,7 +130,9 @@ function DashBoardPage() {
                     className="venue-card"
                   >
                     <div className="venue-card-header">
-                      <h2>{venueStats[0].venue_name}</h2>
+                      <h2 className="venue-card-title">
+                        {venueStats[0].venue_name}
+                      </h2>
                     </div>
                     <div className="venue-stats">
                       <div className="venue-stat">
@@ -186,25 +188,23 @@ function DashBoardPage() {
                   onClick={() =>
                     sendToSession(sessionCard[0].id, sessionCard[0].venue_id)
                   }
-                  className="session-card clr-primary"
+                  className="session-card"
                 >
                   <div className="session-header">
-                    <div className="venue-name">
-                      <p>Session</p>
-                    </div>
-                    <p>on</p>
-                    <div className="session-date">
-                      <p className="font-wt-bold">
-                        {format(
-                          new Date(sessionCard[0].session_date),
-                          "dd/MM/yy"
-                        )}
-                      </p>
-                    </div>
+                    <p className="font-wt-bold">Session</p>
+
+                    <p className="clr-primary">on</p>
+
+                    <p className="font-wt-bold clr-primary">
+                      {format(
+                        new Date(sessionCard[0].session_date),
+                        "dd/MM/yy"
+                      )}
+                    </p>
                   </div>
                   <div className="session-stats">
                     <div className="session-stat">
-                      <p>Net Profit:</p>
+                      <p className="clr-primary">Net Profit:</p>
                       <NumericFormat
                         className="p"
                         value={sessionCard[0].net_profit}
@@ -215,11 +215,11 @@ function DashBoardPage() {
                       />
                     </div>
                     <div className="session-stat">
-                      <p>Stakes:</p>
-                      <h2>{sessionCard[0].stakes}</h2>
+                      <p className="clr-primary">Stakes:</p>
+                      <h2 className="clr-primary">{sessionCard[0].stakes}</h2>
                     </div>
                     <div className="session-stat">
-                      <p>Hourly Net:</p>
+                      <p className="clr-primary">Hourly Net:</p>
                       <NumericFormat
                         className="p"
                         value={sessionCard[0].hourly}
