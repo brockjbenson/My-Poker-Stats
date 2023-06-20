@@ -22,7 +22,7 @@ This application is very simple and easy to use. Here is how to get the most out
 
 A few things to note:
 
-There are three different view for this application
+There are three different stats views for this application
 
 1. Overview Page
 
@@ -35,6 +35,16 @@ Here you will see the stats for this specific venue that you play at. You can ha
 3. Session Page
 
 This is where you can view each individual session you play. You will see what you bought in for and what you cashed out for, how long you played, the date and stakes you played at as well as any notes that you input for that session. All of these are editable if you happened to input the wrong information
+
+To be able to track your stats you will be prompted to either log in or register an account. You will not be able to use the application without being logged in. After logging in, there will be instructions as to what you should do next but to sum it up:
+
+1.  Create a venue
+2.  Create a session for that venue
+3.  Look at stats from that session or multiple sessions that you created
+
+You are able to see a list of the created venues where you can click on a venue to go to that venues page, or you are can edit the name and delete a venue from that list. You are also able to edit or delete a venue from the venue overview page, but be warned if you want to delete a venue, it will delete every session associated with it.
+
+If you want to edit or delete a session you can do that on the session view page where you are able to change anything about that session
 
 ## Instructions for Cloning
 
