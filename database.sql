@@ -1,26 +1,25 @@
-CREATE TABLE users (
-    id SERIAL PRIMARY KEY,
-    username VARCHAR(100),
-    email VARCHAR(150) UNIQUE NOT NULL,
-    nickname VARCHAR(100) UNIQUE,
-    password VARCHAR(255),
-    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
-    CONSTRAINT password_length_check CHECK (char_length(password) >= 8)
+
+
+CREATE TABLE "user" (
+    "id" SERIAL PRIMARY KEY,
+    "username" VARCHAR (80) UNIQUE NOT NULL,
+    "password" VARCHAR (1000) NOT NULL
 );
 
-CREATE TABLE saved_structures (
-    id SERIAL PRIMARY KEY,
-    user_id INTEGER NOT NULL,
-    structure_name VARCHAR(255) NOT NULL,
-    structure_color VARCHAR(50) NOT NULL,
-    FOREIGN KEY (user_id) REFERENCES users(id)
+CREATE TABLE venue (
+	"id" serial PRIMARY KEY,
+	"name" varchar(255) NOT NULL,
+	"user_id" int REFERENCES users (id) NOT NULL
 );
 
-CREATE TABLE structure_layouts (
-    id SERIAL PRIMARY KEY,
-    structure_id INTEGER NOT NULL,
-    level_value VARCHAR(255) NOT NULL,
-    blind_value VARCHAR(255) NOT NULL,
-    level_interval INTEGER NOT NULL,
-    FOREIGN KEY (structure_id) REFERENCES saved_structures(id)
+CREATE TABLE sessions (
+    "id" serial primary key,
+    "buy_in" DECIMAL(10,2) NOT NULL,
+    "cash_out" DECIMAL(10,2) NOT NULL,
+    "hours_played" DECIMAL(3,1) NOT NULL,
+    "session_date" DATE NOT NULL,
+    "stakes" VARCHAR(255),
+    "notes" VARCHAR(255),
+    "venue_id" INT REFERENCES venues(id) NOT NULL,
+    "user_id" INT REFERENCES users(id) NOT NULL
 );
